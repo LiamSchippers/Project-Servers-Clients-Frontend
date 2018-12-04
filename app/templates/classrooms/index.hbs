@@ -1,0 +1,9 @@
+<div class="route-classrooms">
+  <h1>Classrooms</h1>
+  <ul>
+    {{#each model as |classroom|}}
+      <li>{{classroom.roomNumber}}</li>
+    {{/each}}
+  </ul>
+  {{#link-to 'classrooms.new'}}<button>New classroom</button>{{/link-to}}
+</div>
