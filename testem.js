@@ -8,7 +8,7 @@ module.exports = {
     'Chrome'
   ],
   browser_args: {
-    Chromez: {
+    Chrome: {
       ci: [
         // --no-sandbox is needed when running Chrome inside a container
         process.env.CI ? '--no-sandbox' : null,
