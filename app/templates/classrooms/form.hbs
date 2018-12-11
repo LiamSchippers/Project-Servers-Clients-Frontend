@@ -1,5 +1,7 @@
-<form>
-  {{input type="text" value=model.roomNumber}}
-  {{input type="number" value=model.capacity}}
-  <button type="submit" value="submit" {{action "saveModel"}}>Save</button>
+<form {{action "saveModel" on="submit"}}>
+  {{input  type="text" value=model.roomNumber required=true placeholder="Enter classroom"}}
+  {{input  type="number" value=model.capacity required=true placeholder="Enter capacity"}}
+  <button type="submit" value="submit" >Save</button>
 </form>
+
+
