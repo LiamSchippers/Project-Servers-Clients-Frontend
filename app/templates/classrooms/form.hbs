@@ -1,6 +1,6 @@
 <form {{action "saveModel" on="submit"}}>
   {{input  type="text" value=model.roomNumber required=true placeholder="Enter classroom"}}
-  {{input  type="number" value=model.capacity required=true placeholder="Enter capacity"}}
+  {{input  type="number" value=model.capacity required=true placeholder="Enter capacity" min="1"}}
   <button type="submit" value="submit" >Save</button>
 </form>
 

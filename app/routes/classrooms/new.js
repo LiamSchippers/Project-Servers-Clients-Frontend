@@ -6,6 +6,7 @@ export default Route.extend({
   },
   actions: {
     saveModel() {
+      console.log("hij komt hier");
       this.currentModel.save();
       this.transitionTo('classrooms');
     }
