@@ -1,13 +1,16 @@
 <form >
+  {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+  {{/if}}
   <p>
-    <label>Email</label>
+    <label>Email: </label>
     {{input value=email}}
   </p>
 
   <p>
-    <label>Password</label>
+    <label>Wachtwoord: </label>
     {{input value=password type="password"}}
   </p>
 
-  <button {{action "login" email password}}>Submit</button>
+  <button {{action "login" email password}}>Log in</button>
 </form>
