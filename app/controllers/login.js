@@ -10,7 +10,7 @@ export default Controller.extend({
         .catch((reason) => {
           this.set('errorMessage', reason.errors[0].detail);
         })
-        .then((success) => {
+        .then(() => {
           this.transitionToRoute('index');
         });
     }
