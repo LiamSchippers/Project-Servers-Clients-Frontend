@@ -11,6 +11,8 @@ export default Controller.extend({
           this.set('errorMessage', reason.errors[0].detail);
         })
         .then(() => {
+          this.set('password', '');
+          this.set('email', '');
           this.transitionToRoute('index');
         });
     }
