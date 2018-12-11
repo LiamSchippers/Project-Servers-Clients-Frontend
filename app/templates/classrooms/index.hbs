@@ -2,8 +2,8 @@
   <h1>Classrooms</h1>
   <ul>
     {{#each model as |classroom|}}
-      <li>{{classroom.roomNumber}}</li>
+      <li>{{classroom.roomNumber}}, capacity: {{classroom.capacity}}</li>
     {{/each}}
   </ul>
-  {{#link-to 'classrooms.new'}}<button>New classroom</button>{{/link-to}}
+  {{#link-to 'classrooms.new'}}<button>Add new classroom</button>{{/link-to}}
 </div>
