@@ -1,6 +1,9 @@
 <form {{action "saveModel" on="submit"}}>
-  {{input  type="text" value=model.roomNumber required=true placeholder="Enter classroom" pattern="([A-Z]{1})([0-9]{1})([.]{1})([0-9]{2})"}}
-  {{input  type="number" value=model.capacity required=true placeholder="Enter capacity" min="1"}}
+  <tr>
+    <th>Classroom <br>     {{input type="text" value=model.roomNumber required=true placeholder="Example: G5.30" pattern="([A-Z]{1})([0-9]{1})([.]{1})([0-9]{2})"}}</th>
+    <th>Capacity <br>     {{input class="test" type="number" value=model.capacity required=true placeholder="Example: 10" min="1"}}</th>
+  </tr>
+  <br>
   <button type="submit" value="submit" >Save</button>
 </form>
 
