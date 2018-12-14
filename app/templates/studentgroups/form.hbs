@@ -1,5 +1,6 @@
 <form>
-  {{input type="text" value=model.roomNumber}}
-  {{input type="number" value=model.capacity}}
-  <button type="submit" value="submit" {{action "saveModel"}}>Save</button>
+ group name: {{input type="text" value=model.groupName}} <br>
+ uren: {{input type="number" value=model.capacity}} <br>
+ Add student:{{input type="text"}}<br>
+  {{#link-to 'studentgroups.index'}}<button type="submit" value="submit" {{action "saveModel"}}>Save</button>{{/link-to}}
 </form>
