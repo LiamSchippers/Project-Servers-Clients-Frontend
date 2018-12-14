@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import * as Ember from "../../../dist/assets/vendor";
 
 export default Route.extend({
   model() {
