@@ -1,5 +1,5 @@
 import EmberRouter from '@ember/routing/router';
-import config from './config/environment';
+import config from '/config/environment';
 
 const Router = EmberRouter.extend({
   location: config.locationType,
@@ -13,7 +13,7 @@ Router.map(function() {
 
   this.route('classroom', function() {});
   this.route('login');
-  this.route('registreren');
+  this.route('registreren', function () {});
 });
 
 export default Router;
