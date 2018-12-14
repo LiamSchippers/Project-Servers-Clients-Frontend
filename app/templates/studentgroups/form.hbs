@@ -1,6 +1,6 @@
 <form>
  group name: {{input type="text" value=model.groupName}} <br>
- uren: {{input type="number" value=model.capacity}} <br>
+ uren: {{input type="number" value=model.hours}} <br>
  Add student:{{input type="text"}}<br>
-  {{#link-to 'studentgroups.index'}}<button type="submit" value="submit" {{action "saveModel"}}>Save</button>{{/link-to}}
+   <button type="submit" value="submit" {{action "saveModel"}}>Save student</button>
 </form>
