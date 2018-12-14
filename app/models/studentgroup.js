@@ -1,7 +1,8 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+  groupID: DS.attr('number'),
   groupName: DS.attr('string'),
-  ects: DS.attr('number'),
+  hours: DS.attr('number'),
   groupMembers: DS.attr()
 });
