@@ -13,6 +13,7 @@ Router.map(function() {
 
   this.route('classroom', function() {});
   this.route('studentgroups', function() {});
+  this.route('login');
 });
 
 export default Router;
