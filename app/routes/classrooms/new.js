@@ -6,6 +6,7 @@ export default Route.extend({
   },
   actions: {
     saveModel() {
+      Ember.set(this.currentModel, 'reservedSpots', 0);
       this.currentModel.save();
       this.transitionTo('classrooms');
     },
