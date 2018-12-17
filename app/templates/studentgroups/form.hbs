@@ -1,5 +1,27 @@
-<form>
-  group name: {{input type="text" value=model.groupName}} <br>
-  uren: {{input type="number" value=model.hours}} <br>
-  <button type="submit" value="submit" {{action "saveModel"}}>Save studentgroup</button>
+<form {{action "saveModel" on="submit"}}>
+  <tr>
+    <th>
+      Studentgroup
+      <br>
+      {{input
+        type="text"
+        value=model.groupName
+        required=true
+        placeholder="Example: projectgroup"
+      }}
+    </th>
+    <th>
+      Hours
+      <br>
+      {{input
+        type="number"
+        value=model.hours
+        required=true
+        placeholder="Example: 10"
+        min="1"
+      }}
+    </th>
+  </tr>
+  <br>
+  <button type="submit" value="submit">Save</button>
 </form>
