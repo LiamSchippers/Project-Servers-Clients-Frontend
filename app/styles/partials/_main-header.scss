@@ -1,0 +1,60 @@
+.main-header {
+  width: 100%;
+  background: $dark-blue;
+  padding: 28px 0;
+
+  nav {
+    background: none;
+    width: inherit;
+
+    .logo {
+      float: left;
+
+      .logo__text {
+        color: $white;
+        font-size: 18px;
+        font-weight: 500;
+      }
+    }
+
+    .user {
+      float: right;
+
+      .user__name {
+        cursor: pointer;
+        color: $white;
+        font-weigth: 400;
+        font-size: 14px;
+        .user__name_icon {
+          &::before {
+            @include rotate(90deg);
+          }
+        }
+      }
+    }
+
+    .icon-menu {
+      float: right;
+      color: $white;
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-down(xs) {
+    padding: 15px 0;
+
+    nav {
+      .logo {
+        .logo__text {
+          font-size: 14px;
+        }
+      }
+      .user {
+        display: none;
+      }
+      .icon-menu {
+        display: block;
+      }
+    }
+  }
+}

@@ -1,12 +1,19 @@
+// Vendor
+@import "ember-bootstrap/bootstrap";
+
 // Utilities
 @import "utilities/variables";
+@import "utilities/mixins";
 
 // Partials
 @import "partials/base";
 @import "partials/typography";
 @import "partials/icons";
+@import "partials/main-header";
+@import "partials/forms";
+@import "partials/buttons";
 
 // Views
 @import "views/dashboard";
 @import "views/classrooms";
-
+@import "views/login";
