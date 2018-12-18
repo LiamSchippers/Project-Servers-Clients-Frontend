@@ -1,0 +1,46 @@
+/***
+  * This file contains all styles for alert boxes
+  * There are 3 types of alerts: Success, Warning & Danger
+ */
+.alert {
+  width: 100%;
+  @include border-radius(5px);
+  box-shadow: $default-box-shadow;
+  padding: 20px 30px 20px 70px;
+  color: #ffffff;
+  font-size: 18px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    width: 15px;
+    height: 15px;
+    top: 25px;
+  }
+
+  &.alert--success {
+    background-color: $success;
+
+    &::before {
+      content: '\e805';
+    }
+  }
+
+  &.alert--warning {
+    background-color: $warning;
+
+    &::before {
+      content: '\e800';
+    }
+  }
+
+  &.alert--danger {
+    background-color: $danger;
+
+    &::before {
+      content: '\e808';
+    }
+  }
+}

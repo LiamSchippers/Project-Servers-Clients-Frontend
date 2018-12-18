@@ -3,7 +3,7 @@
     <div class="logo">Web Room Booking</div>
     <form>
       {{#if errorMessage}}
-        <p class="error">{{errorMessage}}</p>
+        <div class="alert alert--danger icon-danger">{{errorMessage}}</div>
       {{/if}}
       <div class="form-group">
         {{input placeholder="E-mailadres" class="default-input"}}
