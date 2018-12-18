@@ -20,7 +20,7 @@
                   <ul>
                     <li>Dashboard</li>
                     <li>Mijn account</li>
-                    <li>Uitloggen</li>
+                    <li>{{#link-to "login" invokeAction=(action "logOut")}}Uitloggen{{/link-to}}</li>
                   </ul>
                 </div>
               {{/transition-group}}
