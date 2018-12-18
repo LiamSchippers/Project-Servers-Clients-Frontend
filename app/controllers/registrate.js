@@ -1,5 +1,4 @@
 import Controller from '@ember/controller';
-import {inject} from '@ember/service';
 
 export default Controller.extend({
   model () {
@@ -7,7 +6,7 @@ export default Controller.extend({
   },
   actions: {
     signUp(studentNumber, name, password, password2) {
-      this.post("extended_users", studentNumber, name, password)
+      this.post("extended_users", studentNumber, name, password);
       this.currentModel.save();
       this.transitionTo('extended_users');
     }

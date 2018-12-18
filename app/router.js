@@ -13,7 +13,7 @@ Router.map(function() {
 
   this.route('classroom', function() {});
   this.route('login');
-  this.route('registreren', function () {});
+  this.route('registrate', function () {});
 });
 
 export default Router;
