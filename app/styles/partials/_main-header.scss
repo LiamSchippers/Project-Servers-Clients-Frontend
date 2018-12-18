@@ -1,3 +1,6 @@
+/***
+  * This file contains all styling for the top header (navigation)
+ */
 .main-header {
   width: 100%;
   background: $dark-blue;
@@ -44,6 +47,7 @@
         position: absolute;
         top: 55px;
         right: 0;
+        z-index: 999;
         background: #ffffff;
         box-shadow: $default-box-shadow;
         -webkit-border-bottom-left-radius: 5px;
