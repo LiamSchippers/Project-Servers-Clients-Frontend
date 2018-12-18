@@ -1,12 +1,12 @@
 <h1>Registreer hier</h1>
 <form>
-  <p>Leerlingnummer</p>
-  {{input type="number"}}
+  <p>Studentnummer</p>
+  {{input value=studentnummer type="number"}}
   <p>Naam</p>
-  {{input type="text"}}
+  {{input value=naam}}
   <p>Wachtwoord</p>
-  {{input type="password"}}
+  {{input value=password type="password"}}
   <p>Wachtwoord (herhaling)</p>
-  {{input type="password2"}}
-  <button type="submit" value="submit" {{action "signUp()"}}>Registreren</button>
+  {{input value=password2 type="password"}}
+  <button type="submit" value="submit" {{action "signUp" studentnummer naam password password2}}>Registreren</button>
 </form>
