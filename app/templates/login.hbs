@@ -1,15 +1,15 @@
 <main class="login-register-view">
   <div class="login-register-view__content">
     <div class="logo">Web Room Booking</div>
-    <form >
+    <form>
       {{#if errorMessage}}
         <p class="error">{{errorMessage}}</p>
       {{/if}}
       <div class="form-group">
-        {{input value=email placeholder="E-mailadres" class="default-input"}}
+        {{input placeholder="E-mailadres" class="default-input"}}
       </div>
       <div class="form-group">
-        {{input value=password type="password" placeholder="Wachtwoord" class="default-input"}}
+        {{input type="password" placeholder="Wachtwoord" class="default-input"}}
       </div>
       <button {{action "login" email password}} class="btn btn--green">Inloggen</button>
     </form>
@@ -17,4 +17,5 @@
     <p>Nog geen account?</p>
     <button class="btn btn--gray">Registreren</button>
   </div>
+
 </main>
