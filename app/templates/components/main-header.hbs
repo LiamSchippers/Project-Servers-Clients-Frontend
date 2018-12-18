@@ -7,9 +7,12 @@
             <span class="logo__text">Web Room Booking</span>
           </div>
           <div class="user">
-            <div class="user__name" {{ action "toggleUserDropdown" }}>
+            <div class="user__name" {{ action "toggleUserDropdown" }} role="button">
               <span class="user__name__text">John Doe</span>
-              <span class="user__name_icon icon-arrow {{if dropdownOpen "user__name_icon--open"}}"></span>
+              <span
+                class="user__name_icon icon-arrow {{if dropdownOpen "user__name_icon--open"}}"
+              >
+              </span>
             </div>
             {{# if dropdownOpen }}
               {{#transition-group transitionName="user-dropdown"}}
