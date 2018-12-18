@@ -3,6 +3,12 @@
   <menu>
     {{#link-to "index"}}Home{{/link-to}}
     {{#link-to "classrooms"}}Classrooms{{/link-to}}
+    {{#link-to "studentgroups"}}Student Groups{{/link-to}}
+    {{#if session.isAuthenticated}}
+      {{#link-to "login" invokeAction=(action "logOut")}}Log uit{{/link-to}}
+    {{else}}
+      {{#link-to "login"}}Log in{{/link-to}}
+    {{/if}}
   </menu>
 </nav>
 
