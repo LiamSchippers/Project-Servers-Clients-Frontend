@@ -19,6 +19,10 @@ Router.map(function() {
   this.route('login');
   this.route('studentgroup', function() {});
   this.route('new-reservation', function() {});
+
+  this.route('reservations', function() {
+    this.route('new');
+  });
 });
 
 export default Router;
