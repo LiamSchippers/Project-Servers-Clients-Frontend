@@ -1,0 +1,13 @@
+/***
+  * Base styles which applies on almost every view
+ */
+.view {
+  width: 100%;
+  @include calc(height, '100vh - 82px');
+  background: $background-light-grey;
+  padding: 50px 0;
+
+  @include media-breakpoint-down(xs) {
+    @include calc(height, '100vh - 54px');
+  }
+}
