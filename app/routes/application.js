@@ -7,6 +7,9 @@ export default Route.extend({
   actions: {
     logOut() {
       this.get('session').invalidate();
+    },
+    expandGroup() {
+      this.controller.toggleProperty('showGroupMembers');
     }
   }
 });

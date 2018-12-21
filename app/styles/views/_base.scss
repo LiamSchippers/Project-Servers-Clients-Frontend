@@ -1,13 +1,51 @@
 /***
   * Base styles which applies on almost every view
  */
-.view {
-  width: 100%;
-  @include calc(height, '100vh - 82px');
+body {
   background: $background-light-grey;
-  padding: 50px 0;
 
-  @include media-breakpoint-down(xs) {
-    @include calc(height, '100vh - 54px');
+  .view {
+    width: 100%;
+    padding: 50px 0;
+
+    .top-bar {
+      width: 100%;
+      float: left;
+      margin-bottom: 50px;
+      position: relative;
+      h1 {
+        display: inline-block;
+        @include centerer(false, true);
+      }
+    }
+
+    .grid-block {
+      width: 100%;
+      background: $white;
+      box-shadow: $default-box-shadow;
+      @include border-radius(5px);
+      padding: 50px;
+      float: left;
+
+      .grid-block__title {
+        font-size: 20px;
+        font-weight: 500;
+        color: $dark-blue;
+        margin-bottom: 30px;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      .col-12 {
+        .grid-block {
+          margin-bottom: 30px;
+        }
+        &:last-child {
+          .grid-block {
+            margin: 0;
+          }
+        }
+      }
+    }
   }
 }
