@@ -6,6 +6,7 @@
     <input type="date" name="reservation-date">
     <h3>Tijd</h3>
     <select name="lesuur">
+      <option selected disabled> Choose period</option>
       <option value="1e uur">1e uur</option>
       <option value="2e uur">2e uur</option>
       <option value="3e uur">3e uur</option>
@@ -24,6 +25,26 @@
       <option value="16e uur">16e uur</option>
     </select>
     <h3>Lokaal</h3>
+    <select gebouw>
+      <option selected disabled>Choose building</option>
+      <option value="Epydrost"> Epydrost</option>
+
+    </select>
+    <select>
+      <option selected disabled>Choose floor</option>
+      <option value="fourthFloor">4</option>
+      <option value="fithFloor">5</option>
+    </select>
+    <select>
+      <option selected disabled>Choose room</option>
+      <option value="30"> 30</option>
+      <option value="31"> 31</option>
+      <option value="32"> 32</option>
+      <option value="33"> 33</option>
+
+
+    </select>
+
     <ul>
       {{#each model as |classroom|}}
         <li>koekje</li>
