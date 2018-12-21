@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <nav>
+        <nav class="main-navigation">
           <div class="logo">
             <span class="logo__text">Web Room Booking</span>
           </div>
@@ -26,9 +26,22 @@
               {{/transition-group}}
             {{/if}}
           </div>
-          <i class="icon-menu"></i>
+          {{# unless mobileMenuOpen }}
+            <i class="toggle-mobile-nav icon-menu" {{ action "toggleMobileMenu" }}></i>
+          {{ else }}
+            <i class="toggle-mobile-nav icon-close" {{ action "toggleMobileMenu" }}></i>
+          {{/unless }}
         </nav>
       </div>
     </div>
   </div>
+  {{# if mobileMenuOpen }}
+    <nav class="mobile-menu">
+      <ul>
+        <li class="mobile-menu__item mobile-menu__item--active">Dashboard</li>
+        <li class="mobile-menu__item">Mijn account</li>
+        <li class="mobile-menu__item">Uitloggen</li>
+      </ul>
+    </nav>
+  {{/if}}
 </header>
