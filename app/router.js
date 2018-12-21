@@ -13,11 +13,13 @@ Router.map(function() {
 
   this.route('studentgroups', function() {
     this.route('new');
+    this.route('group-overview');
+    this.route('show');
   });
-
   this.route('classroom', function() {});
   this.route('login');
   this.route('studentgroup', function() {});
+  this.route('groupOverview');
 });
 
 export default Router;
