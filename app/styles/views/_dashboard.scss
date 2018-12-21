@@ -1,0 +1,10 @@
+.view {
+  &.view__dashboard {
+    h1 {
+      display: inline-block;
+    }
+    .btn__reservation {
+      float: right;
+    }
+  }
+}

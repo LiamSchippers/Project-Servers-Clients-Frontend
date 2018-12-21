@@ -1,0 +1,21 @@
+.btn {
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 30px;
+  @include border-radius(50px);
+  @include transition(300ms);
+
+  &.btn--green {
+    background: $green;
+    color: #ffffff;
+  }
+
+  &.btn--gray {
+    background: $dark-blue;
+    color: #ffffff;
+  }
+
+  &:hover, &:focus {
+    box-shadow: $default-box-shadow;
+  }
+}
