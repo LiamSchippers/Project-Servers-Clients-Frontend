@@ -5,5 +5,5 @@ export default DS.Model.extend({
   startHour: DS.attr("number"),
   endHour: DS.attr("number"),
   label: DS.attr("string"),
-  studentgroup: DS.attr()
+  studentgroup: DS.belongsTo("studentgroup")
 });
