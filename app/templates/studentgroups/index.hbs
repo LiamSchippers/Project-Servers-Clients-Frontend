@@ -3,7 +3,7 @@
 
   <ul>
     {{#each model as |studentgroup|}}
-      {{#link-to "studentgroups.show"}}<li>{{studentgroup.groupName}}</li>{{/link-to}}
+      {{#link-to "studentgroups.show" studentgroup}}<li>{{studentgroup.groupName}}</li>{{/link-to}}
     {{/each}}
   </ul>
 
