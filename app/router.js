@@ -19,7 +19,6 @@ Router.map(function() {
   this.route('classroom', function() {});
   this.route('login');
   this.route('studentgroup', function() {});
-  this.route('groupOverview');
 });
 
 export default Router;
