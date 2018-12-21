@@ -26,11 +26,21 @@
               {{/transition-group}}
             {{/if}}
           </div>
-          {{# unless mobileMenuOpen }}
-            <i class="toggle-mobile-nav icon-menu" {{ action "toggleMobileMenu" }}></i>
-          {{ else }}
-            <i class="toggle-mobile-nav icon-close" {{ action "toggleMobileMenu" }}></i>
-          {{/unless }}
+          {{# if mobileMenuOpen }}
+            <i
+              class="toggle-mobile-nav icon-close"
+              role="button"
+              {{ action "toggleMobileMenu" }}
+            >
+            </i>
+          {{else}}
+            <i
+              class="toggle-mobile-nav icon-menu"
+              role="button"
+              {{ action "toggleMobileMenu" }}
+            >
+            </i>
+          {{/if}}
         </nav>
       </div>
     </div>
