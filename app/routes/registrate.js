@@ -6,9 +6,13 @@ export default Route.extend({
   },
   actions: {
     signUpRoute(passwordCheck) {
-      console.log(passwordCheck);
-      this.currentModel.save();
-      this.transitionTo('index');
+      if (passwordCheck === this.currentModel.password) {
+        this.currentModel.save();
+        this.transitionTo('index');
+      } else {
+        console.log("Vieze tyfuslijer");
+        this.transitionTo('index');
+      }
     }
   }
 });
