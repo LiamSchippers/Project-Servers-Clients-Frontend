@@ -15,6 +15,10 @@ Router.map(function() {
     this.route('new');
   });
 
+  this.route('reservations', function() {
+    this.route('settings-form');
+  });
+
   this.route('classroom', function() {});
   this.route('login');
   this.route('studentgroup', function() {});
