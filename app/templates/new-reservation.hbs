@@ -1,0 +1,60 @@
+<div class="new-reservation">
+  <h1>New Reservation</h1>
+  <form {{action "saveReservation" on "submit"}}>
+    <h3>Datum</h3>
+    {{input type="date" value=model.day placeholder="Choose date"}}
+
+    <h3>Tijd</h3>
+    <h4>Start hour</h4>
+    {{input type="number" list="lesuur" value=model.startHour placeholder="Choose hour" min=1 max=16}}
+    <h4>End hour</h4>
+    {{input type="number" list="lesuur" value=model.endHour placeholder="Choose hour"}}
+
+    <h3>Locatie</h3>
+    <h4>Gebouw</h4>
+    {{input type="text" list="gebouw" value=model.building placeholder="Choose building"}}
+
+    <h4>Verdieping</h4>
+    {{input type="number" list="floor" value=model.floor placeholder="Choose floor"}}
+
+    <h4>Lokaal number</h4>
+    {{input type="number" list="roomNumber" value=model.roomNumber placeholder="Choose room"}}
+
+    <button type="submit" value="submit">Save reservation</button>
+  </form>
+</div>
+
+<datalist id="lesuur">
+  <option value="1">1e uur</option>
+  <option value="2">2e uur</option>
+  <option value="3">3e uur</option>
+  <option value="4">4e uur</option>
+  <option value="5">5e uur</option>
+  <option value="6">6e uur</option>
+  <option value="7">7e uur</option>
+  <option value="8">8e uur</option>
+  <option value="9">9e uur</option>
+  <option value="10">10e uur</option>
+  <option value="11">11e uur</option>
+  <option value="12">12e uur</option>
+  <option value="13">13e uur</option>
+  <option value="14">14e uur</option>
+  <option value="15">15e uur</option>
+  <option value="16">16e uur</option>
+</datalist>
+<datalist id="gebouw">
+  <option selected disabled>Choose building</option>
+  <option value="Epydrost"> Epydrost</option>
+</datalist>
+<datalist id="floor">
+  <option selected disabled>Choose floor</option>
+  <option value="fourthFloor">4</option>
+  <option value="fithFloor">5</option>
+</datalist>
+<datalist id="roomNumber">
+  <option selected disabled>Choose room</option>
+  <option value="30"> 30</option>
+  <option value="31"> 31</option>
+  <option value="32"> 32</option>
+  <option value="33"> 33</option>
+</datalist>

@@ -1,2 +1,8 @@
-<h1>hjopi</h1>
+<h1>Reservations</h1>
+<ul>
+  {{#each model as |reservation|}}
+    <li>{{reservation.roomNumber}}</li>
+  {{/each}}
+</ul>
+{{#link-to "new-reservation"}}<button>New Reservation</button>{{/link-to}}
 
