@@ -9,6 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('classrooms', function() {
     this.route('new');
+    this.route('availability');
   });
 
   this.route('studentgroups', function() {
