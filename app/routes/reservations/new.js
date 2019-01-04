@@ -5,8 +5,7 @@ export default Route.extend({
     return this.store.createRecord('reservation');
   },
   actions: {
-    saveReservation() {
-      //test
+    saveModel() {
       this.currentModel.save();
       this.transitionTo('reservations');
     }

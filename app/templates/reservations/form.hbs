@@ -1,6 +1,4 @@
-<div class="new-reservation">
-  <h1>New Reservation</h1>
-  <form {{action "saveReservation" on "submit"}}>
+ <form>
     <h3>Datum</h3>
     {{input type="date" value=model.day placeholder="Choose date"}}
 
@@ -20,9 +18,8 @@
     <h4>Lokaal number</h4>
     {{input type="number" list="roomNumber" value=model.roomNumber placeholder="Choose room"}}
 
-    <button type="submit" value="submit">Save reservation</button>
+    <button type="submit" value="submit" {{action "saveModel"}}>Save reservation</button>
   </form>
-</div>
 
 <datalist id="lesuur">
   <option value="1">1e uur</option>

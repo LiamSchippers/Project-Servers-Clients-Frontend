@@ -15,15 +15,14 @@ Router.map(function() {
     this.route('new');
   });
 
-  this.route('classroom', function() {});
-  this.route('login');
-  this.route('studentgroup', function() {});
-  this.route('reservations', function() {});
-  this.route('new-reservation', function() {});
-
   this.route('reservations', function() {
     this.route('new');
   });
+
+  this.route('classroom', function() {});
+  this.route('login');
+  this.route('studentgroup', function() {});
+  this.route('reservation', function() {});
 });
 
 export default Router;

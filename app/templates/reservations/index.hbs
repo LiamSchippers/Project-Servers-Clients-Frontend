@@ -1,0 +1,9 @@
+<div class="route-reservations">
+  <h1>Reservations</h1>
+  <ul>
+    {{#each model as |reservation|}}
+      <li>{{reservation.roomNumber}}</li>
+    {{/each}}
+  </ul>
+  {{#link-to "reservations.new"}}<button>New Reservation</button>{{/link-to}}
+</div>
