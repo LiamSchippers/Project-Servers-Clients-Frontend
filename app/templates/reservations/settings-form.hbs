@@ -5,4 +5,24 @@
             <h1>Reservation settings</h1>
         </div>
     </div>
-</div>>
+    <div class="row">
+        <div class="col">
+            <form {{action "saveSettings" on="submit"}}>
+                <div class="form-group">
+                    <label for="maximal-reservation-time">Maximal reservation time</label>
+                    {{input
+                        name="maximal-reservation-time"
+                        id="maximal-reservation-time"
+                        class="default-input default-input--border"
+                        type="number"
+                        value=reservation_max_time
+                        required=true
+                        placeholder="Time in hours"
+                        min="1"
+                    }}
+                </div>
+                <button class="btn btn--green" type="submit" value="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
