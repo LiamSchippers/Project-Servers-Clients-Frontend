@@ -6,7 +6,7 @@ export default DS.Model.extend({
   endHour: DS.attr("number"),
   label: DS.attr("string"),
   building: DS.attr("string"),
-  floor: DS.attr("string"),
-  roomNumber: DS.attr("string"),
+  floor: DS.attr("number"),
+  roomNumber: DS.attr("number"),
   studentgroup: DS.belongsTo("studentgroup"),
 });

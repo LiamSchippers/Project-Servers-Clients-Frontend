@@ -1,25 +1,25 @@
  <form>
     <h3>Datum</h3>
-    {{input type="date" value=model.day placeholder="Choose date"}}
+    {{input type="date" value=model.day placeholder="Choose date" required=true}}
 
     <h3>Tijd</h3>
     <h4>Start hour</h4>
-    {{input type="number" list="lesuur" value=model.startHour placeholder="Choose hour" min=1 max=16}}
+    {{input type="number" list="lesuur" value=model.startHour placeholder="Choose hour" min=1 max=15 required=true}}
     <h4>End hour</h4>
-    {{input type="number" list="lesuur" value=model.endHour placeholder="Choose hour"}}
+    {{input type="number" list="lesuur" value=model.endHour placeholder="Choose hour" min=model.startHour max=16 required=true}}
 
     <h3>Locatie</h3>
     <h4>Gebouw</h4>
-    {{input type="text" list="gebouw" value=model.building placeholder="Choose building"}}
+    {{input type="text" list="gebouw" value=model.building placeholder="Choose building" required=true}}
 
     <h4>Verdieping</h4>
-    {{input type="number" list="floor" value=model.floor placeholder="Choose floor"}}
+    {{input type="number" list="floor" value=model.floor placeholder="Choose floor" required=true}}
 
     <h4>Lokaal number</h4>
-    {{input type="number" list="roomNumber" value=model.roomNumber placeholder="Choose room"}}
+    {{input type="number" list="roomNumber" value=model.roomNumber placeholder="Choose room" required=true}}
 
    <h4>Reservation name</h4>
-   {{input type="text" value=model.label placeholder="Example: Project meeting"}}
+   {{input type="text" value=model.label placeholder="Example: Project meeting" required=true}}
 
     <button type="submit" value="submit" {{action "saveModel"}}>Save reservation</button>
   </form>
@@ -48,8 +48,8 @@
 </datalist>
 <datalist id="floor">
   <option selected disabled>Choose floor</option>
-  <option value="fourthFloor">4</option>
-  <option value="fithFloor">5</option>
+  <option value="4">4th floor</option>
+  <option value="5">5th floor</option>
 </datalist>
 <datalist id="roomNumber">
   <option selected disabled>Choose room</option>
