@@ -1,3 +1,4 @@
+{{ main-header }}
 <div class="route-classrooms">
   <h1>Classrooms</h1>
   {{#link-to
@@ -8,14 +9,15 @@
   <ul>
     <table>
       <thead>
-        <th>Classroom</th>
-        <th>Capacity</th>
+        <th>Start hour</th>
+        <th>End hour</th>
+        <th>Classroom id</th>
       </thead>
       <tbody>
-        {{#each model as |classroom|}}
+        {{#each model as |reservation|}}
           <tr>
-            <td>{{classroom.roomNumber}}</td>
-            <td>{{classroom.capacity}}</td>
+            <td>{{reservation.starthour}}</td>
+            <td>{{reservation.endhour}}</td>
           </tr>
         {{/each}}
       </tbody>
