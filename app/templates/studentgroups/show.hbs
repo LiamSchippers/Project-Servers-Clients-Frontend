@@ -1,18 +1,24 @@
 <div class="route-studentgroups">
-  <h1>{{model.groupName}} </h1>
 
 
+  {{#if model.studentgroup}}
+    <h1>{{model.studentgroup.groupName}} </h1>
+  {{else}}
+    <h1>{{model.groupName}} </h1>
+  {{/if}}
 
   <h2>Studenten:</h2>
   <ul>
-    {{#each model as |membership|}}
+    {{#each model as |student|}}
       <!-- show students in group-->
-      {{membership.userId}}
+      {{student.userId}}
     {{else}}
       geen studenten gevonden
     {{/each}}
   </ul>
 
   {{#link-to "studentgroups.index"}}<button>Terug</button>{{/link-to}}
+  {{#link-to "studentgroups.edit" model.studentgroup}}<button>Edit</button>{{/link-to}}
+
 
 </div>
