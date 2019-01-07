@@ -3,6 +3,7 @@ import studentgroup from "../../models/studentgroup";
 
 export default Route.extend({
 
+
   //return create record model of studentgroup.
   model() {
     return this.store.createRecord('studentgroup');
@@ -11,7 +12,7 @@ export default Route.extend({
   actions: {
     saveModel() {
       this.currentModel.save().then(() => {
-        this.transitionTo('studentgroups.show', this.currentModel.id);
+        this.transitionTo('studentgroups.show',this.currentModel.id);
       })
     },
     cancelModel() {
