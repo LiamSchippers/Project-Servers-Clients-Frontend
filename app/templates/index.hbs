@@ -57,7 +57,12 @@
           <div class="groups-block">
             <div class="group {{if showGroupMembers "group--expanded"}}">
               <div class="group__name">E4</div>
-              <i class="group__expand icon-arrow" role="button" {{ action "expandGroup" }}></i>
+              <i
+                class="group__expand icon-arrow"
+                role="button"
+                {{ action "expandGroup" }}
+              >
+              </i>
               {{# if showGroupMembers }}
                 <div class="group__members">
                   <div class="group__members__member">
