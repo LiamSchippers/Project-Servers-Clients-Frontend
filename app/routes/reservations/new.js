@@ -7,7 +7,7 @@ export default Route.extend({
   actions: {
     saveModel() {
       this.currentModel.save();
-      this.transitionTo('reservations');
+      this.transitionTo('index');
     }
   }
 });

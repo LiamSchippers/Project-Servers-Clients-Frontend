@@ -1,28 +1,22 @@
  <form {{action "saveModel" on="submit"}}>
     <h3>Date</h3>
     {{input type="date" value=model.day placeholder="Choose date" min="formattedDate" required=true}}
-
    <br>
     <h3>Time</h3>
     <h4>Start hour</h4>
     {{input type="number" list="lesuur" value=model.startHour placeholder="Choose hour" min=1 max=model.endHour required=true}}
     <h4>End hour</h4>
     {{input type="number" list="lesuur" value=model.endHour placeholder="Choose hour" min=model.startHour max=16 required=true}}
-
    <br>
     <h3>Location</h3>
     <h4>Building</h4>
     {{input type="text" list="gebouw" value=model.building placeholder="Choose building" required=true}}
-
     <h4>Floor</h4>
     {{input type="number" list="floor" value=model.floor placeholder="Choose floor" required=true}}
-
     <h4>Room number</h4>
     {{input type="number" list="roomNumber" value=model.roomNumber placeholder="Choose room" required=true}}
-
    <h4>Reservation name</h4>
    {{input type="text" value=model.label placeholder="Example: Project meeting" required=true}}
-
    <br>
     <button type="submit" value="submit">Save reservation</button>
   </form>
