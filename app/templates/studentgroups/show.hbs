@@ -1,19 +1,18 @@
 <div class="route-studentgroups">
 
 
-  {{#if model.studentgroup}}
-    <h1>{{model.studentgroup.groupName}} </h1>
-  {{else}}
-    <h1>{{model.groupName}} </h1>
-  {{/if}}
+
+  <h1>{{model.groupName}} </h1>
+
 
   <h2>Studenten:</h2>
   <ul>
     {{#each model.memberships as |membership|}}
       <!-- show students in group-->
-      <li>{{has-group-id model.students userID=membership.userId}}</li>
+    <li>{{membership.user.username}}</li>
+
     {{else}}
-      geen studenten gevonden
+      geen studenten gevonden.
     {{/each}}
   </ul>
 
