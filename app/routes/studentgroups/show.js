@@ -5,8 +5,8 @@ export default Route.extend({
     return this.store.find('studentgroup', params.group_id)
   },
   actions: {
-    // editModel() {
-    //     this.transitionTo('studentgroups.edit', this.currentModel);
-    // }
+    editModel() {
+        this.transitionTo('studentgroups.edit', this.currentModel.userId);
+    }
   }
 });

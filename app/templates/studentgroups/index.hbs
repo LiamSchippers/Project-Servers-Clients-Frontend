@@ -1,6 +1,5 @@
 <div class="route-studentgroups">
   <h1>Student groups</h1>
-
   <ul>
     {{#each model as |studentgroup|}}
       {{#link-to "studentgroups.show" studentgroup}}<li>{{studentgroup.groupName}}</li>{{/link-to}}
