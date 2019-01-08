@@ -1,6 +1,6 @@
  <form {{action "saveModel" on="submit"}}>
     <h3>Date</h3>
-    {{input type="date" value=model.day placeholder="Choose date" required=true}}
+    {{input type="date" value=model.day placeholder="Choose date" min="formattedDate" required=true}}
 
    <br>
     <h3>Time</h3>
