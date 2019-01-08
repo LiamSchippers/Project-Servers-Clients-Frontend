@@ -1,16 +1,21 @@
 import { helper } from '@ember/component/helper';
 
-export function hasGroupId(params/*, hash*/) {
-  var arg1 = params[0]; // group id
-  var arg2 = params[1]; // student with group id
+export function hasGroupId([model], namedArgs) {
 
-  console.log(arg1);
-  console.log(arg2);
 
-  if (arg1.equals(arg2)) {
-    return params;
-  }
+  return model.findBy('userId', namedArgs.userId).get('username');
 
+
+  // var arg1 = params[0]; // group id
+  // var arg2 = params[1]; // student with group id
+  //
+  // console.log(arg1);
+  // console.log(arg2);
+  //
+  // if (arg1.equals(arg2)) {
+  //   return params;
+  // }
+  //
 
 
 

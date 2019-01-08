@@ -9,16 +9,16 @@
 
   <h2>Studenten:</h2>
   <ul>
-    {{#each model as |student|}}
+    {{#each model.memberships as |membership|}}
       <!-- show students in group-->
-      {{student.userId}}
+      <li>{{has-group-id model.students userID=membership.userId}}</li>
     {{else}}
       geen studenten gevonden
     {{/each}}
   </ul>
 
   {{#link-to "studentgroups.index"}}<button>Terug</button>{{/link-to}}
-  {{#link-to "studentgroups.edit" model.studentgroup}}<button>Edit</button>{{/link-to}}
+  {{#link-to "studentgroups.edit"}}<button>Edit</button>{{/link-to}}
 
 
 </div>
