@@ -6,6 +6,7 @@
       padding: 22px 0;
       position: relative;
       border-top: 1px solid $background-light-grey;
+      z-index: 1;
 
       &::before {
         @include transition(200ms);
@@ -21,6 +22,20 @@
         visibility: hidden;
       }
 
+      &::after {
+        @include transition(200ms);
+        content: '';
+        position: absolute;
+        left: -50px;
+        @include calc(width, '100% + 100px');
+        height: 100%;
+        background: $background-light-grey;
+        z-index: -1;
+        top: -1px;
+        opacity: 0;
+        visibility: hidden;
+      }
+
       &:first-child {
         border: none;
       }
@@ -29,9 +44,32 @@
         display: inline-block;
       }
       .group__expand {
+        @include transition(200ms);
         @include rotate(90deg);
         float: right;
         cursor: pointer;
+      }
+
+      .group__members {
+        @include transition(200ms);
+
+        .group__members__member {
+          padding: 15px 0;
+
+          .member__name {
+            margin-left: 15px;
+          }
+        }
+      }
+
+      &.group--expanded {
+        &::after {
+          opacity: 1;
+          visibility: visible;
+        }
+        .group__expand {
+          @include rotate(-90deg);
+        }
       }
     }
   }
