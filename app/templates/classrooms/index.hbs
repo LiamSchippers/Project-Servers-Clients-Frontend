@@ -11,13 +11,12 @@
       <thead>
         <th>Start hour</th>
         <th>End hour</th>
-        <th>Classroom id</th>
       </thead>
       <tbody>
-        {{#each model as |reservation|}}
+        {{#each model.reservations as |reservation|}}
           <tr>
-            <td>{{reservation.starthour}}</td>
-            <td>{{reservation.endhour}}</td>
+            <td>{{reservation.label}}</td>
+            <td>{{reservation.day}}</td>
           </tr>
         {{/each}}
       </tbody>
