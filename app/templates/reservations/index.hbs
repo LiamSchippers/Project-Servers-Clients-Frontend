@@ -5,5 +5,6 @@
       <li>{{reservation.label}} - Date: {{reservation.day}}, Start: {{reservation.startHour}}, End: {{reservation.endHour}} - Building: {{reservation.building}}, Room: {{reservation.floor}}.{{reservation.roomNumber}}</li>
     {{/each}}
   </ul>
+  {{#link-to "index"}}<button>Main page</button>{{/link-to}}
   {{#link-to "reservations.new"}}<button>New Reservation</button>{{/link-to}}
 </div>
