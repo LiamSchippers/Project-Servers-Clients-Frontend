@@ -1,14 +1,14 @@
 <div class="route-studentgroups">
   <h1>Edit student group</h1>
-  {{partial "studentgroups/form"}}
   {{#list-filter
     filter=(action "filterByStudent") as |filteredResults|
   }}
     <ul class="results">
       {{#each filteredResults as |extended-user|}}
-        <li>{{extended-user.username}}</li>
+        <li {{action "addStudent" extended-user}}>{{extended-user.username}}</li>
       {{/each}}
     </ul>
   {{/list-filter}}
+  <button name="terug" {{action "goBack"}}>Back</button>
   {{outlet}}
 </div>
