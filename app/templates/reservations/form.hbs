@@ -1,7 +1,7 @@
  <form {{action "saveModel" on="submit"}}>
     <h3>Date</h3>
-    {{input type="date" value=model.day placeholder="Choose date" min="formattedDate" required=true}}
-
+    {{input type="date" value=model.day placeholder="Choose date" min="minDate" required=true}}
+{{minDate}}
    <br>
     <h3>Time</h3>
     <h4>Start hour</h4>
