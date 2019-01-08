@@ -14,17 +14,34 @@
           <div class="grid-block__title">Algemeen</div>
           <form>
             <div class="form-group">
-              <input type="text" class="default-input disabled" value="449931@student.saxion.nl" disabled>
+              <input
+                type="text"
+                class="default-input disabled"
+                value="449931@student.saxion.nl"
+                disabled
+              >
             </div>
             {{# if changePassword }}
               <div class="form-group">
-                <input type="password" class="default-input default-input--border" placeholder="Nieuw wachtwoord">
+                <input
+                  type="password"
+                  class="default-input default-input--border"
+                  placeholder="Nieuw wachtwoord"
+                >
               </div>
               <div class="form-group">
-                <input type="password" class="default-input default-input--border" placeholder="Wachtwoord bevestigen">
+                <input
+                  type="password"
+                  class="default-input default-input--border"
+                  placeholder="Wachtwoord bevestigen"
+                >
               </div>
             {{/if}}
-            <button type="button" class="btn btn__change-password btn--green" {{ action "changePassword" }}>
+            <button
+              type="button"
+              class="btn btn__change-password btn--green"
+              {{ action "changePassword" }}
+            >
               {{# if changePassword }}Bevestigen{{else}}Wachtwoord wijzigen{{/if}}
             </button>
           </form>
