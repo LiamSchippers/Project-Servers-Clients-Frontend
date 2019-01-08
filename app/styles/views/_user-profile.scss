@@ -1,0 +1,18 @@
+.view {
+  &.view__profile {
+    .grid-block {
+      &.grid-block--regular {
+        form {
+          .form-group {
+            input {
+              width: 100%;
+            }
+          }
+          .btn__change-password {
+            margin-top: 15px;
+          }
+        }
+      }
+    }
+  }
+}

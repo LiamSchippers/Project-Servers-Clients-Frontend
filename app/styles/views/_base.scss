@@ -17,6 +17,16 @@ body {
         display: inline-block;
         @include centerer(false, true);
       }
+
+      &.top-bar__text-only {
+        // If there's only text in the top bar we don't need to center it
+        h1 {
+          transform: none;
+          left: auto;
+          top: auto;
+          position: relative;
+        }
+      }
     }
 
     .grid-block {
