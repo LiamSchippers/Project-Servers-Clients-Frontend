@@ -1,12 +1,12 @@
 <h1>Registreer hier</h1>
 <form>
-  <p>E-mail adres</p>
+  <p>Email adres</p>
   {{input value=model.email type="email"}}
-  <p>Naam</p>
+  <p>Nickname</p>
   {{input value=model.username}}
   <p>Wachtwoord</p>
   {{input value=model.password type="password"}}
   <p>Wachtwoord (herhaling)</p>
   {{input value=passwordCheck type="password"}}
-  <button type="submit" value="submit" {{action "signUp"}}>Registreren</button>
+  <br><button type="submit" value="submit" {{action "signUp"}}>Registreren</button>
 </form>
