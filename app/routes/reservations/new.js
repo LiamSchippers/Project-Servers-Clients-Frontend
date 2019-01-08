@@ -3,7 +3,7 @@ import Route from '@ember/routing/route';
 function getDate() {
     const today = new Date();
     let dd = today.getDate();
-    let mm = today.getMonth() + 1; //January is 0!
+    let mm = today.getMonth() + 1;
     const yyyy = today.getFullYear();
 
     if (dd < 10) dd = '0' + dd;
@@ -13,9 +13,10 @@ function getDate() {
 }
 
 function getMaxDate() {
-  const today = new Date();
+  var today = new Date();
+  today.setDate(today.getDate() + 30);
   let dd = today.getDate();
-  let mm = today.getMonth() + 1; //January is 0!
+  let mm = today.getMonth() + 1;
   const yyyy = today.getFullYear();
 
   if (dd < 10) dd = '0' + dd;
