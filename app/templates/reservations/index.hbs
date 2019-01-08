@@ -19,6 +19,7 @@
           <td>{{reservation.endHour}}</td>
           <td>{{reservation.label}}</td>
           <td>{{reservation.studentgroup}}</td>
+          <button {{action "deleteReservation" reservation}} type="submit" value="submit">Delete</button>
         </tr>
       {{/each}}
       </tbody>
