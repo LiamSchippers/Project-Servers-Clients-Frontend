@@ -13,6 +13,14 @@
           }
         }
       }
+      &.grid-block--reservations {
+        .search-bar {
+          padding: 12px 25px;
+          border: 1px solid $medium-gray;
+          margin-bottom: 30px;
+          width: 100%;
+        }
+      }
     }
   }
 }

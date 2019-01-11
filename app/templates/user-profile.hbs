@@ -51,5 +51,55 @@
         {{ my-groups-block }}
       </div>
     </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="grid-block grid-block--reservations grid-block--margin-top">
+          <div class="grid-block__title">Overzicht reserveringen</div>
+          <input type="text" placeholder="Zoek reservering" class="default-input search-bar">
+          <div class="reservations-block">
+            <div class="reservation">
+              <div class="reservation__classroom">G5.31</div>
+              <div class="reservation__date">
+                <i class="icon-calendar"></i>
+                24 december 2018
+              </div>
+              <div class="reservation__time">
+                <i class="icon-clock"></i>
+                10:30 - 11:00
+              </div>
+              <i class="icon-delete reservation__delete"></i>
+              <i class="icon-edit reservation__edit"></i>
+            </div>
+            <div class="reservation">
+              <div class="reservation__classroom">G5.31</div>
+              <div class="reservation__date">
+                <i class="icon-calendar"></i>
+                24 december 2018
+              </div>
+              <div class="reservation__time">
+                <i class="icon-clock"></i>
+                10:30 - 11:00
+              </div>
+              <i class="icon-delete reservation__delete"></i>
+              <i class="icon-edit reservation__edit"></i>
+            </div>
+            <div class="reservation">
+              <div class="reservation__classroom">G5.31</div>
+              <div class="reservation__date">
+                <i class="icon-calendar"></i>
+                24 december 2018
+              </div>
+              <div class="reservation__time">
+                <i class="icon-clock"></i>
+                10:30 - 11:00
+              </div>
+              <i class="icon-delete reservation__delete"></i>
+              <i class="icon-edit reservation__edit"></i>
+            </div>
+            {{#link-to "index" class="btn btn--green"}}Bekijk alles{{/link-to}}
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
