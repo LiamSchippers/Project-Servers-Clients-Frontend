@@ -9,8 +9,8 @@ export default Mixin.create({
    * in the dependency tree. Using this flag, the access check in the #beforeModel hook can be disabled.
    */
   skipBeforeModelAccessCheck: false,
-  beforeModel(transition){
-    if(!this.get('session').isAuthenticated) {
+  beforeModel(transition) {
+    if (!this.get('session').isAuthenticated) {
       this.transitionTo('login');
     }
     return transition;
