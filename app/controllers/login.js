@@ -6,11 +6,15 @@ export default Controller.extend({
 
   actions: {
     login(email, password) {
-      this.get('session').authenticate('authenticator:application', email, password)
+      let session = this.get('session');
+      session.authenticate('authenticator:application', email, password)
         .catch((reason) => {
           this.set('errorMessage', reason.errors[0].detail);
         })
         .then(() => {
+          // TODO: rol ophalen
+          session.set('role', 'teacher');
+          session.set('currentUser', currentUser);
           this.set('password', '');
           this.set('email', '');
           this.transitionToRoute('index');
