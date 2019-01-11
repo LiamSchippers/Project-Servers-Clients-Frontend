@@ -1,10 +1,6 @@
 <form id="formReservation"{{action "saveModel" on="submit"}}>
   <h3>Group</h3>
-  <ul>
-    {{#each studentgroups as |studentgroup|}}
-      <li>{{studentgroup.groupName}}</li>
-    {{/each}}
-  </ul>
+  {{input type="text" list="studentgroups" id='group' value=model.studentgroup.name placeholder="Choose group"  required=true}}
 
   <h3>Date</h3>
   {{input type="date" value=model.day id='date' placeholder="Choose date" min=minDate max=maxDate required=true}}
@@ -67,8 +63,7 @@
   <option value="33"> 33</option>
 </datalist>
 <datalist id="studentgroups">
-  //hier komt hij wel goed
-  {{#each studentgroup as |studentgroup|}}
-    <script>console.log("testestsetset") </script>
+  {{#each studentgroups as |studentgroup|}}
+    <option>{{studentgroup.groupName}}</option>
   {{/each}}
 </datalist>
