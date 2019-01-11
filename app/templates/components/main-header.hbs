@@ -1,0 +1,57 @@
+<header class="main-header">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <nav class="main-navigation">
+          <div class="logo">
+            <span class="logo__text">Web Room Booking</span>
+          </div>
+          <div class="user">
+            <div class="user__name" {{ action "toggleUserDropdown" }} role="button">
+              <span class="user__name__text">John Doe</span>
+              <span
+                class="user__name_icon icon-arrow {{if dropdownOpen "user__name_icon--open"}}"
+              >
+              </span>
+            </div>
+            {{# if dropdownOpen }}
+              {{#transition-group transitionName="user-dropdown"}}
+                <div class="user__dropdown">
+                  <ul>
+                    <li>Dashboard</li>
+                    <li>Mijn account</li>
+                    <li>{{#link-to "login" invokeAction=(action "logOut")}}Uitloggen{{/link-to}}</li>
+                  </ul>
+                </div>
+              {{/transition-group}}
+            {{/if}}
+          </div>
+          {{# if mobileMenuOpen }}
+            <i
+              class="toggle-mobile-nav icon-close"
+              role="button"
+              {{ action "toggleMobileMenu" }}
+            >
+            </i>
+          {{else}}
+            <i
+              class="toggle-mobile-nav icon-menu"
+              role="button"
+              {{ action "toggleMobileMenu" }}
+            >
+            </i>
+          {{/if}}
+        </nav>
+      </div>
+    </div>
+  </div>
+  {{# if mobileMenuOpen }}
+    <nav class="mobile-menu">
+      <ul>
+        <li class="mobile-menu__item mobile-menu__item--active">Dashboard</li>
+        <li class="mobile-menu__item">Mijn account</li>
+        <li class="mobile-menu__item">Uitloggen</li>
+      </ul>
+    </nav>
+  {{/if}}
+</header>

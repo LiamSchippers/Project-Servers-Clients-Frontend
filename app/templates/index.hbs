@@ -1,1 +1,80 @@
-<h1>Home</h1>
+{{ main-header }}
+<main class="view view__dashboard">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="top-bar">
+          <h1>Dashboard</h1>
+          {{#link-to "index" class="btn btn__reservation btn--green"}}Reserveren{{/link-to}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="grid-block">
+          <div class="grid-block__title">Mijn reserveringen</div>
+          <div class="reservations-block">
+            <div class="reservation">
+              <div class="reservation__classroom">G5.31</div>
+              <div class="reservation__date">
+                <i class="icon-calendar"></i>
+                24 december 2018
+              </div>
+              <div class="reservation__time">
+                <i class="icon-clock"></i>
+                10:30 - 11:00
+              </div>
+            </div>
+            <div class="reservation">
+              <div class="reservation__classroom">G5.31</div>
+              <div class="reservation__date">
+                <i class="icon-calendar"></i>
+                24 december 2018
+              </div>
+              <div class="reservation__time">
+                <i class="icon-clock"></i>
+                10:30 - 11:00
+              </div>
+            </div>
+            <div class="reservation">
+              <div class="reservation__classroom">G5.31</div>
+              <div class="reservation__date">
+                <i class="icon-calendar"></i>
+                24 december 2018
+              </div>
+              <div class="reservation__time">
+                <i class="icon-clock"></i>
+                10:30 - 11:00
+              </div>
+            </div>
+            {{#link-to "index" class="btn btn--green"}}Bekijk alles{{/link-to}}
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="grid-block">
+          <div class="grid-block__title">Mijn groepen</div>
+          <div class="groups-block">
+            <div class="group {{if showGroupMembers "group--expanded"}}">
+              <div class="group__name">E4</div>
+              <i
+                class="group__expand icon-arrow"
+                role="button"
+                {{ action "expandGroup" }}
+              >
+              </i>
+              {{# if showGroupMembers }}
+                <div class="group__members">
+                  <div class="group__members__member">
+                    <i class="icon-user"></i>
+                    <span class="member__name">Henk</span>
+                  </div>
+                </div>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

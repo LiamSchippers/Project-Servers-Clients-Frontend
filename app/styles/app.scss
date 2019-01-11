@@ -1,46 +1,24 @@
-@import "variables";
-@import "classrooms";
+// Vendor
+@import "ember-bootstrap/bootstrap";
 
-body {
-  background-color: $white;
-  margin: 0;
-  padding: 0;
-  font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
-}
+// Utilities
+@import "utilities/variables";
+@import "utilities/mixins";
 
-nav {
-  background-color: $colorGray;
-  border-bottom: solid 1px $colorGrayDark;
+// Partials
+@import "partials/base";
+@import "partials/typography";
+@import "partials/icons";
+@import "partials/main-header";
+@import "partials/forms";
+@import "partials/buttons";
+@import "partials/transitions";
+@import "partials/alerts";
+@import "partials/reservations-block";
+@import "partials/groups-block";
 
-  .brand {
-    background-color: $colorPrimary;
-    display: inline-block;
-    padding: 5px;
-
-    h1 {
-      padding: 10px 5px;
-      margin: 0;
-      font-size: medium;
-      color: $white;
-    }
-  }
-
-  menu {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-
-    a {
-      padding: 16px 10px;
-      color: $black;
-      transition: background-color;
-      transition-duration: 250ms;
-      margin-left: -4px;
-      text-decoration: none;
-
-      &:hover, &.active {
-        background-color: $colorGrayDark;
-      }
-    }
-  }
-}
+// Views
+@import "views/base";
+@import "views/dashboard";
+@import "views/classrooms";
+@import "views/login";

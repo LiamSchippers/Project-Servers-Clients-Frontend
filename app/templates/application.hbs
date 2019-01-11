@@ -1,14 +1,1 @@
-<nav>
-  <span class="brand"><h1>Saxion Web Room Booking</h1></span>
-  <menu>
-    {{#link-to "index"}}Home{{/link-to}}
-    {{#link-to "classrooms"}}Classrooms{{/link-to}}
-    {{#if session.isAuthenticated}}
-      {{#link-to "login" invokeAction=(action "logOut")}}Log uit{{/link-to}}
-    {{else}}
-      {{#link-to "login"}}Log in{{/link-to}}
-    {{/if}}
-  </menu>
-</nav>
-
 {{outlet}}

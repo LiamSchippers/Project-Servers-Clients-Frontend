@@ -1,0 +1,9 @@
+.view {
+  &.view__dashboard {
+    .top-bar {
+      .btn__reservation {
+        float: right;
+      }
+    }
+  }
+}

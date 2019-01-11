@@ -1,23 +1,21 @@
 <form {{action "saveModel" on="submit"}}>
   <tr>
     <th>
-      Classroom
+      Studentgroup
       <br>
       {{input
         type="text"
-        value=model.roomNumber
+        value=model.groupName
         required=true
-        placeholder="Example: G5.30"
-        pattern="([A-Z]{1})([0-9]{1})([.]{1})([0-9]{2})"
+        placeholder="Example: projectgroup"
       }}
     </th>
     <th>
-      Capacity
+      Hours
       <br>
       {{input
-        class="test"
         type="number"
-        value=model.capacity
+        value=model.hours
         required=true
         placeholder="Example: 10"
         min="1"
@@ -27,5 +25,3 @@
   <br>
   <button type="submit" value="submit">Save</button>
 </form>
-
-

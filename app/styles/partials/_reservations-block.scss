@@ -1,0 +1,81 @@
+.grid-block { // Just make sure we are in a grid block
+  .reservations-block {
+    width: 100%;
+    float: left;
+
+    .reservation {
+      width: inherit;
+      float: left;
+      color: $dark-blue;
+      padding: 22px 0;
+      position: relative;
+      border-top: 1px solid $background-light-grey;
+
+      &::before {
+        @include transition(200ms);
+        content: '';
+        position: absolute;
+        left: -50px;
+        @include calc(width, '100% + 100px');
+        @include calc(height, '100% + 2px');
+        background: $background-light-grey;
+        z-index: 1;
+        top: -1px;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      &:first-child {
+        border: none;
+      }
+
+      &:hover {
+        &::before {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      > div {
+        float: left;
+        display: inline-block;
+        position: relative;
+        z-index: 2;
+        margin-right: 30px;
+        font-size: 16px;
+        color: $dark-blue;
+
+        i {
+          font-size: 18px;
+          color: $dark-blue;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .btn {
+      margin-top: 50px;
+    }
+
+    @include media-breakpoint-down(lg) {
+      .reservation {
+        > div {
+          width: 100%;
+          float: left;
+          clear: both;
+          margin-bottom: 15px;
+
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+}
