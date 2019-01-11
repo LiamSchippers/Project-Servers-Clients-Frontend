@@ -29,38 +29,28 @@ function getMaxDate() {
 
 export default Route.extend({
 
-    getStudentGroups() {
-      console.log(this.store.findAll('studentgroup'));
-      return this.store.findAll('studentgroup');
-    },
+  getStudentGroups() {
+    console.log(this.store.findAll('studentgroup'));
+    return this.store.findAll('studentgroup');
+  },
 
-  studentgroup(){
-      return Ember.RSVP.hash({
-        studentgroup: this.store.findAll('studentgroup')
-      })
+  studentgroup() {
+    return Ember.RSVP.hash({
+      studentgroup: this.store.findAll('studentgroup')
+    })
   },
-    model() {
-      return this.store.createRecord('reservation');
-    },
-    setupController: function (controller, model, studentgroup) {
-      this._super(controller, model);
-      controller.set("studentgroup", studentgroup);
-      controller.set("minDate", getDate())
-      controller.set("maxDate", getMaxDate())
-    },
-    actions: {
-      saveModel() {
-        this.currentModel.save();
-        this.transitionTo('index');
-      }
-  model () {
-    return this.store.createRecord('reservation');
-  },
-  setupController: function(controller, model) {
+
+  setupController: function (controller, model, studentgroup) {
     this._super(controller, model);
-    controller.set("minDate", getDate());
+    controller.set("studentgroup", studentgroup);
+    controller.set("minDate", getDate())
     controller.set("maxDate", getMaxDate())
   },
+
+  model() {
+    return this.store.createRecord('reservation');
+  },
+
   actions: {
     //TODO validation: user, teacher, roostermaker
     saveModel() {
@@ -68,4 +58,4 @@ export default Route.extend({
       this.transitionTo('index');
     }
   }
-);
+});
