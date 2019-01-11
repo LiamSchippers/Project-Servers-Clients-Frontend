@@ -28,18 +28,6 @@ function getMaxDate() {
 }
 
 export default Route.extend({
-
-  getStudentGroups() {
-    console.log(this.store.findAll('studentgroup'));
-    return this.store.findAll('studentgroup');
-  },
-
-  studentgroup() {
-    return Ember.RSVP.hash({
-      studentgroup: this.store.findAll('studentgroup')
-    })
-  },
-
   setupController: function (controller, model, studentgroup) {
     this._super(controller, model);
     controller.set("studentgroup", studentgroup);
