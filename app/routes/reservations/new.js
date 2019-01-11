@@ -1,15 +1,15 @@
 import Route from '@ember/routing/route';
 
 function getDate() {
-    const today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth() + 1;
-    const yyyy = today.getFullYear();
+  const today = new Date();
+  let dd = today.getDate();
+  let mm = today.getMonth() + 1;
+  const yyyy = today.getFullYear();
 
-    if (dd < 10) dd = '0' + dd;
-    if (mm < 10) mm = '0' + mm;
+  if (dd < 10) dd = '0' + dd;
+  if (mm < 10) mm = '0' + mm;
 
-    return yyyy + '-' + mm + '-' + dd;
+  return yyyy + '-' + mm + '-' + dd;
 }
 
 function getMaxDate() {
@@ -27,19 +27,33 @@ function getMaxDate() {
   return;
 }
 
+
 export default Route.extend({
-  model () {
-    return this.store.createRecord('reservation');
+
+    getStudentGroups() {
+      console.log(this.store.findAll('studentgroup'));
+      return this.store.findAll('studentgroup');
+    },
+
+  studentgroup(){
+      return Ember.RSVP.hash({
+        studentgroup: this.store.findAll('studentgroup')
+      })
   },
-  setupController: function(controller, model) {
-    this._super(controller, model);
-    controller.set("minDate", getDate());
-    controller.set("maxDate", getMaxDate())
-  },
-  actions: {
-    saveModel() {
-      this.currentModel.save();
-      this.transitionTo('index');
+    model() {
+      return this.store.createRecord('reservation');
+    },
+    setupController: function (controller, model, studentgroup) {
+      this._super(controller, model);
+      controller.set("studentgroup", studentgroup);
+      controller.set("minDate", getDate())
+      controller.set("maxDate", getMaxDate())
+    },
+    actions: {
+      saveModel() {
+        this.currentModel.save();
+        this.transitionTo('index');
+      }
     }
   }
-});
+);
