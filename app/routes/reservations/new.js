@@ -37,6 +37,7 @@ export default Route.extend({
     controller.set("maxDate", getMaxDate())
   },
   actions: {
+    //TODO validation: user, teacher, roostermaker
     saveModel() {
       this.currentModel.save();
       this.transitionTo('index');
