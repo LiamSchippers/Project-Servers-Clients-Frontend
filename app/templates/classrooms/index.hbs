@@ -9,16 +9,18 @@
   <ul>
     <table>
       <thead>
-        <th>Start hour</th>
-        <th>End hour</th>
+      <th>Start hour</th>
+      <th>End hour</th>
       </thead>
       <tbody>
-        {{#each model.reservations as |reservation|}}
-          <tr>
-            <td>{{reservation.label}}</td>
+      {{#each model as |classroom|}}
+        <tr>
+          <td>{{classroom.roomNumber}}</td>
+          {{#each classroom.reservations as |reservation|}}
             <td>{{reservation.day}}</td>
-          </tr>
-        {{/each}}
+          {{/each}}
+        </tr>
+      {{/each}}
       </tbody>
     </table>
   </ul>

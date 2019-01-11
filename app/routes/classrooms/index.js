@@ -3,9 +3,6 @@ import Ember from 'ember';
 
 export default Route.extend({
   model() {
-      return Ember.RSVP.hash({
-          classrooms: this.store.findAll('classroom'),
-          reservations: this.store.findAll('reservation')
-    });
+    this.store.findAll('classroom');
   }
 });
