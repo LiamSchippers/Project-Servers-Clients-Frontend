@@ -48,7 +48,13 @@ export default Controller.extend({
       goBack() {
         var model = this.get('model');
         this.transitionToRoute('studentgroups.show', model.id);
+      },
+    willTransition(transition) {
+      if (this.currentModel.isNew && !this.currentModel.isSaving) {
+        transition.abort();
+        this.currentModel.destroyRecord().then(() => transition.retry());
       }
+    }
 
   }
 });

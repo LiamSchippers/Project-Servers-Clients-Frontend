@@ -19,6 +19,12 @@ export default Route.extend({
       this.currentModel.destroyRecord().then(() => {
         this.transitionTo('studentgroups.index')
       })
+    },
+    willTransition(transition) {
+      if (this.currentModel.isNew && !this.currentModel.isSaving) {
+        transition.abort();
+        this.currentModel.destroyRecord().then(() => transition.retry());
+      }
     }
   }
 });
