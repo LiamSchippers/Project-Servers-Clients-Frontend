@@ -1,7 +1,10 @@
 <form id="formReservation"{{action "saveModel" on="submit"}}>
   <h3>Group</h3>
-  {{input type="text" list="studentgroups" id='group' value=model.studentgroup.name placeholder="Choose group"  required=true}}
-
+  <select>
+    {{#each studentgroups as |studentgroup|}}
+      <option>{{studentgroup.groupName}}</option>
+    {{/each}}
+  </select>
   <h3>Date</h3>
   {{input type="date" value=model.day id='date' placeholder="Choose date" min=minDate max=maxDate required=true}}
   <br>
