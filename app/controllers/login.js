@@ -13,8 +13,8 @@ export default Controller.extend({
         })
         .then(() => {
           // TODO: rol ophalen
-          session.set('role', 'teacher');
-          session.set('currentUser', currentUser);
+          session.set('data.role', 'teacher');
+          //session.set('currentUser', currentUser);
           this.set('password', '');
           this.set('email', '');
           this.transitionToRoute('index');

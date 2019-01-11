@@ -8,6 +8,8 @@ export default Helper.extend({
     let session = this.session;
     console.log(session);
 
+    console.log(session.get('data.role'));
+
     if (session.get('role') === role) {
       return true;
     } else {
