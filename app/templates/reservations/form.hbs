@@ -1,4 +1,5 @@
 <form id="formReservation"{{action "saveModel" on="submit"}}>
+  <h3>{{availableClassrooms}}</h3>
   <h3>Group</h3>
   {{input type="text" list="studentgroups" id='group' value=model.studentgroup.name placeholder="Choose group"  required=true}}
 
