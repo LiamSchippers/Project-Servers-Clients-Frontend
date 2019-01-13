@@ -22,7 +22,7 @@ Router.map(function() {
   this.route('classroom', function() {});
   this.route('login');
   this.route('studentgroup', function() {});
-  this.route('reservations', function() {});
+  this.route('reservation', function() {});
 });
 
 export default Router;
