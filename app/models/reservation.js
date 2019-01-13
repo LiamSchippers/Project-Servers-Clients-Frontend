@@ -8,5 +8,6 @@ export default DS.Model.extend({
   building: DS.attr("string"),
   floor: DS.attr("number"),
   roomNumber: DS.attr("number"),
-  studentgroup: DS.belongsTo("studentgroup"),
+  studentgroupId: DS.attr("number"),
+  classroomId: DS.attr("number"),
 });

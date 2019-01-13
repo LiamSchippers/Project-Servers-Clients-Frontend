@@ -6,5 +6,8 @@ export default Controller.extend({
   store: service(),
   studentgroups: computed( function() {
     return this.get('store').findAll('studentgroup');
+  }),
+  classrooms: computed( function() {
+    return this.get('store').findAll('classroom');
   })
 });

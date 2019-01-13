@@ -31,8 +31,8 @@ export default Route.extend({
   setupController: function (controller, model, studentgroup) {
     this._super(controller, model);
     controller.set("studentgroup", studentgroup);
-    controller.set("minDate", getDate())
-    controller.set("maxDate", getMaxDate())
+    controller.set("minDate", getDate());
+    controller.set("maxDate", getMaxDate());
   },
 
   model() {
