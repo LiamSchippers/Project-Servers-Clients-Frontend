@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-import studentgroup from "../../models/studentgroup";
 
 export default Route.extend({
 

@@ -1,6 +1,4 @@
 import Controller from '@ember/controller';
-import EmberObject from '@ember/object';
-
 
 export default Controller.extend({
   actions: {
@@ -14,15 +12,26 @@ export default Controller.extend({
                 realm: 'student'
               }
             }
-          })
+          }).then(function(students){
+            return students;
+          });
         } else {
+          // this filter gives an empty includes array, no idea why
+          // filter: {
+          //   include: "memberships",
+          //   where: {
+          //     realm: 'student'
+          //   }
+          // }
           return this.store.query('extended-user', {
             filter: {
               where: {
                 realm: 'student'
               }
             }
-          })
+          }).then(function(students){
+            return students;
+          });
         }
       },
       addStudent(student) {
@@ -35,15 +44,6 @@ export default Controller.extend({
           studentgroup: model
         });
         membership.save();
-
-
-        //
-        // console.log(student);
-
-        // model.memberships.pushObject(membership);
-        // this.store.commit();
-        // console.log(model);
-
       },
       goBack() {
         var model = this.get('model');
