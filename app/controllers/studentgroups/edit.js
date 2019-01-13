@@ -1,5 +1,7 @@
 import Controller from '@ember/controller';
 
+// TODO : TEACHER AUTH
+
 export default Controller.extend({
   actions: {
 
