@@ -19,7 +19,7 @@
                 <div class="user__dropdown">
                   <ul>
                     <li>Dashboard</li>
-                    <li>Mijn account</li>
+                    <li>{{#link-to "user-profile"}}Mijn account{{/link-to}}</li>
                     <li>{{#link-to "login" invokeAction=(action "logOut")}}Uitloggen{{/link-to}}</li>
                   </ul>
                 </div>
@@ -49,7 +49,7 @@
     <nav class="mobile-menu">
       <ul>
         <li class="mobile-menu__item mobile-menu__item--active">Dashboard</li>
-        <li class="mobile-menu__item">Mijn account</li>
+        <li class="mobile-menu__item">{{#link-to "user-profile"}}Mijn account{{/link-to}}</li>
         <li class="mobile-menu__item">Uitloggen</li>
       </ul>
     </nav>
