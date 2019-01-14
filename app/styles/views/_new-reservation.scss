@@ -13,6 +13,7 @@
 
           &.date-picker {
             &::before { // @TODO: This is not working properly
+              display: none;
               position: absolute;
               content: '\e803';
               right: 0;
