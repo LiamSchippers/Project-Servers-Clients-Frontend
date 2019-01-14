@@ -25,6 +25,9 @@ export default Controller.extend({
     selectEndHour: function(selected) {
       this.set('endHour', selected);
     },
+    selectBuilding: function(selected) {
+      this.set('building', selected);
+    },
     saveModel() {
       const model = this.get('model');
       const store = this.get('store');
