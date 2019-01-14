@@ -19,6 +19,7 @@ Router.map(function() {
   this.route('login');
   this.route('studentgroup', function() {});
   this.route('user-profile', { path: '/profile'});
+  this.route('reservations', function() {});
 });
 
 export default Router;

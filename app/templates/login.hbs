@@ -28,4 +28,17 @@
     <button class="btn btn--gray">Registreren</button>
   </div>
 
+  <p>
+    <label>Wachtwoord: </label>
+    {{input value=password type="password"}}
+  </p>
+
+  <button {{action "login" email password}}>Log in</button>
+
+  <p>
+      <a>
+          {{#link-to "registrate"}}Registreren{{/link-to}}
+      </a>
+  </p>
 </main>
+
