@@ -16,16 +16,44 @@
               <label for="date">Datum</label>
               {{ember-flatpickr
                 onChange=(action (mut dateValue))
-                class="default-input default-input--border"
+                class="default-input default-input--border date-picker icon-arrow"
                 placeholder="Selecteer datum"
                 value=model.day
-                id="datee"
+                id="date"
                 required="true"
                 maxDate=maxDate
                 minDate=minDate
                 locale='nl'
                 dateFormat='D M Y'
               }}
+            </div>
+            <div class="form-group">
+              <label for="date">Start tijd</label>
+              <div class="default-select-box">
+                <select name="startHour" required onchange={{action "selectStartHour" value=model.startHour}}>
+                  <option selected disabled>Selecteer start tijd</option>
+                  <option value="1">08:30 - 09:15</option>
+                  <option value="2">08:30 - 09:15</option>
+                  <option value="3">08:30 - 09:15</option>
+                  <option value="4">08:30 - 09:15</option>
+                  <option value="5">08:30 - 09:15</option>
+                  <option value="6">08:30 - 09:15</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="date">Eind tijd</label>
+              <div class="default-select-box">
+                <select name="startHour" required onchange={{action "selectEndHour" value=model.endHour}}>
+                  <option selected disabled>Selecteer eind tijd</option>
+                  <option value="1">08:30 - 09:15</option>
+                  <option value="2">08:30 - 09:15</option>
+                  <option value="3">08:30 - 09:15</option>
+                  <option value="4">08:30 - 09:15</option>
+                  <option value="5">08:30 - 09:15</option>
+                  <option value="6">08:30 - 09:15</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>

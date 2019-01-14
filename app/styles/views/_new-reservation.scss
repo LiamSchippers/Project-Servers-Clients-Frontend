@@ -9,6 +9,17 @@
         }
         input {
           width: 100%;
+          position: relative;
+
+          &.date-picker {
+            &::before { // @TODO: This is not working properly
+              position: absolute;
+              content: '\e803';
+              right: 0;
+              top: 0;
+              font-size: 18px;
+            }
+          }
         }
       }
     }
