@@ -14,7 +14,10 @@ export default Controller.extend({
     return this.get('store').findAll('classroom');
   }),
 
-
+  init() {
+    this._super(...arguments);
+    //$('#date').datepicker();
+  },
   actions: {
     selectStudentGroup: function(selected) {
       this.set('studentgroupId', selected);

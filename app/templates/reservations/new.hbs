@@ -1,19 +1,35 @@
 {{ main-header }}
-<main class="view view__dashboard">
+<main class="view view__new-reservation">
   <div class="container">
     <div class="row">
       <div class="col">
-        <div class="top-bar">
+        <div class="top-bar top-bar__text-only">
           <h1>Reserveren</h1>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <div class="grid-block">
-          <div class="grid-block__title">Mijn reserveringen</div>
+    <form id="formReservation"{{action "saveModel" on="submit"}}>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="grid-block">
+            <div class="form-group">
+              <label for="date">Datum</label>
+              {{ember-flatpickr
+                onChange=(action (mut dateValue))
+                class="default-input default-input--border"
+                placeholder="Selecteer datum"
+                value=model.day
+                id="datee"
+                required="true"
+                maxDate=maxDate
+                minDate=minDate
+                locale='nl'
+                dateFormat='D M Y'
+              }}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </main>
