@@ -38,13 +38,4 @@ export default Route.extend({
   model() {
     return this.store.createRecord('reservation');
   },
-
-  actions: {
-    //TODO validation: user, teacher, roostermaker
-    saveModel() {
-      console.log(this.currentModel);
-      this.currentModel.save();
-      this.transitionTo('index');
-    }
-  }
 });
