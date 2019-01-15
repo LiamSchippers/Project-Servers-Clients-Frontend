@@ -11,48 +11,25 @@ export default Controller.extend({
     return this.get('store').findAll('classroom');
   }),
   availableClassrooms: computed('classrooms', 'studentgroups', function () {
-    let classrooms = this.classrooms;
-    let amountOfClassrooms = classrooms.then(function() {
-      console.log(classrooms.get('length')+ " amount of classrooms" );
-    });
-    console.log("classrooms: " + classrooms);
-
-    let studentgroups = this.studentgroups;
-    let amountOfStudentGroups = studentgroups.then(function() {
-      console.log(studentgroups.get('length')+ " amount of studentgroups" );
-    });
-    console.log("studentgroups: " + studentgroups);
-
-    let groupname = "groupName";
-    let myGroup = null;
-    let availableClassrooms = null;
-
-    //undefined but the promiseArray has items
-    console.log(studentgroups[0]);
-    for (let j = 0; j < amountOfStudentGroups; j++) {
-      console.log("studentgroup " + j + ": " + studentgroups[j].groupName);
-      if (studentgroups[j].groupName === groupname) {
-        myGroup = studentgroups[j];
-        console.log("myGroup: " + myGroup);
-      }
-    }
-    if (myGroup != null) {
-      for (let i = 0; i < amountOfClassrooms; i++) {
-        if (classrooms[i].availableSpots >= myGroup.amountOfGroupMembers) {
-          this.store.query('classroom', {
-            filter: {
-              roomNumber: classrooms[i].roomNumber
-            }
-          }).then(function (classroom) {
-            availableClassrooms.push(classroom);
-          });
+    let amountOfGroupMembers;
+    let availableClassRooms = null;
+    this.studentgroups.then((studentgroups)=>{
+      studentgroups.forEach((studentgroup) => {
+        if (studentgroup.get('groupName') === 'groupName'){
+          amountOfGroupMembers = studentgroup.get('amountOfGroupMembers');
         }
-      }
-      if (availableClassrooms != null) {
-        return availableClassrooms;
-      } else {
-        return classrooms;
-      }
-    }
+      });
+    this.classrooms.then((classrooms)=>{
+      console.log(classrooms);
+      classrooms.forEach((classroom)=>{
+        let availableSpots = classroom.get('availableSpots');
+        if (availableSpots >= amountOfGroupMembers){
+          console.log("deze classroom kan: " + classroom);
+          availableClassRooms.push(classroom);
+        }
+      });
+      console.log("availableclassrooms: " + availableClassRooms);
+    });
+    });
   })
 });
