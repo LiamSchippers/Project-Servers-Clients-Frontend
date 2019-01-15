@@ -19,7 +19,7 @@
             <td>{{reservation.endHour}}</td>
             <td>{{reservation.label}}</td>
             <td>{{reservation.studentgroup.groupName}}</td>
-            {{#if (has-role admin)}}
+            {{#if (has-role "admin")}}
               <button {{action "deleteReservation" reservation}} type="submit" value="submit">Delete</button>
             {{/if}}
           </tr>
