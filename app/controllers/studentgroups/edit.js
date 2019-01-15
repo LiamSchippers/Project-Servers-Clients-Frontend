@@ -1,8 +1,10 @@
 import Controller from '@ember/controller';
+import isAuthenticatedMixin from "../../mixins/authentication-route-mixin";
+import isAuthorizedTeacherMixin from "../../mixins/authorization-teacher-route-mixin";
 
 // TODO : TEACHER AUTH
 
-export default Controller.extend({
+export default Controller.extend(isAuthenticatedMixin, isAuthorizedTeacherMixin, {
   actions: {
 
       filterByStudent(param) {
