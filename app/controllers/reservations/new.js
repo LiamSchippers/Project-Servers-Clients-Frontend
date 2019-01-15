@@ -4,6 +4,7 @@ import { computed } from '@ember/object';
 
 export default Controller.extend({
   studentgroupId: null,
+  startHour: null,
   classroomId: null,
   store: service(),
   studentgroups: computed( function() {

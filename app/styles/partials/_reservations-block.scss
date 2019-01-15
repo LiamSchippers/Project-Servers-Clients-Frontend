@@ -54,6 +54,16 @@
           margin-right: 0;
         }
       }
+
+      .btn__select {
+        float: right;
+        z-index: 1;
+        margin: 0;
+        @include centerer(false, true);
+        right: 0;
+        padding: 10px 25px;
+        font-size: 14px;
+      }
     }
 
     .btn {
