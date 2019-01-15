@@ -12,7 +12,7 @@ export default Controller.extend({
           this.set('errorMessage', reason.errors[0].detail);
         })
         .then(() => {
-          this.store.findRecord('extended_user', session.data.authenticated.userId).then(function(user) {
+          this.store.findRecord('ExtendedUser', session.data.authenticated.userId).then(function(user) {
             session.set('data.role', user.data.role);
             session.set('data.currentUser', user.data);
           });
