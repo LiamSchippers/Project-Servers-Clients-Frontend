@@ -14,7 +14,7 @@ export default Controller.extend({
         .then(() => {
           this.store.findRecord('ExtendedUser', session.data.authenticated.userId).then(function(user) {
             session.set('data.role', user.data.role);
-            session.set('data.currentUser', user.data);
+            session.set('data.currentUser', user);
           });
 
           this.set('password', '');
