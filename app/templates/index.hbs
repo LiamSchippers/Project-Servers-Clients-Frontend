@@ -25,29 +25,20 @@
                 10:30 - 11:00
               </div>
             </div>
-            <div class="reservation">
-              <div class="reservation__classroom">G5.31</div>
-              <div class="reservation__date">
-                <i class="icon-calendar"></i>
-                24 december 2018
+            {{#each model as |reservation|}}
+              <div class="reservation">
+                <div class="reservation__classroom">G5.31</div>
+                <div class="reservation__date">
+                  <i class="icon-calendar"></i>
+                  {{reservation.day}}
+                </div>
+                <div class="reservation__time">
+                  <i class="icon-clock"></i>
+                  {{reservation.startHour}}
+                </div>
               </div>
-              <div class="reservation__time">
-                <i class="icon-clock"></i>
-                10:30 - 11:00
-              </div>
-            </div>
-            <div class="reservation">
-              <div class="reservation__classroom">G5.31</div>
-              <div class="reservation__date">
-                <i class="icon-calendar"></i>
-                24 december 2018
-              </div>
-              <div class="reservation__time">
-                <i class="icon-clock"></i>
-                10:30 - 11:00
-              </div>
-            </div>
-            {{#link-to "index" class="btn btn--green"}}Bekijk alles{{/link-to}}
+            {{/each}}
+            {{#link-to "reservations" class="btn btn--green"}}Bekijk alles{{/link-to}}
           </div>
         </div>
       </div>
