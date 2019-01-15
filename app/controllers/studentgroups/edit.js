@@ -11,10 +11,10 @@ export default Controller.extend({
             filter: {
               where: {
                 username: {ilike: '%' + param + '%'},
-                realm: 'student'
+                role: 'student'
               }
             }
-          }).then(function(students){
+          }).then(function(students) {
             return students;
           });
         } else {
@@ -28,7 +28,7 @@ export default Controller.extend({
           return this.store.query('extended-user', {
             filter: {
               where: {
-                realm: 'student'
+                role: 'student'
               }
             }
           }).then(function(students){
