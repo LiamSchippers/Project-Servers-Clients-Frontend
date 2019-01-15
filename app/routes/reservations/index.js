@@ -6,7 +6,6 @@ export default Route.extend({
   },
 
   actions: {
-    // todo: alleen voor admin
     deleteReservation(reservation){
       reservation.deleteRecord();
       reservation.get('isDeleted');
