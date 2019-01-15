@@ -4,7 +4,7 @@
       <div class="col">
         <nav class="main-navigation">
           <div class="logo">
-            <span class="logo__text">Web Room Booking</span>
+            {{#link-to 'index'}}<span class="logo__text">Web Room Booking</span>{{/link-to}}
           </div>
           <div class="user">
             <div class="user__name" {{ action "toggleUserDropdown" }} role="button">
@@ -48,8 +48,8 @@
   {{# if mobileMenuOpen }}
     <nav class="mobile-menu">
       <ul>
-        <li class="mobile-menu__item mobile-menu__item--active">Dashboard</li>
-        <li class="mobile-menu__item">{{#link-to "user-profile"}}Mijn account{{/link-to}}</li>
+        {{#link-to "index"}}<li class="mobile-menu__item mobile-menu__item--active">Dashboard</li>{{/link-to}}
+        {{#link-to "user-profile"}}<li class="mobile-menu__item">Mijn account</li>{{/link-to}}
         <li class="mobile-menu__item">Uitloggen</li>
       </ul>
     </nav>
