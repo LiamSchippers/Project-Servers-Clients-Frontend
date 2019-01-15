@@ -11,6 +11,7 @@ export default Component.extend({
       this.toggleProperty('mobileMenuOpen');
     },
     logOut() {
+      this.toggleProperty('dropdownOpen');
       this.get('session').invalidate();
     }
   }
