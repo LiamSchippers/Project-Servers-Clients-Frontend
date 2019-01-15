@@ -13,7 +13,7 @@
         <div class="col-12 col-md-6">
           <div class="grid-block">
             <div class="form-group">
-              <label for="date">Datum</label>
+              <label for="date" required onchange={{action "selectDay" value=model.day}}>Datum</label>
               {{ember-flatpickr
                 onChange=(action (mut dateValue))
                 class="default-input default-input--border date-picker icon-arrow"
@@ -59,8 +59,8 @@
           </div>
         </div>
         <div class="col-12 col-md-6">
-          <div class="grid-block
-            grid-block--disabled">
+          <div class="grid-block //comment: if you want to disable the right choice menu change enabled tot disabled
+            grid-block--enabled">
             <div class="form-group">
               <label for="date">Locatie</label>
               <div class="default-select-box">
@@ -90,7 +90,7 @@
               <label for="date">Lokaal</label>
               <div class="default-select-box">
                 <select name="classroom" required onchange={{action "selectClassroom" value="target.value"}}>
-                  <option selected disabled>Selecteer locatie</option>
+                  <option selected disabled>Selecteer lokaal</option>
                   {{#each classrooms as |classroom|}}
                     <option value="{{classroom.id}}">{{classroom.roomNumber}}</option>
                   {{/each}}
