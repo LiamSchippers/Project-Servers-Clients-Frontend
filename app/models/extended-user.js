@@ -5,5 +5,6 @@ export default DS.Model.extend({
   role: DS.attr('string'),
   email: DS.attr('string'),
   username: DS.attr('string'),
-  password: DS.attr('string')
+  password: DS.attr('string'),
+  memberships: DS.hasMany('membership'),
 });
