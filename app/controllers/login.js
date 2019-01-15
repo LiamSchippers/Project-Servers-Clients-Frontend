@@ -17,6 +17,7 @@ export default Controller.extend({
             session.set('data.currentUser', user);
           });
 
+          this.set('errorMessage', null);
           this.set('password', '');
           this.set('email', '');
           this.transitionToRoute('index');
