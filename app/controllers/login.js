@@ -12,9 +12,11 @@ export default Controller.extend({
           this.set('errorMessage', reason.errors[0].detail);
         })
         .then(() => {
-          // TODO: rol ophalen
-          session.set('data.role', 'teacher');
-          //session.set('currentUser', currentUser);
+          this.store.findRecord('extended_user', session.data.authenticated.userId).then(function(user) {
+            session.set('data.role', user.data.role);
+            session.set('currentUser', user.data);
+          });
+
           this.set('password', '');
           this.set('email', '');
           this.transitionToRoute('index');

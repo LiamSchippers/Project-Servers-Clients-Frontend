@@ -5,6 +5,7 @@
       <li>{{classroom.roomNumber}}</li>
     {{/each}}
   </ul>
-  {{has-role}}
+  {{#if (has-role "admin")}}
     {{#link-to "classrooms.new"}}<button>New classroom</button>{{/link-to}}
+  {{/if}}
 </div>
