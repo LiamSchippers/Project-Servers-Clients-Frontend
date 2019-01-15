@@ -11,8 +11,15 @@ Router.map(function() {
     this.route('new');
   });
 
+  this.route('studentgroups', function() {
+    this.route('new');
+  });
+
   this.route('classroom', function() {});
   this.route('login');
+  this.route('studentgroup', function() {});
+  this.route('user-profile', { path: '/profile'});
+  this.route('reservations', function() {});
 });
 
 export default Router;

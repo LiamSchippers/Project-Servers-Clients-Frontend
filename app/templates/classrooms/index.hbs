@@ -1,11 +1,24 @@
 <div class="route-classrooms">
   <h1>Classrooms</h1>
+  {{#link-to
+    "classrooms.new"
+  }}
+    <button>Add new classroom</button>
+  {{/link-to}}
   <ul>
-    {{#each model as |classroom|}}
-      <li>{{classroom.roomNumber}}</li>
-    {{/each}}
+    <table>
+      <thead>
+        <th>Classroom</th>
+        <th>Capacity</th>
+      </thead>
+      <tbody>
+        {{#each model as |classroom|}}
+          <tr>
+            <td>{{classroom.roomNumber}}</td>
+            <td>{{classroom.capacity}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
   </ul>
-  {{#if (has-role "admin")}}
-    {{#link-to "classrooms.new"}}<button>New classroom</button>{{/link-to}}
-  {{/if}}
 </div>
