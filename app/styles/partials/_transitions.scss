@@ -1,0 +1,17 @@
+// User dropdown
+.user-dropdown-enter {
+  opacity: 0.01;
+}
+
+.user-dropdown-enter.user-dropdown-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+.user-dropdown-leave {
+  opacity: 1;
+}
+
+.user-dropdown-leave.user-dropdown-leave-active {
+  opacity: 0.01;
+  transition: opacity 200ms ease-in;
+}

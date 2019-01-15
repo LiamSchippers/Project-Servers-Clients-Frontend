@@ -1,0 +1,65 @@
+/***
+  * Base styles which applies on almost every view
+ */
+body {
+  background: $background-light-grey;
+
+  .view {
+    width: 100%;
+    padding: 50px 0;
+
+    .top-bar {
+      width: 100%;
+      float: left;
+      margin-bottom: 50px;
+      position: relative;
+      h1 {
+        display: inline-block;
+        @include centerer(false, true);
+      }
+
+      &.top-bar__text-only {
+        // If there's only text in the top bar we don't need to center it
+        h1 {
+          transform: none;
+          left: auto;
+          top: auto;
+          position: relative;
+        }
+      }
+    }
+
+    .grid-block {
+      width: 100%;
+      background: $white;
+      box-shadow: $default-box-shadow;
+      @include border-radius(5px);
+      padding: 50px;
+      float: left;
+
+      &.grid-block--margin-top {
+        margin-top: 32px;
+      }
+
+      .grid-block__title {
+        font-size: 20px;
+        font-weight: 500;
+        color: $dark-blue;
+        margin-bottom: 30px;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      .col-12 {
+        .grid-block {
+          margin-bottom: 30px;
+        }
+        &:last-child {
+          .grid-block {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
