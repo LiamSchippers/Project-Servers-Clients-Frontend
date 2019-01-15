@@ -7,8 +7,4 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin,{
   authorizer: 'authorizer:application',
   host: 'http://localhost:3000',
   namespace: 'api',
-
-  pathForType(type) {
-    return underscore(type += "s");
-  }
 });
