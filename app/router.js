@@ -13,8 +13,9 @@ Router.map(function() {
 
   this.route('studentgroups', function() {
     this.route('new');
+    this.route('show', {path: '/:group_id'});
+    this.route('edit', {path: '/edit/:group_id'});
   });
-
   this.route('classroom', function() {});
   this.route('login');
   this.route('studentgroup', function() {});

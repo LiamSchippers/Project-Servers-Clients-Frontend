@@ -1,8 +1,10 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  realm: "student",
-  email: DS.attr('string'),
+  userId: DS.attr('string'),
+  realm: DS.attr('string'),
   username: DS.attr('string'),
-  password: DS.attr('string')
+  password: DS.attr('string'),
+  email: DS.attr('string'),
+  memberships:  DS.hasMany('membership')
 });

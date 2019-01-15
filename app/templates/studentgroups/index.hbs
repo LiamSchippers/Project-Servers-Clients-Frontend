@@ -1,9 +1,8 @@
 <div class="route-studentgroups">
   <h1>Student groups</h1>
-
   <ul>
     {{#each model as |studentgroup|}}
-      <li>{{studentgroup.groupName}}</li>
+      {{#link-to "studentgroups.show" studentgroup}}<li>{{studentgroup.groupName}}</li>{{/link-to}}
     {{/each}}
   </ul>
 
