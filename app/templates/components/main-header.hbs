@@ -4,7 +4,7 @@
       <div class="col">
         <nav class="main-navigation">
           <div class="logo">
-            {{#link-to 'index'}}<span class="logo__text">Web Room Booking</span>{{/link-to}}
+            {{#link-to "index"}}<span class="logo__text">Web Room Booking</span>{{/link-to}}
           </div>
           <div class="user">
             <div class="user__name" {{ action "toggleUserDropdown" }} role="button">
@@ -18,8 +18,8 @@
               {{#transition-group transitionName="user-dropdown"}}
                 <div class="user__dropdown">
                   <ul>
-                    <li>Dashboard</li>
-                    <li>{{#link-to "user-profile"}}Mijn account{{/link-to}}</li>
+                    <li>{{#link-to "index" invokeAction=(action "toggleUserDropdown")}}Dashboard{{/link-to}}</li>
+                    <li>{{#link-to "user-profile" invokeAction=(action "toggleUserDropdown")}}Mijn account{{/link-to}}</li>
                     <li>{{#link-to "login" invokeAction=(action "logOut")}}Uitloggen{{/link-to}}</li>
                   </ul>
                 </div>
