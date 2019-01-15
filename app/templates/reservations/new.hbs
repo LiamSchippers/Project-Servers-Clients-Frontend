@@ -62,50 +62,19 @@
           <div class="grid-block //comment: if you want to disable the right choice menu change enabled tot disabled
             grid-block--enabled">
             <div class="form-group">
-              <label for="date">Locatie</label>
-              <div class="default-select-box">
-                <select name="building" required onchange={{action "selectBuilding" value=model.building}}>
-                  <option selected disabled>Selecteer locatie</option>
-                  <option value="Epy Drost">Epy Drost</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="date">Verdieping</label>
-              <div class="default-select-box">
-                <select name="floor" required>
-                  <option selected disabled>Selecteer verdieping</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
               <label for="date">Lokaal</label>
               <div class="default-select-box">
-                <select name="classroom" required onchange={{action "selectClassroom" value="target.value"}}>
-                  <option selected disabled>Selecteer lokaal</option>
-                  {{#each classrooms as |classroom|}}
-                    <option value="{{classroom.id}}">{{classroom.roomNumber}}</option>
-                  {{/each}}
-                </select>
+                {{#power-select selected=selectedClassroom options=classrooms searchField="roomNumber" onchange=(action "selectClassroom") placeholder=model.classroom.roomNumber as |classroom|}}
+                  {{classroom.roomNumber}}
+                {{/power-select}}
               </div>
             </div>
             <div class="form-group">
               <label for="date">Groep</label>
               <div class="default-select-box">
-                <select onchange={{action "selectStudentGroup" value="target.value"}}>
-                  <option selected disabled>Selecteer jouw groep</option>
-                  {{#each studentgroups as |studentgroup|}}
-                    <option value="{{studentgroup.id}}">{{studentgroup.groupName}}</option>
-                  {{/each}}
-                </select>
+                {{#power-select selected=selectedStudentGroup options=studentgroups searchField="groupName" onchange=(action "selectStudentGroup") placeholder=model.studentgroup.groupName as |studentgroup|}}
+                  {{studentgroup.groupName}}
+                {{/power-select}}
               </div>
             </div>
             <button type="submit" class="btn btn--green">Reserveren</button>

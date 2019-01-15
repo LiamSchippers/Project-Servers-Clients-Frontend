@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
-import { computed } from '@ember/object';
+import {inject as service} from '@ember/service';
+import {computed} from '@ember/object';
+
 function formatDate() {
   const today = new Date;
   let dd = today.getDate();
@@ -12,57 +13,34 @@ function formatDate() {
 
   return dd + '-' + mm + '-' + yyyy;
 }
+
 export default Controller.extend({
-  studentgroupId: null,
-  startHour: null,
-  classroomId: null,
   store: service(),
-  studentgroups: computed( function() {
+  studentgroups: computed(function() {
     return this.get('store').findAll('studentgroup');
   }),
-  classrooms: computed( function() {
+  classrooms: computed(function() {
     return this.get('store').findAll('classroom');
   }),
   actions: {
-    selectStudentGroup: function(selected) {
-      this.set('studentgroupId', selected);
+    selectStudentGroup: function (studentgroup) {
+      console.log(studentgroup);
+      this.get('model').set('studentgroup', studentgroup);
     },
-    selectClassroom: function(selected) {
-      this.set('classroomId', selected);
+    selectClassroom: function (classroom) {
+      this.get('model').set('classroom', classroom);
     },
-    selectStartHour: function(selected) {
-      this.set('startHour', selected);
+    selectStartHour: function (startHour) {
+      this.get('model').set('startHour', startHour);
     },
-    selectEndHour: function(selected) {
-      this.set('endHour', selected);
+    selectEndHour: function (endHour) {
+      this.get('model').set('endHour', endHour);
     },
-    selectBuilding: function(selected) {
-      this.set('building', selected);
-    },
-    selectDay: function(selected){
-      this.set('day', selected);
+    selectDay: function (day) {
+      this.get('model').set('day', day);
     },
     saveModel() {
-      const model = this.get('model');
-      const store = this.get('store');
-
-      
-      const date = model.get('day');
-      const startHour = model.get('startHour');
-      const endHour = model.get('endHour');
-      console.log('startuur: '+startHour + ' einduur: '+ endHour);
-      console.log(date);
-
-
-      const studentGroupId = this.get('studentgroupId');
-      const classroomId = this.get('classroomId');
-      store.findRecord('studentgroup', studentGroupId).then(function(studentGroup) {
-        store.findRecord('classroom', classroomId).then(function(classroom) {
-          model.set('studentgroup', studentGroup);
-          model.set('classroom', classroom);
-          model.save();
-        })
-    });
+      this.get('model').save();
     }
-  },
+  }
 });
