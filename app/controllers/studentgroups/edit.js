@@ -45,7 +45,9 @@ export default Controller.extend({
           user: student,
           studentgroup: model
         });
-        membership.save();
+        membership.save().catch((reason) => {
+          membership.deleteRecord();
+        });
       },
       goBack() {
         var model = this.get('model');
