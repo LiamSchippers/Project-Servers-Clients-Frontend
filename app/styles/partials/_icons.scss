@@ -4,12 +4,12 @@
  */
 @font-face {
   font-family: 'web-room-booking-icons';
-  src: url('../fonts/web-room-booking-icons.eot?48458586');
-  src: url('../fonts/web-room-booking-icons.eot?48458586#iefix') format('embedded-opentype'),
-  url('../fonts/web-room-booking-icons.woff2?48458586') format('woff2'),
-  url('../fonts/web-room-booking-icons.woff?48458586') format('woff'),
-  url('../fonts/web-room-booking-icons.ttf?48458586') format('truetype'),
-  url('../fonts/web-room-booking-icons.svg?48458586#web-room-booking-icons') format('svg');
+  src: url('../fonts/web-room-booking-icons.eot?79937024');
+  src: url('../fonts/web-room-booking-icons.eot?79937024#iefix') format('embedded-opentype'),
+  url('../fonts/web-room-booking-icons.woff2?79937024') format('woff2'),
+  url('../fonts/web-room-booking-icons.woff?79937024') format('woff'),
+  url('../fonts/web-room-booking-icons.ttf?79937024') format('truetype'),
+  url('../fonts/web-room-booking-icons.svg?79937024#web-room-booking-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -70,3 +70,4 @@
 .icon-cancel:before { content: '\e808'; } /* '' */
 .icon-clock:before { content: '\e809'; } /* '' */
 .icon-close:before { content: '\e80a'; } /* '' */
+.icon-edit:before { content: '\e80b'; } /* '' */

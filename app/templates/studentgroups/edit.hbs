@@ -1,0 +1,27 @@
+<div class="route-studentgroups">
+  <h1>Edit student group</h1>
+  
+  <h2>Huidige groep:</h2>
+  <ul>
+    {{#each model.memberships as |membership|}}
+      <!-- show students in group-->
+    <li>{{membership.user.username}}</li>
+
+    {{else}}
+      geen studenten gevonden.
+    {{/each}}
+  </ul>
+
+  <h2>Nieuwe studenten</h2>
+  {{#list-filter
+    filter=(action "filterByStudent") as |filteredResults|
+  }}
+    <ul class="results">
+      {{#each filteredResults as |extended-user|}}
+        <li {{action "addStudent" extended-user}}>{{extended-user.username}}</li>
+      {{/each}}
+    </ul>
+  {{/list-filter}}
+  <button name="terug" {{action "goBack"}}>Back</button>
+  {{outlet}}
+</div>

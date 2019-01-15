@@ -14,11 +14,15 @@ Router.map(function() {
 
   this.route('studentgroups', function() {
     this.route('new');
+    this.route('show', {path: '/:group_id'});
+    this.route('edit', {path: '/edit/:group_id'});
   });
-
   this.route('classroom', function() {});
   this.route('login');
+  this.route('registrate');
   this.route('studentgroup', function() {});
+  this.route('user-profile', { path: '/profile'});
+  this.route('reservations', function() {});
   this.route('availability');
 });
 

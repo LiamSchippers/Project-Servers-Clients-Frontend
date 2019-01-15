@@ -14,9 +14,12 @@
 @import "partials/buttons";
 @import "partials/transitions";
 @import "partials/alerts";
+@import "partials/reservations-block";
+@import "partials/groups-block";
 
 // Views
 @import "views/base";
 @import "views/dashboard";
 @import "views/classrooms";
 @import "views/login";
+@import "views/user-profile";

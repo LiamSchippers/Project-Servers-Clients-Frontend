@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg">
-<metadata>Copyright (C) 2018 by original authors @ fontello.com</metadata>
+<metadata>Copyright (C) 2019 by original authors @ fontello.com</metadata>
 <defs>
 <font id="web-room-booking-icons" horiz-adv-x="1000" >
 <font-face font-family="web-room-booking-icons" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
@@ -27,6 +27,8 @@
 <glyph glyph-name="clock" unicode="&#xe809;" d="M500 850c-276 0-500-224-500-500s224-500 500-500 500 224 500 500c0 276-224 500-500 500z m22-956v88c0 12-10 21-22 21s-21-9-21-21v-88c-236 11-424 199-435 435h88c12 0 21 9 21 21s-9 22-21 22h-88c11 235 199 423 435 434v-88c0-12 9-21 21-21s22 9 22 21v88c235-11 423-199 434-434h-88c-12 0-21-10-21-22s9-21 21-21h0 88c-11-236-199-424-434-435z m204 257l-204 208v216c0 12-10 22-22 22s-21-10-21-22v-225c0-6 2-11 6-15l211-214c8-9 22-9 30-1 8 9 9 22 0 31z" horiz-adv-x="1000" />
 
 <glyph glyph-name="close" unicode="&#xe80a;" d="M588 350l394 393c24 25 24 64 0 89-25 24-64 24-89 0l-393-394-393 394c-25 24-64 24-89 0-24-25-24-64 0-89l394-393-394-393c-24-25-24-64 0-89 13-12 29-18 45-18s32 6 44 18l393 394 393-394c13-12 29-18 45-18s32 6 44 18c24 25 24 64 0 89l-394 393z" horiz-adv-x="1000" />
+
+<glyph glyph-name="edit" unicode="&#xe80b;" d="M924 224c-14 0-25-11-25-25v-221c0-42-33-75-75-75h-699c-42 0-75 33-75 75v650c0 41 33 74 75 74h221c14 0 25 12 25 25 0 14-11 25-25 25h-221c-69 0-125-55-125-124v-650c0-69 56-125 125-125h699c69 0 125 56 125 125v221c0 14-11 25-25 25z m0 0m15 593c-44 43-115 43-158 0l-445-445c-3-3-6-7-7-11l-58-212c-3-8 0-18 6-24 7-6 16-9 24-6l212 58c4 1 8 4 11 7l445 445c43 43 43 114 0 158z m-549-462l364 365 118-118-365-364z m-23-47l93-93-129-36z m566 356l-26-27-118 118 27 26c24 25 64 25 88 0l29-29c25-24 25-64 0-88z m0 0" horiz-adv-x="1000" />
 </font>
 </defs>
 </svg>

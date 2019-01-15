@@ -21,7 +21,19 @@
         min="1"
       }}
     </th>
+    <th>
+      Maximal amount of hours
+      <br>
+      {{input
+        type="number"
+        value=model.maxHours
+        required=true
+        placeholder="Example: 2"
+        min="1"
+      }}
+    </th>
   </tr>
   <br>
-  <button type="submit" value="submit">Save</button>
+ <button value="cancel" {{action "cancelModel"}}>Terug</button>
+ <button type="submit" value="submit" {{action "saveModel"}}>Opslaan</button>
 </form>

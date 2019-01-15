@@ -2,9 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <nav>
+        <nav class="main-navigation">
           <div class="logo">
-            <span class="logo__text">Web Room Booking</span>
+            {{#link-to "index"}}<span class="logo__text">Web Room Booking</span>{{/link-to}}
           </div>
           <div class="user">
             <div class="user__name" {{ action "toggleUserDropdown" }} role="button">
@@ -19,16 +19,39 @@
                 <div class="user__dropdown">
                   <ul>
                     <li>Dashboard</li>
-                    <li>Mijn account</li>
+                    <li>{{#link-to "user-profile"}}Mijn account{{/link-to}}</li>
                     <li>{{#link-to "login" invokeAction=(action "logOut")}}Uitloggen{{/link-to}}</li>
                   </ul>
                 </div>
               {{/transition-group}}
             {{/if}}
           </div>
-          <i class="icon-menu"></i>
+          {{# if mobileMenuOpen }}
+            <i
+              class="toggle-mobile-nav icon-close"
+              role="button"
+              {{ action "toggleMobileMenu" }}
+            >
+            </i>
+          {{else}}
+            <i
+              class="toggle-mobile-nav icon-menu"
+              role="button"
+              {{ action "toggleMobileMenu" }}
+            >
+            </i>
+          {{/if}}
         </nav>
       </div>
     </div>
   </div>
+  {{# if mobileMenuOpen }}
+    <nav class="mobile-menu">
+      <ul>
+        {{#link-to "index"}}<li class="mobile-menu__item mobile-menu__item--active">Dashboard</li>{{/link-to}}
+        {{#link-to "user-profile"}}<li class="mobile-menu__item">Mijn account</li>{{/link-to}}
+        <li class="mobile-menu__item">Uitloggen</li>
+      </ul>
+    </nav>
+  {{/if}}
 </header>
