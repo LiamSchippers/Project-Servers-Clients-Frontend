@@ -17,6 +17,16 @@ body {
         display: inline-block;
         @include centerer(false, true);
       }
+
+      &.top-bar__text-only {
+        // If there's only text in the top bar we don't need to center it
+        h1 {
+          transform: none;
+          left: auto;
+          top: auto;
+          position: relative;
+        }
+      }
     }
 
     .grid-block {
@@ -26,6 +36,10 @@ body {
       @include border-radius(5px);
       padding: 50px;
       float: left;
+
+      &.grid-block--margin-top {
+        margin-top: 32px;
+      }
 
       .grid-block__title {
         font-size: 20px;

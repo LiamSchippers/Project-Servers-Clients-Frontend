@@ -1,0 +1,108 @@
+{{ main-header }}
+<main class="view view__profile">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="top-bar top-bar__text-only">
+          <h1>Mijn profiel</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="grid-block grid-block--regular">
+          <div class="grid-block__title">Algemeen</div>
+          <form>
+            <div class="form-group">
+              <input
+                type="text"
+                class="default-input disabled"
+                value="449931@student.saxion.nl"
+                disabled
+              >
+            </div>
+            {{# if changePassword }}
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="default-input default-input--border"
+                  placeholder="Nieuw wachtwoord"
+                >
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="default-input default-input--border"
+                  placeholder="Wachtwoord bevestigen"
+                >
+              </div>
+            {{/if}}
+            <button
+              type="button"
+              class="btn btn__change-password btn--green"
+              {{ action "changePassword" }}
+            >
+              {{# if changePassword }}Bevestigen{{else}}Wachtwoord wijzigen{{/if}}
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        {{ my-groups-block }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="grid-block grid-block--reservations grid-block--margin-top">
+          <div class="grid-block__title">Overzicht reserveringen</div>
+          <input
+            type="text"
+            placeholder="Zoek reservering"
+            class="default-input search-bar"
+          >
+          <div class="reservations-block">
+            <div class="reservation">
+              <div class="reservation__classroom">G5.31</div>
+              <div class="reservation__date">
+                <i class="icon-calendar"></i>
+                24 december 2018
+              </div>
+              <div class="reservation__time">
+                <i class="icon-clock"></i>
+                10:30 - 11:00
+              </div>
+              <i class="icon-delete reservation__delete"></i>
+              <i class="icon-edit reservation__edit"></i>
+            </div>
+            <div class="reservation">
+              <div class="reservation__classroom">G5.31</div>
+              <div class="reservation__date">
+                <i class="icon-calendar"></i>
+                24 december 2018
+              </div>
+              <div class="reservation__time">
+                <i class="icon-clock"></i>
+                10:30 - 11:00
+              </div>
+              <i class="icon-delete reservation__delete"></i>
+              <i class="icon-edit reservation__edit"></i>
+            </div>
+            <div class="reservation">
+              <div class="reservation__classroom">G5.31</div>
+              <div class="reservation__date">
+                <i class="icon-calendar"></i>
+                24 december 2018
+              </div>
+              <div class="reservation__time">
+                <i class="icon-clock"></i>
+                10:30 - 11:00
+              </div>
+              <i class="icon-delete reservation__delete"></i>
+              <i class="icon-edit reservation__edit"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
