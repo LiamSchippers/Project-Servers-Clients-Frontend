@@ -45,7 +45,9 @@ export default Controller.extend({
     saveModel() {
       let label = this.get('model').get('day') + this.get('model').get('studentgroup').get('groupName');
       this.get('model').set('label', label);
-      this.get('model').save();
+      this.get('model').save().then((e) => {
+        this.transitionToRoute('index');
+      });
     }
   }
 });
