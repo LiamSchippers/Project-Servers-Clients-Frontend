@@ -6,6 +6,7 @@ export default Controller.extend({
   actions: {
 
       filterByStudent(param) {
+        var model = this.get('model');
         if (param !== '') {
           return this.store.query('extended-user', {
             filter: {
@@ -18,13 +19,6 @@ export default Controller.extend({
             return students;
           });
         } else {
-          // this filter gives an empty includes array, no idea why
-          // filter: {
-          //   include: "memberships",
-          //   where: {
-          //     realm: 'student'
-          //   }
-          // }
           return this.store.query('extended-user', {
             filter: {
               where: {
@@ -32,7 +26,20 @@ export default Controller.extend({
               }
             }
           }).then(function(students){
-            return students;
+            return students; //return all to keep it workin
+
+            students.forEach(function(student){
+              // Check if student is already present in memberships. If so don't return in list students.
+              // console.log(student.get('id'));
+              // console.log(student);
+              // console.log(model.memberships);
+              // console.log(model.memberships.findBy('id', student.get('id')))
+              //
+              // if (model.memberships.findBy('extended-user', student)){
+              //   console.log('works')
+              // }
+            });
+            //return students
           });
         }
       },
