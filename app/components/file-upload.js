@@ -17,15 +17,12 @@ export default Component.extend({
           let reservation = this.get('store').createRecord('reservation');
           reservationString.split(';').forEach((fieldValue, index) => {
             let fieldName = fieldNames[index];
-            console.log(fieldName + " " + fieldValue);
             if (fieldName === "day") {
-              console.log(new Date(fieldValue));
               reservation.set(fieldName, new Date(fieldValue));
             }else {
               reservation.set(fieldName, fieldValue);
             }
           });
-          console.log(reservation);
           reservation.save();
         }
       });
