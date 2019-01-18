@@ -10,7 +10,7 @@ export default Mixin.create({
    */
   skipBeforeModelAccessCheck: false,
   beforeModel(transition) {
-    let session = this.session;
+    const session = this.session;
     if (session.isAuthenticated) {
       if (session.get('data.role') === "teacher" || session.get('data.role') === "admin") {
         return transition;
