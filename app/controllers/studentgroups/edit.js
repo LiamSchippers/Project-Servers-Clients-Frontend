@@ -1,5 +1,7 @@
 import Controller from '@ember/controller';
 
+import MutableArray from '@ember/array/mutable';
+
 // TODO : TEACHER AUTH
 
 export default Controller.extend({
@@ -16,7 +18,15 @@ export default Controller.extend({
               }
             }
           }).then(function(students) {
-            return students;
+            // filter students based on already present ones.
+            var freeStudents = students.toArray();
+
+            students.forEach(function(student){
+              if (model.memberships.findBy('user._belongsToState.canonicalState.id', student.get('id'))){
+                freeStudents.removeObject(student);
+              }
+            });
+            return freeStudents;
           });
         } else {
           return this.store.query('extended-user', {
@@ -26,20 +36,15 @@ export default Controller.extend({
               }
             }
           }).then(function(students){
-            return students; //return all to keep it workin
+            // filter students based on already present ones.
+            var freeStudents = students.toArray();
 
             students.forEach(function(student){
-              // Check if student is already present in memberships. If so don't return in list students.
-              // console.log(student.get('id'));
-              // console.log(student);
-              // console.log(model.memberships);
-              // console.log(model.memberships.findBy('id', student.get('id')))
-              //
-              // if (model.memberships.findBy('extended-user', student)){
-              //   console.log('works')
-              // }
+              if (model.memberships.findBy('user._belongsToState.canonicalState.id', student.get('id'))){
+                freeStudents.removeObject(student);
+              }
             });
-            //return students
+            return freeStudents;
           });
         }
       },
