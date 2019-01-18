@@ -30,7 +30,7 @@
               }}
             </div>
             <div class="form-group">
-              <label for="date">Start tijd</label>
+              <label>Start tijd</label>
               <div class="default-select-box">
                 <select name="startHour" required onchange={{action "selectStartHour" value=model.startHour}}>
                   <option selected disabled>Selecteer start tijd</option>
@@ -44,7 +44,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="date">Eind tijd</label>
+              <label>Eind tijd</label>
               <div class="default-select-box">
                 <select name="startHour" required onchange={{action "selectEndHour" value=model.endHour}}>
                   <option selected disabled>Selecteer eind tijd</option>
@@ -63,7 +63,7 @@
           <div class="grid-block //comment: if you want to disable the right choice menu change enabled tot disabled
             grid-block--enabled">
             <div class="form-group">
-              <label for="date">Lokaal</label>
+              <label>Lokaal</label>
               <div class="default-select-box">
                 {{#power-select selected=selectedClassroom options=classrooms searchField="roomNumber" onchange=(action "selectClassroom") placeholder=model.classroom.roomNumber as |classroom|}}
                   {{classroom.roomNumber}}
@@ -71,7 +71,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="date">Groep</label>
+              <label>Groep</label>
               <div class="default-select-box">
                 {{#power-select selected=selectedStudentGroup options=studentgroups searchField="groupName" onchange=(action "selectStudentGroup") placeholder=model.studentgroup.groupName as |studentgroup|}}
                   {{studentgroup.groupName}}
