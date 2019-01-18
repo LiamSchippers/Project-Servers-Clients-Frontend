@@ -14,9 +14,9 @@
       <tbody>
         {{#each model as |classroom|}}
           <tr>
-            <td>{{classroom.roomNumber}}</td>
+            {{#link-to "classrooms.show" classroom}}<td>{{classroom.roomNumber}}</td>{{/link-to}}
             <td>{{classroom.capacity}}</td>
-          </tr>
+            </tr>
         {{/each}}
       </tbody>
     </table>
