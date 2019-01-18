@@ -2,7 +2,7 @@ import DS from 'ember-data';
 import studentgroup from "./studentgroup";
 
 export default DS.Model.extend({
-  day: DS.attr("string"),
+  day: DS.attr("date"),
   startHour: DS.attr("number"),
   endHour: DS.attr("number"),
   label: DS.attr("string"),

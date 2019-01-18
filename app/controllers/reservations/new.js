@@ -31,6 +31,7 @@ export default Controller.extend({
       this.get('model').set('classroom', classroom);
     },
     selectStartHour: function (startHour) {
+      console.log(startHour);
       this.get('model').set('startHour', startHour);
     },
     selectEndHour: function (endHour) {
@@ -40,6 +41,10 @@ export default Controller.extend({
       this.get('model').set('day', day);
     },
     saveModel() {
+      console.log(this.get('model'));
+      // label definieren
+      let label = this.get('model').get('day') + this.get('model').get('studentgroup').get('groupName');
+      this.get('model').set('label', label);
       this.get('model').save();
     }
   }
