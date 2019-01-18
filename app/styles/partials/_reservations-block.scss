@@ -1,4 +1,6 @@
 .grid-block { // Just make sure we are in a grid block
+  @include transition(500ms);
+
   .reservations-block {
     width: 100%;
     float: left;
