@@ -1,0 +1,20 @@
+<div class="reservations-block">
+  {{#each limitedReservations as |reservation|}}
+    <div class="reservation">
+      <div class="reservation__classroom">G5.31</div>
+      <div class="reservation__date">
+        <i class="icon-calendar"></i>
+        {{moment-format reservation.day 'DD MMMM YYYY'}}
+      </div>
+      <div class="reservation__time">
+        <i class="icon-clock"></i>
+        {{reservation.startHour}}
+        -
+        {{reservation.endHour}}
+      </div>
+    </div>
+  {{else}}
+    <div>Je hebt geen reserveringen</div>
+  {{/each}}
+  {{#link-to "reservations.index" class="btn btn--green"}}Bekijk alles{{/link-to}}
+</div>
