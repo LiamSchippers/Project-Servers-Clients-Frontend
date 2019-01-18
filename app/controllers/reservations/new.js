@@ -16,22 +16,22 @@ function formatDate() {
 
 export default Controller.extend({
   store: service(),
-  studentgroups: computed(function() {
+  studentgroups: computed(function () {
     return this.get('store').findAll('studentgroup');
   }),
 
-  enableGrid : function(){
-    console.log('hoi');
-    if (this.get('model').get('endHour') !==undefined && this.get('model').get('startHour')!==undefined && this.get('model').get('day')!==undefined){
+  enableGrid: function () {
+    if (this.get('model').get('endHour') !== undefined && this.get('model').get('startHour') !== undefined && this.get('model').get('day') !== undefined) {
       this.set("toggleGridBlock", true);
-    }
-    else{
+    } else {
       this.set("toggleGridBlock", false);
     }
   },
-
-  classrooms: computed(function() {
+  classrooms: computed(function () {
     return this.get('store').findAll('classroom');
+  }),
+  minHour: computed('startHour', function () {
+    return this.get('startHour');
   }),
   actions: {
     selectStudentGroup: function (studentgroup) {
@@ -41,6 +41,7 @@ export default Controller.extend({
       this.get('model').set('classroom', classroom);
     },
     selectStartHour: function (startHour) {
+      this.set('startHour', startHour);
       this.get('model').set('startHour', startHour);
 
       this.enableGrid();
@@ -56,6 +57,7 @@ export default Controller.extend({
       this.enableGrid();
     },
     saveModel() {
+      console.log(this.get('model').get('day'));
       console.log(this.get('model'));
       // label definieren
       let label = this.get('model').get('day') + this.get('model').get('studentgroup').get('groupName');

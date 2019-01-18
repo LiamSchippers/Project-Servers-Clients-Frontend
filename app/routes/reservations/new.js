@@ -28,6 +28,7 @@ function getMaxDate() {
   return yyyy + '-' + mm + '-' + dd;
 }
 
+
 export default Route.extend({
   setupController: function (controller, model, studentgroup) {
     this._super(controller, model);
