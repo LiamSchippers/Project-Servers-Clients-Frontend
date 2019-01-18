@@ -20,61 +20,40 @@ export default Controller.extend({
     return this.get('store').findAll('studentgroup');
   }),
 
-
+  enableGrid : function(){
+    console.log('hoi');
+    if (this.get('model').get('endHour') !==undefined && this.get('model').get('startHour')!==undefined && this.get('model').get('day')!==undefined){
+      this.set("toggleGridBlock", true);
+    }
+    else{
+      this.set("toggleGridBlock", false);
+    }
+  },
 
   classrooms: computed(function() {
     return this.get('store').findAll('classroom');
   }),
   actions: {
     selectStudentGroup: function (studentgroup) {
-      console.log(studentgroup);
       this.get('model').set('studentgroup', studentgroup);
     },
     selectClassroom: function (classroom) {
       this.get('model').set('classroom', classroom);
     },
     selectStartHour: function (startHour) {
-      console.log(startHour);
       this.get('model').set('startHour', startHour);
 
-      if (this.get('model').get('endHour') !==null && this.get('model').get('startHour')!==null && this.get('model').get('day')!==null){
-        this.set("toggleGridBlock", true);
-      }
-      else{
-        this.set("toggleGridBlock", false);
-
-      }
-
-
+      this.enableGrid();
     },
     selectEndHour: function (endHour) {
       this.get('model').set('endHour', endHour);
-      let endhour1 =this.get('model').get('endHour');
-      let startHour = this.get('model').get('startHour');
-      let day = this.get('model').get('day');
-      console.log(endhour1);
-      console.log(startHour);
-      console.log(day);
 
-      if (this.get('model').get('endHour') !==null && this.get('model').get('startHour')!==null && this.get('model').get('day')!==null){
-        this.set("toggleGridBlock", true);
-
-      }
-      else{
-        this.set("toggleGridBlock", false);
-
-      }
+      this.enableGrid()
     },
     selectDay: function (day) {
       this.get('model').set('day', day);
 
-      if (this.get('model').get('endHour') !==null && this.get('model').get('startHour')!==null && this.get('model').get('day')!==null){
-        this.set("toggleGridBlock", true);
-      }
-      else{
-        this.set("toggleGridBlock", false);
-
-      }
+      this.enableGrid();
     },
     saveModel() {
       console.log(this.get('model'));
