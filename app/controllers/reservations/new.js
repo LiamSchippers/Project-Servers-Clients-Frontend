@@ -19,6 +19,9 @@ export default Controller.extend({
   studentgroups: computed(function() {
     return this.get('store').findAll('studentgroup');
   }),
+
+
+
   classrooms: computed(function() {
     return this.get('store').findAll('classroom');
   }),
@@ -33,12 +36,45 @@ export default Controller.extend({
     selectStartHour: function (startHour) {
       console.log(startHour);
       this.get('model').set('startHour', startHour);
+
+      if (this.get('model').get('endHour') !==null && this.get('model').get('startHour')!==null && this.get('model').get('day')!==null){
+        this.set("toggleGridBlock", true);
+      }
+      else{
+        this.set("toggleGridBlock", false);
+
+      }
+
+
     },
     selectEndHour: function (endHour) {
       this.get('model').set('endHour', endHour);
+      let endhour1 =this.get('model').get('endHour');
+      let startHour = this.get('model').get('startHour');
+      let day = this.get('model').get('day');
+      console.log(endhour1);
+      console.log(startHour);
+      console.log(day);
+
+      if (this.get('model').get('endHour') !==null && this.get('model').get('startHour')!==null && this.get('model').get('day')!==null){
+        this.set("toggleGridBlock", true);
+
+      }
+      else{
+        this.set("toggleGridBlock", false);
+
+      }
     },
     selectDay: function (day) {
       this.get('model').set('day', day);
+
+      if (this.get('model').get('endHour') !==null && this.get('model').get('startHour')!==null && this.get('model').get('day')!==null){
+        this.set("toggleGridBlock", true);
+      }
+      else{
+        this.set("toggleGridBlock", false);
+
+      }
     },
     saveModel() {
       console.log(this.get('model'));
