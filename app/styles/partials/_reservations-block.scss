@@ -55,6 +55,20 @@
           float: right;
         }
       }
+
+      .reservation__delete {
+        margin-left: 15px;
+      }
+
+      .reservation__delete,
+      .reservation__edit {
+        float: right;
+        position: relative;
+        z-index: 2;
+        font-size: 18px;
+        cursor: pointer;
+        color: $dark-blue;
+      }
     }
 
     .btn {
