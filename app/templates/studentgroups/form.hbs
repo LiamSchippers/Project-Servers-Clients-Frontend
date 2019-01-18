@@ -1,39 +1,42 @@
 <form {{action "saveModel" on="submit"}}>
-  <tr>
-    <th>
-      Studentgroup
-      <br>
-      {{input
-        type="text"
-        value=model.groupName
-        required=true
-        placeholder="Example: projectgroup"
-      }}
-    </th>
-    <th>
-      Hours
-      <br>
-      {{input
-        type="number"
-        value=model.hours
-        required=true
-        placeholder="Example: 10"
-        min="1"
-      }}
-    </th>
-    <th>
-      Maximal amount of hours
-      <br>
-      {{input
-        type="number"
-        value=model.maxHours
-        required=true
-        placeholder="Example: 2"
-        min="1"
-      }}
-    </th>
-  </tr>
-  <br>
- <button value="cancel" {{action "cancelModel"}}>Terug</button>
- <button type="submit" value="submit" {{action "saveModel"}}>Opslaan</button>
+  <div class="form-group">
+    <label for="name">Groepsnaam</label>
+    {{input
+      id="name"
+      type="text"
+      value=model.groupName
+      required=true
+      class="default-input default-input--border"
+    }}
+  </div>
+  <div class="form-group">
+    <label for="hours">Uren</label>
+    {{input
+      id="hours"
+      type="number"
+      value=model.hours
+      required=true
+      class="default-input default-input--border"
+      min="1"
+    }}
+  </div>
+  <div class="form-group">
+    <label for="">Maximaal aantal uur</label>
+    {{input
+      type="number"
+      value=model.maxHours
+      required=true
+      class="default-input default-input--border"
+      min="1"
+    }}
+  </div>
+  <button value="cancel" {{action "cancelModel"}} class="btn btn--gray">Terug</button>
+  <button
+    type="submit"
+    value="submit"
+    class="btn btn--green"
+    {{action "saveModel"}}
+  >
+    Opslaan
+  </button>
 </form>

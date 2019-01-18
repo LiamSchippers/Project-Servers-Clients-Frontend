@@ -1,11 +1,30 @@
-<div class="route-studentgroups">
-  <h1>Student groups</h1>
-  <ul>
-    {{#each model as |studentgroup|}}
-      {{#link-to "studentgroups.show" studentgroup}}<li>{{studentgroup.groupName}}</li>{{/link-to}}
-    {{/each}}
-  </ul>
-
-  {{#link-to "studentgroups.new"}}<button>New studentgroup</button>{{/link-to}}
-
-</div>
+<main class="view view__studentgroups">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="top-bar">
+          <h1>Groepen</h1>
+          {{#link-to "studentgroups.new" class="btn btn__reservation btn--green"}}Nieuwe groep{{/link-to}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="grid-block">
+          <div class="grid-block__title">Alle groepen</div>
+          <div class="reservations-block">
+            {{#each model as |studentgroup|}}
+              <div class="reservation">
+                <div class="reservation__classroom">
+                  {{#link-to "studentgroups.show" studentgroup}}
+                    {{studentgroup.groupName}}
+                  {{/link-to}}
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
