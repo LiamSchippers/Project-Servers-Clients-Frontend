@@ -1,11 +1,11 @@
 <div class="route-studentgroups">
   <h1>Edit student group</h1>
-  
+
   <h2>Huidige groep:</h2>
   <ul>
     {{#each model.memberships as |membership|}}
       <!-- show students in group-->
-    <li>{{membership.user.username}}</li>
+    <li {{action "removeStudent" membership}}>{{membership.user.username}}</li>
 
     {{else}}
       geen studenten gevonden.
