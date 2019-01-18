@@ -1,6 +1,8 @@
 import Route from '@ember/routing/route';
 import { set } from '@ember/object';
-export default Route.extend({
+import isAuthorizedAdminMixin from '../../mixins/authorization-admin-route-mixin';
+
+export default Route.extend(isAuthorizedAdminMixin, {
   model() {
     return this.store.createRecord('classroom');
   },

@@ -6,7 +6,6 @@ export default Route.extend({
   },
   actions: {
     signUpRoute(passwordCheck) {
-      console.log(this.currentModel);
       if (passwordCheck === this.currentModel.password) {
         this.currentModel.save();
         this.transitionTo('index');
