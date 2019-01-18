@@ -13,7 +13,7 @@
         <div class="col-12 col-md-6">
           <div class="grid-block">
             <div class="form-group">
-              <label for="date" required onchange={{action "selectDay" value=model.day}}>Datum</label>
+              <label for="date" required>Datum</label>
               {{ember-flatpickr
                 onChange=(action (mut dateValue))
                 class="default-input default-input--border date-picker icon-arrow"
@@ -21,6 +21,7 @@
                 value=model.day
                 id="date"
                 required="true"
+                onClose=(action "selectDay")
                 maxDate=maxDate
                 minDate=minDate
                 locale='nl'
