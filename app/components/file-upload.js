@@ -13,17 +13,21 @@ export default Component.extend({
       let fieldNames = content.shift().split(';');
 
       content.forEach((reservationString) => {
-        let reservation = this.get('store').createRecord('reservation');
-        reservationString.split(';').forEach((fieldValue, index) => {
-          let fieldName = fieldNames[index];
-          console.log(fieldName + " " + fieldValue);
-          if (fieldName === "day"){
-            reservation.set(fieldName, new Date(fieldValue));
-          }
-          reservation.set(fieldName, fieldValue);
-        });
-        console.log(reservation);
-        reservation.save();
+        if (reservationString.split(';').length > 1) {
+          let reservation = this.get('store').createRecord('reservation');
+          reservationString.split(';').forEach((fieldValue, index) => {
+            let fieldName = fieldNames[index];
+            console.log(fieldName + " " + fieldValue);
+            if (fieldName === "day") {
+              console.log(new Date(fieldValue));
+              reservation.set(fieldName, new Date(fieldValue));
+            }else {
+              reservation.set(fieldName, fieldValue);
+            }
+          });
+          console.log(reservation);
+          reservation.save();
+        }
       });
     });
 
