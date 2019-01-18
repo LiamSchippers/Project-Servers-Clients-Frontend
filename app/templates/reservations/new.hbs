@@ -32,7 +32,7 @@
             <div class="form-group">
               <label>Start tijd</label>
               <div class="default-select-box">
-                <select name="startHour" required onchange={{action "selectStartHour" value=model.startHour}}>
+                <select name="startHour" required onchange={{action "selectStartHour" value="target.value"}}>
                   <option selected disabled>Selecteer start tijd</option>
                   <option value="1">08:30 - 09:15</option>
                   <option value="2">09:15 - 10:00</option>
@@ -56,7 +56,7 @@
             <div class="form-group">
               <label>Eind tijd</label>
               <div class="default-select-box">
-                <select name="startHour" required onchange={{action "selectEndHour" value=model.endHour}}>
+                <select name="endHour" required onchange={{action "selectStartHour" value="target.value"}}>
                   <option selected disabled>Selecteer eind tijd</option>
                   <option value="1">08:30 - 09:15</option>
                   <option value="2">09:15 - 10:00</option>
