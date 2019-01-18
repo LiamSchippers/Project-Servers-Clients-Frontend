@@ -1,10 +1,13 @@
 <div class="route-classrooms">
   <h1>Classrooms</h1>
-  {{#link-to
-    "classrooms.new"
-  }}
-    <button>Add new classroom</button>
-  {{/link-to}}
+  {{#if (has-role "admin")}}
+    {{#link-to
+      "classrooms.new"
+    }}
+      <button>Add new classroom</button>
+    {{/link-to}}
+  {{/if}}
+
   <ul>
     <table>
       <thead>
