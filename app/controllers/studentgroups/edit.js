@@ -1,10 +1,38 @@
 import Controller from '@ember/controller';
+import EmberObject, { computed } from '@ember/object';
+import { setDiff } from '@ember/object/computed';
+import { inject } from '@ember/service';
 
 import MutableArray from '@ember/array/mutable';
 
 // TODO : TEACHER AUTH
 
 export default Controller.extend({
+  filter: '',
+  store: inject(),
+  membershipsInGroup: computed('model.memberships', function () {
+    return this.get('model.memberships');
+  }),
+  studentsInGroup: computed('model.memberships', function () {
+    let students = [];
+    this.get('model.memberships').forEach(function (membership) {
+      students.push(membership.get('user'));
+    })
+    return students;
+  }),
+  allStudents: computed(function() {
+    return this.get('store').query('extended-user', {
+      filter: {
+        where: {
+          role: 'student'
+        }
+      }
+    });
+  }),
+  studentsNotInGroup: computed('model.memberships', function() {
+    return setDiff('allStudents', 'studentsInGroup');
+  }),
+  filteredStudentsNotInGroup: [],
   actions: {
 
     filterByStudent(param) {

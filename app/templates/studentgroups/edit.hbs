@@ -17,7 +17,7 @@
     filter=(action "filterByStudent") as |filteredResults|
   }}
     <ul class="results">
-      {{#each filteredResults as |extended-user|}}
+      {{#each studentsNotInGroup as |extended-user|}}
         <li {{action "addStudent" extended-user}}>{{extended-user.username}}</li>
       {{/each}}
     </ul>
