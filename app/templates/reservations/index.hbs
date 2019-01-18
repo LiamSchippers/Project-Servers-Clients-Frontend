@@ -1,9 +1,29 @@
-<div class="route-reservations">
+<div>
   <h1>Reservations</h1>
+
   <ul>
-    {{#each model as |reservation|}}
-      <li>{{reservation.label}} - Date: {{reservation.day}}, Start: {{reservation.startHour}}, End: {{reservation.endHour}} - Building: {{reservation.building}}, Room: {{reservation.floor}}.{{reservation.roomNumber}}, Group:{{reservation.studentgroup.groupName}}</li>
-    {{/each}}
+    <table>
+      <thead>
+        <th>day</th>
+        <th>starthour</th>
+        <th>endhour</th>
+        <th>label</th>
+        <th>studentgroupid</th>
+      </thead>
+
+      <tbody>
+        {{#each model as |reservation|}}
+          <tr>
+            <td>{{reservation.day}}</td>
+            <td>{{reservation.startHour}}</td>
+            <td>{{reservation.endHour}}</td>
+            <td>{{reservation.label}}</td>
+            <td>{{reservation.studentgroup.groupName}}</td>
+            <button {{action "deleteReservation" reservation}} type="submit" value="submit">Delete</button>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
   </ul>
   {{#link-to "index"}}<button>Main page</button>{{/link-to}}
   {{#link-to "reservations.new"}}<button>New Reservation</button>{{/link-to}}
