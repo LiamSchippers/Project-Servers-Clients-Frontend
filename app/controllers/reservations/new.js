@@ -2,18 +2,6 @@ import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 import {computed} from '@ember/object';
 
-function formatDate() {
-  const today = new Date;
-  let dd = today.getDate();
-  let mm = today.getMonth() + 1;
-  const yyyy = today.getFullYear();
-
-  if (dd < 10) dd = '0' + dd;
-  if (mm < 10) mm = '0' + mm;
-
-  return dd + '-' + mm + '-' + yyyy;
-}
-
 export default Controller.extend({
   store: service(),
   studentgroups: computed(function() {
@@ -21,7 +9,6 @@ export default Controller.extend({
   }),
 
   enableGrid : function(){
-    console.log('hoi');
     if (this.get('model').get('endHour') !==undefined && this.get('model').get('startHour')!==undefined && this.get('model').get('day')!==undefined){
       this.set("toggleGridBlock", true);
     }
@@ -56,8 +43,6 @@ export default Controller.extend({
       this.enableGrid();
     },
     saveModel() {
-      console.log(this.get('model'));
-      // label definieren
       let label = this.get('model').get('day') + this.get('model').get('studentgroup').get('groupName');
       this.get('model').set('label', label);
       this.get('model').save();
