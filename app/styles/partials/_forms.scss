@@ -58,3 +58,10 @@ form {
     @include no-select();
   }
 }
+
+.form {
+  &__error {
+    margin-top: 15px;
+    color: $danger;
+  }
+}

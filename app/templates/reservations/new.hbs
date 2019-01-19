@@ -57,7 +57,7 @@
               <label>Eind tijd</label>
               <div class="default-select-box">
                 <select name="endHour" required onchange={{action "selectEndHour" value="target.value"}} onclick={{minEndHour}}>
-                  <option selected disabled>Selecteer eerst een eind tijd</option>
+                  <option selected disabled>Selecteer eerst een start tijd</option>
                   {{#each minEndHour as |minOption|}}
                     <option value={{minOption.value}}> {{minOption.time}}</option>
                   {{/each}}
@@ -89,6 +89,11 @@
               </div>
             </div>
             <button type="submit" class="btn btn--green">Reserveren</button>
+              {{#if errorMessage}}
+                <div class="form__error">
+                  {{errorMessage}}
+                </div>
+              {{/if}}
           </div>
         </div>
       </div>
