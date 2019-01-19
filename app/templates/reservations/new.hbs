@@ -31,7 +31,8 @@
             <div class="form-group">
               <label>Start tijd</label>
               <div class="default-select-box">
-                <select name="startHour" required onchange={{action "selectStartHour" value="target.value"}}>
+                <select name="startHour" required onchange={{action "selectStartHour" value="target.value"}}
+                        onclick={{minEndHour}}>
                   <option selected disabled>Selecteer start tijd</option>
                   <option value="1">08:30</option>
                   <option value="2">09:15</option>
@@ -55,24 +56,11 @@
             <div class="form-group">
               <label>Eind tijd</label>
               <div class="default-select-box">
-                <select name="endHour" required onchange={{action "selectEndHour" value="target.value"}} >
-                  <option selected disabled>Selecteer eind tijd</option>
-                  <option value="2">09:15</option>
-                  <option value="3">10:15</option>
-                  <option value="4">11:00</option>
-                  <option value="5">11:45</option>
-                  <option value="6">12:30</option>
-                  <option value="7">13:15</option>
-                  <option value="8">14:00</option>
-                  <option value="9">15:00</option>
-                  <option value="10">15:45</option>
-                  <option value="11">16:30</option>
-                  <option value="12">17:15</option>
-                  <option value="13">18:15</option>
-                  <option value="14">19:00</option>
-                  <option value="15">20:00</option>
-                  <option value="16">20:45</option>
-                  <option value="17">21:30</option>
+                <select name="endHour" required onchange={{action "selectEndHour" value="target.value"}} onclick={{minEndHour}}>
+                  <option selected disabled>Selecteer eerst een eind tijd</option>
+                  {{#each minEndHour as |minOption|}}
+                    <option value={{minOption.value}}> {{minOption.time}}</option>
+                  {{/each}}
                 </select>
               </div>
             </div>
@@ -83,7 +71,9 @@
             <div class="form-group">
               <label>Lokaal</label>
               <div class="default-select-box">
-                {{#power-select selected=selectedClassroom options=classrooms searchField="roomNumber" onchange=(action "selectClassroom") placeholder=model.classroom.roomNumber as |classroom|}}
+                {{#power-select selected=selectedClassroom options=classrooms searchField="roomNumber"
+                                onchange=(action "selectClassroom")
+                                placeholder=model.classroom.roomNumber as |classroom|}}
                   {{classroom.roomNumber}}
                 {{/power-select}}
               </div>
@@ -91,7 +81,9 @@
             <div class="form-group">
               <label>Groep</label>
               <div class="default-select-box">
-                {{#power-select selected=selectedStudentGroup options=studentgroups searchField="groupName" onchange=(action "selectStudentGroup") placeholder=model.studentgroup.groupName as |studentgroup|}}
+                {{#power-select selected=selectedStudentGroup options=studentgroups searchField="groupName"
+                                onchange=(action "selectStudentGroup")
+                                placeholder=model.studentgroup.groupName as |studentgroup|}}
                   {{studentgroup.groupName}}
                 {{/power-select}}
               </div>
