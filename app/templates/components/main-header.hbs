@@ -8,7 +8,7 @@
           </div>
           <div class="user">
             <div class="user__name" {{ action "toggleUserDropdown" }} role="button">
-              <span class="user__name__text">John Doe</span>
+              <span class="user__name__text">{{session.data.currentUser.username}}</span>
               <span
                 class="user__name_icon icon-arrow {{if dropdownOpen "user__name_icon--open"}}"
               >
