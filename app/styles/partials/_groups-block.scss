@@ -42,6 +42,12 @@
 
       .group__name {
         display: inline-block;
+        color: $dark-blue;
+        @include transition(200ms);
+
+        &:hover {
+          color: $green;
+        }
       }
       .group__expand {
         @include transition(200ms);

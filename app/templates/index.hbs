@@ -12,42 +12,7 @@
       <div class="col-12 col-md-6">
         <div class="grid-block">
           <div class="grid-block__title">Mijn reserveringen</div>
-          <div class="reservations-block">
-            <div class="reservation">
-              <div class="reservation__classroom">G5.31</div>
-              <div class="reservation__date">
-                <i class="icon-calendar"></i>
-                24 december 2018
-              </div>
-              <div class="reservation__time">
-                <i class="icon-clock"></i>
-                10:30 - 11:00
-              </div>
-            </div>
-            <div class="reservation">
-              <div class="reservation__classroom">G5.31</div>
-              <div class="reservation__date">
-                <i class="icon-calendar"></i>
-                24 december 2018
-              </div>
-              <div class="reservation__time">
-                <i class="icon-clock"></i>
-                10:30 - 11:00
-              </div>
-            </div>
-            <div class="reservation">
-              <div class="reservation__classroom">G5.31</div>
-              <div class="reservation__date">
-                <i class="icon-calendar"></i>
-                24 december 2018
-              </div>
-              <div class="reservation__time">
-                <i class="icon-clock"></i>
-                10:30 - 11:00
-              </div>
-            </div>
-            {{#link-to "reservations.index" class="btn btn--green"}}Bekijk alles{{/link-to}}
-          </div>
+          {{reservation-list reservations=model}}
         </div>
       </div>
       <div class="col-12 col-md-6">

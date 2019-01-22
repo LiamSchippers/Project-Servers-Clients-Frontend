@@ -48,8 +48,10 @@
   {{# if mobileMenuOpen }}
     <nav class="mobile-menu">
       <ul>
-        {{#link-to "index"}}<li class="mobile-menu__item mobile-menu__item--active">Dashboard</li>{{/link-to}}
-        {{#link-to "user-profile"}}<li class="mobile-menu__item">Mijn account</li>{{/link-to}}
+        {{#link-to "index"}}
+          <li class="mobile-menu__item mobile-menu__item--active">Dashboard</li>{{/link-to}}
+        {{#link-to "user-profile"}}
+          <li class="mobile-menu__item">Mijn account</li>{{/link-to}}
         <li class="mobile-menu__item">Uitloggen</li>
       </ul>
     </nav>

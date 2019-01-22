@@ -1,5 +1,5 @@
 .view {
-  &.view__dashboard {
+  &.view__dashboard, &.view__studentgroups {
     .top-bar {
       .btn__reservation {
         float: right;
