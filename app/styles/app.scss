@@ -4,6 +4,7 @@
 // Utilities
 @import "utilities/variables";
 @import "utilities/mixins";
+@import "ember-power-select";
 
 // Partials
 @import "partials/base";
@@ -16,11 +17,13 @@
 @import "partials/alerts";
 @import "partials/reservations-block";
 @import "partials/groups-block";
+@import "partials/datepicker";
 
 // Views
 @import "views/base";
 @import "views/dashboard";
 @import "views/classrooms";
 @import "views/login";
+@import "views/new-reservation";
 @import "views/user-profile";
 @import "views/studentgroups";

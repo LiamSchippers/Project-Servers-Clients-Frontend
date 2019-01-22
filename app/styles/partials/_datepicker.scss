@@ -1,0 +1,70 @@
+/***
+  * We use the flatpickr datepicker, for docs see the repo
+  * Repo: https://github.com/shipshapecode/ember-flatpickr
+ */
+.flatpickr-calendar {
+  &.arrowTop {
+    &::before {
+      border-bottom-color: $green;
+    }
+  }
+  .flatpickr-months {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: $green;
+    height: 50px;
+    .flatpickr-month {
+      height: 50px;
+      .flatpickr-current-month {
+        height: 50px;
+        line-height: 40px;
+        .cur-month {
+          font-family: 'Poppins', sans-serif;
+          font-size: 18px;
+          color: $white;
+          font-weight: 400;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          background: transparent;
+        }
+        .numInputWrapper {
+          display: none;
+        }
+      }
+    }
+    svg {
+      fill: $white;
+      margin-top: 8px;
+    }
+  }
+  .flatpickr-weekdays {
+    background-color: $green;
+    height: 50px;
+    padding: 0 10px;
+
+    .flatpickr-weekday {
+      color: $white;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+  }
+  .flatpickr-days {
+   .dayContainer {
+     padding: 10px;
+     span {
+       color: $dark-blue;
+       &:hover, &.selected {
+         background: $green;
+         border-color: $green;
+         color: $white;
+       }
+       &.disabled {
+         color: $medium-gray;
+       }
+       &.today {
+         border-color: $green;
+       }
+     }
+   }
+  }
+}

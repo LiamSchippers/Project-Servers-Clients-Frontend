@@ -1,10 +1,11 @@
 import DS from 'ember-data';
+import studentgroup from "./studentgroup";
 
 export default DS.Model.extend({
-  day: DS.attr("date"),
+  day: DS.attr("string"),
   startHour: DS.attr("number"),
   endHour: DS.attr("number"),
   label: DS.attr("string"),
-  studentgroup: DS.belongsTo("studentgroup"),
   classroom: DS.belongsTo("classroom"),
+  studentgroup: DS.belongsTo("studentgroup"),
 });

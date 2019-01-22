@@ -1,6 +1,14 @@
 form {
   .form-group {
     margin-bottom: 15px;
+    .default-input {
+      font-size: 16px;
+      color: $dark-blue;
+      font-weight: 400;
+      padding: 12px 25px;
+      outline: none;
+      @include border-radius(5px);
+      border: none;
   }
 }
 .default-input {
@@ -12,6 +20,33 @@ form {
   @include border-radius(5px);
   border: none;
 
+      &.default-input--border {
+        border: 1px solid $medium-gray;
+      }
+    }
+
+    .default-select-box {
+      border: 1px solid #ccc;
+      width: 100%;
+      border-radius: 3px;
+      overflow: hidden;
+
+      select {
+        font-size: 16px;
+        color: $dark-blue;
+        font-weight: 400;
+        padding: 12px 25px;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        -webkit-appearance: none;
+        @include border-radius(5px);
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
   &.default-input--border {
     border: 1px solid $medium-gray;
   }
@@ -21,5 +56,12 @@ form {
     background: $background-light-grey;
     color: $medium-gray;
     @include no-select();
+  }
+}
+
+.form {
+  &__error {
+    margin-top: 15px;
+    color: $danger;
   }
 }

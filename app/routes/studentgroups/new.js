@@ -10,11 +10,6 @@ export default Route.extend(isAuthorizedTeacherMixin, {
   },
 
   actions: {
-    saveModel() {
-      this.currentModel.save().then(() => {
-        this.transitionTo('studentgroups.show',this.currentModel.id);
-      })
-    },
     cancelModel() {
       this.currentModel.destroyRecord().then(() => {
         this.transitionTo('studentgroups.index')
