@@ -1,0 +1,87 @@
+const Periods = [
+  {
+    hourNumber: 1,
+    startHour: 510,
+    startHourString: "08:30",
+    endHour: 555,
+  }, {
+    hourNumber: 2,
+    startHour: 555,
+    startHourString: "09:15",
+    endHour: 600,
+  }, {
+    hourNumber: 3,
+    startHour: 615,
+    startHourString: "10:15",
+    endHour: 660,
+  }, {
+    hourNumber: 4,
+    startHour: 660,
+    startHourString: "11:00",
+    endHour: 705,
+  }, {
+    hourNumber: 5,
+    startHour: 705,
+    startHourString: "11:45",
+    endHour: 750,
+  }, {
+    hourNumber: 6,
+    startHour: 750,
+    startHourString: "12:30",
+    endHour: 795,
+  }, {
+    hourNumber: 7,
+    startHour: 795,
+    startHourString: "13:15",
+    endHour: 840,
+  }, {
+    hourNumber: 8,
+    startHour: 840,
+    startHourString: "14:00",
+    endHour: 885,
+  }, {
+    hourNumber: 9,
+    startHour: 900,
+    startHourString: "15:00",
+    endHour: 945,
+  }, {
+    hourNumber: 10,
+    startHour: 945,
+    startHourString: "15:45",
+    endHour: 990,
+  }, {
+    hourNumber: 11,
+    startHour: 990,
+    startHourString: "16:30",
+    endHour: 1035,
+  }, {
+    hourNumber: 12,
+    startHour: 1035,
+    startHourString: "17:15",
+    endHour: 1080,
+  }, {
+    hourNumber: 13,
+    startHour: 1095,
+    startHourString: "18:15",
+    endHour: 1140,
+  }, {
+    hourNumber: 14,
+    startHour: 1140,
+    startHourString: "19:00",
+    endHour: 1185,
+  }, {
+    hourNumber: 15,
+    startHour: 1200,
+    startHourString: "20:00",
+    endHour: 1245,
+  }, {
+    hourNumber: 16,
+    startHour: 1245,
+    startHourString: "20:45",
+    endHour: 1290,
+  },
+];
+
+export {
+  Periods
+};

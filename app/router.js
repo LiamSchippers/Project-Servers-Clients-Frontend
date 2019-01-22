@@ -9,6 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('classrooms', function() {
     this.route('new');
+    this.route('show', {path: '/:classroom_id'});
   });
 
   this.route('studentgroups', function() {
@@ -21,7 +22,6 @@ Router.map(function() {
     this.route('new');
   });
 
-  this.route('classroom', function() {});
   this.route('login');
   this.route('registrate');
   this.route('studentgroup', function() {});
