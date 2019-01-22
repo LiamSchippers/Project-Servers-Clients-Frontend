@@ -7,10 +7,6 @@ export default Helper.extend({
   compute([role, ...rest], hash) {
     let session = this.session;
 
-    if (session.get('data.role') === role) {
-      return true;
-    } else {
-      return false;
-    }
+    return session.get('data.role') === role;
   }
 });

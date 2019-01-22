@@ -1,7 +1,7 @@
-import Route from '@ember/routing/route';
 import {inject} from '@ember/service';
+import Mixin from '@ember/object/mixin';
 
-export default Route.extend({
+export default Mixin.create({
   session: inject(),
   /**
    * In some cases, access checking in #beforeModel is not sufficient.
@@ -10,10 +10,15 @@ export default Route.extend({
    */
   skipBeforeModelAccessCheck: false,
   beforeModel(transition) {
-    if (!this.session.isAuthenticated) {
-      return transition;
+    const session = this.session;
+    if (session.isAuthenticated) {
+      if (session.get('data.role') === "admin") {
+        return transition;
+      } else {
+        this.transitionTo('index');
+      }
     } else {
-      this.transitionTo('index');
+      this.transitionTo('login');
     }
   }
 });
