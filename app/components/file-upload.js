@@ -57,11 +57,11 @@ export default Component.extend({
         if (studentRoomString.split(';').length > 1) {
           let student = this.get('store').createRecord('ExtendedUser');
           student.set("role", "student");
-          student.set("password", "password");
           studentRoomString.split(';').forEach((fieldValue, index) => {
             switch (index) {
               case 1:
                 student.set("email", fieldValue + "@student.saxion.nl");
+                student.set("password", fieldValue);
                 break;
               case 2:
                 student.set("username", fieldValue);
