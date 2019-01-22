@@ -11,11 +11,9 @@ export default Component.extend({
       hours[i] = [];
     }
 
-
     this.reservations.forEach(reservation => {
       hours[reservation.get('startHour')].pushObject(reservation);
     });
-
 
     return hours;
   })
