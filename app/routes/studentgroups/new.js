@@ -1,15 +1,25 @@
 import Route from '@ember/routing/route';
+import isAuthorizedTeacherMixin from '../../mixins/authorization-teacher-route-mixin';
 
-export default Route.extend({
+export default Route.extend(isAuthorizedTeacherMixin, {
+
+
   //return create record model of studentgroup.
-  model () {
+  model() {
     return this.store.createRecord('studentgroup');
   },
+
   actions: {
-    //Save the current model and transition to /studentgroups
-    saveModel() {
-      this.currentModel.save();
-      this.transitionTo('studentgroups');
+    cancelModel() {
+      this.currentModel.destroyRecord().then(() => {
+        this.transitionTo('studentgroups.index')
+      })
+    },
+    willTransition(transition) {
+      if (this.currentModel.isNew && !this.currentModel.isSaving) {
+        transition.abort();
+        this.currentModel.destroyRecord().then(() => transition.retry());
+      }
     }
   }
 });

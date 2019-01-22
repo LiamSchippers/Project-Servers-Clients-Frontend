@@ -1,4 +1,21 @@
-<div class="route-studentgroups">
-  <h1>New student group</h1>
-  {{partial "studentgroups/form"}}
-</div>
+<main class="view view__studentgroups">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="top-bar">
+          <h1>Nieuwe groep</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="grid-block">
+          <div class="grid-block__title">Gegevens nieuwe groep</div>
+          <div class="reservations-block">
+            {{partial "studentgroups/form"}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

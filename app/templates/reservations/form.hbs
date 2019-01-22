@@ -1,73 +1,40 @@
 <form id="formReservation"{{action "saveModel" on="submit"}}>
   <h3>{{availableClassrooms}}</h3>
   <h3>Group</h3>
-  {{input type="text" list="studentgroups" id='group' value=model.studentgroup.name placeholder="Choose group"  required=true}}
-
+  <select onchange={{action "selectStudentGroup" value="target.value"}}>
+    <option selected disabled>Choose your studentgroup</option>
+    {{#each studentgroups as |studentgroup|}}
+      <option value="{{studentgroup.id}}">{{studentgroup.groupName}}</option>
+    {{/each}}
+  </select>
   <h3>Date</h3>
-  {{input type="date" value=model.day id='date' placeholder="Choose date" min=minDate max=maxDate required=true}}
+
+{{input type="date" value=model.day id='date' placeholder="Choose date" min=minDate max=maxDate required=true}}
   <br>
   <h3>Time</h3>
   <h4>Start hour</h4>
-  {{input type="number" list="lesuur" value=model.startHour placeholder="Choose hour" min=1 max=model.endHour
-          required=true}}
+{{input type="number" list="lesuur" value=model.startHour placeholder="Choose hour" min=1 max=model.endHour
+        required=true}}
   <h4>End hour</h4>
-  {{input type="number" list="lesuur" value=model.endHour placeholder="Choose hour" min=model.startHour max=16
-          required=true}}
+{{input type="number" list="lesuur" value=model.endHour placeholder="Choose hour" min=model.startHour max=16
+        required=true}}
   <br>
   <h3>Location</h3>
   <h4>Building</h4>
-  {{input type="text" list="gebouw" value=model.building placeholder="Choose building" required=true}}
-  <h4>Floor</h4>
-  {{input type="number" list="floor" value=model.floor placeholder="Choose floor" required=true}}
-  <h4>Room number</h4>
-  {{input type="number" list="roomNumber" value=model.roomNumber placeholder="Choose room" required=true}}
+{{input type="text" list="gebouw" value=model.building placeholder="Choose building" required=true}}
+  <h4>Classroom</h4>
+  <select name="classroom" required onchange={{action "selectClassroom" value="target.value"}}>
+    <option selected disabled>Choose your classroom</option>
+    {{#each classrooms as |classroom|}}
+      <option value="{{classroom.id}}">{{classroom.roomNumber}} </option>
+    {{/each}}
+  </select>
   <h4>Reservation name</h4>
-  {{input type="text" value=model.label placeholder="Example: Project meeting" required=true}}
+{{input type="text" value=model.label placeholder="Example: Project meeting" required=true}}
   <br>
-  {{#link-to "index"}}
+{{#link-to "index"}}
     <button>Cancel</button>{{/link-to}}
   <button type="submit" value="submit">Save reservation</button>
 </form>
 
-<datalist id="lesuur">
-  <option value="1">1e uur</option>
-  <option value="2">2e uur</option>
-  <option value="3">3e uur</option>
-  <option value="4">4e uur</option>
-  <option value="5">5e uur</option>
-  <option value="6">6e uur</option>
-  <option value="7">7e uur</option>
-  <option value="8">8e uur</option>
-  <option value="9">9e uur</option>
-  <option value="10">10e uur</option>
-  <option value="11">11e uur</option>
-  <option value="12">12e uur</option>
-  <option value="13">13e uur</option>
-  <option value="14">14e uur</option>
-  <option value="15">15e uur</option>
-  <option value="16">16e uur</option>
-</datalist>
-<datalist id="gebouw">
-  <option selected disabled>Choose building</option>
-  <option value="Epydrost"> Epydrost</option>
-</datalist>
-<datalist id="floor">
-  <option selected disabled>Choose floor</option>
-  <option value="4">4th floor</option>
-  <option value="5">5th floor</option>
-</datalist>
-<datalist id="roomNumber">
-  <option selected disabled>Choose room</option>
-  <option value="30"> 30</option>
-  <option value="31"> 31</option>
-  <option value="32"> 32</option>
-  <option value="33"> 33</option>
-  {{#each availableClassrooms as |classroom|}}
-    <option value="1"> hoi</option>
-  {{/each}}
-</datalist>
-<datalist id="studentgroups">
-  {{#each studentgroups as |studentgroup|}}
-    <option>{{studentgroup.groupName}}</option>
-  {{/each}}
-</datalist>
+<!--koekje-->

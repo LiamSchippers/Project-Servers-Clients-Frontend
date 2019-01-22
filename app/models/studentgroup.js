@@ -3,11 +3,10 @@ import {computed} from '@ember/object';
 
 
 export default DS.Model.extend({
-  groupID: DS.attr('number'),
   groupName: DS.attr('string'),
-  hours: DS.attr('number'),
-  maxHours: DS.attr('number'),
-  groupMembers: DS.attr(),
+  reservableHours: DS.attr('number'),
+  reservations: DS.hasMany('reservation'),
+  memberships: DS.hasMany('membership'),
 
   amountOfGroupMembers: computed(function() {
     return 10;

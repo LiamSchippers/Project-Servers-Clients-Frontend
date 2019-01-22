@@ -1,4 +1,127 @@
-<div class="route-reservations">
-  <h1>New reservation</h1>
-  {{partial "reservations/form"}}
-</div>
+<main class="view view__new-reservation">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="top-bar top-bar__text-only">
+          <h1>Reserveren</h1>
+        </div>
+      </div>
+    </div>
+    <form id="formReservation"{{action "saveModel" on="submit"}}>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="grid-block">
+            <div class="form-group">
+              <label for="date" required>Datum</label>
+              {{ember-flatpickr
+                onChange=(action (mut dateValue))
+                class="default-input default-input--border date-picker icon-arrow"
+                placeholder="Selecteer datum"
+                value=model.day
+                id="date"
+                required="true"
+                onClose=(action "selectDay")
+                maxDate=maxDate
+                minDate=minDate
+                locale='nl'
+                dateFormat='d M Y'
+                disableMobile=false
+              }}
+            </div>
+            <div class="form-group">
+              <label>Start tijd</label>
+              <div class="default-select-box">
+                <select name="startHour" required onchange={{action "selectStartHour" value="target.value"}}
+                        onclick={{minEndHour}}>
+                  <option selected disabled>Selecteer start tijd</option>
+                  <option value="1">08:30</option>
+                  <option value="2">09:15</option>
+                  <option value="3">10:15</option>
+                  <option value="4">11:00</option>
+                  <option value="5">11:45</option>
+                  <option value="6">12:30</option>
+                  <option value="7">13:15</option>
+                  <option value="8">14:00</option>
+                  <option value="9">15:00</option>
+                  <option value="10">15:45</option>
+                  <option value="11">16:30</option>
+                  <option value="12">17:15</option>
+                  <option value="13">18:15</option>
+                  <option value="14">19:00</option>
+                  <option value="15">20:00</option>
+                  <option value="16">20:45</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Eind tijd</label>
+              <div class="default-select-box">
+                <select name="endHour" required onchange={{action "selectEndHour" value="target.value"}} onclick={{minEndHour}}>
+                  <option selected disabled>Selecteer eerst een start tijd</option>
+                  {{#each minEndHour as |minOption|}}
+                    <option value={{minOption.value}}> {{minOption.time}}</option>
+                  {{/each}}
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="grid-block {{ unless toggleGridBlock "grid-block--disabled"}}">
+            <div class="form-group">
+              <label>Lokaal</label>
+              <div class="default-select-box">
+                {{#power-select selected=selectedClassroom options=classrooms searchField="roomNumber"
+                                onchange=(action "selectClassroom")
+                                placeholder=model.classroom.roomNumber as |classroom|}}
+                  {{classroom.roomNumber}}
+                {{/power-select}}
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Groep</label>
+              <div class="default-select-box">
+                {{#power-select selected=selectedStudentGroup options=studentgroups searchField="groupName"
+                                onchange=(action "selectStudentGroup")
+                                placeholder=model.studentgroup.groupName as |studentgroup|}}
+                  {{studentgroup.groupName}}
+                {{/power-select}}
+              </div>
+            </div>
+            <button type="submit" class="btn btn--green">Reserveren</button>
+              {{#if errorMessage}}
+                <div class="form__error">
+                  {{errorMessage}}
+                </div>
+              {{/if}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="grid-block margin-top">
+            <div class="grid-block__title">Beschikbare lokalen voor deze tijd</div>
+            <div class="reservations-block">
+              <div class="reservation">
+                <div class="reservation__classroom">G5.31</div>
+                <div class="reservation__date">
+                  <i class="icon-location"></i>
+                  Epy Drost
+                </div>
+                <button type="button" class="btn btn__select btn--green">Selecteer</button>
+              </div>
+              <div class="reservation">
+                <div class="reservation__classroom">G5.31</div>
+                <div class="reservation__date">
+                  <i class="icon-location"></i>
+                  Epy Drost
+                </div>
+                <button type="button" class="btn btn__select btn--green">Selecteer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>

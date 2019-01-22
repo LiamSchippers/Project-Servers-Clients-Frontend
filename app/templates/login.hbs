@@ -25,20 +25,7 @@
     </form>
     <span class="separator"></span>
     <p>Nog geen account?</p>
-    <button class="btn btn--gray">Registreren</button>
+    {{#link-to "registrate" class="btn btn--gray"}}Registreren{{/link-to}}
   </div>
-
-  <p>
-    <label>Wachtwoord: </label>
-    {{input value=password type="password"}}
-  </p>
-
-  <button {{action "login" email password}}>Log in</button>
-
-  <p>
-      <a>
-          {{#link-to "registrate"}}Registreren{{/link-to}}
-      </a>
-  </p>
 </main>
 
