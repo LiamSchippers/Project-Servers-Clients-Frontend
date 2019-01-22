@@ -41,7 +41,7 @@ export default Component.extend({
             }
           });
           nmbClassrooms++;
-          classRoom.save();
+          classRoom.save().then(()=>{nmbClassrooms++;}).catch(()=> {classRoom.deleteRecord();});
         }
       });
       this.set('messageClassroom', "Importeren gelukt, " + nmbClassrooms + " lokalen toegevoegd");
@@ -70,8 +70,7 @@ export default Component.extend({
                 break;
             }
           });
-          nmbStudents++;
-          student.save();
+          student.save().then(()=>{nmbStudents++;}).catch(()=> {student.deleteRecord();});
         }
       });
       this.set('messageStudent', "Importeren gelukt, " + nmbStudents + " studenten toegevoegd");
@@ -100,7 +99,7 @@ export default Component.extend({
     //         }
     //       });
     //       nmbTeachers++;
-    //       teacher.save();
+    //       teacher.save().then(()=>{nmbTeachers++;}).catch(()=> {teacher.deleteRecord();});
     //     }
     //   });
     //   this.set('message', "Importeren gelukt, " + nmbTeachers + " docenten toegevoegd");
