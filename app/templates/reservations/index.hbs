@@ -1,28 +1,19 @@
-<div>
-  <h1>Reservations</h1>
-
-  <ul>
-    <table>
-      <thead>
-        <th>day</th>
-        <th>starthour</th>
-        <th>endhour</th>
-        <th>label</th>
-        <th>studentgroupid</th>
-      </thead>
-
-      <tbody>
-        {{#each model as |reservation|}}
-          <tr>
-            <td>{{reservation.day}}</td>
-            <td>{{reservation.startHour}}</td>
-            <td>{{reservation.endHour}}</td>
-            <td>{{reservation.label}}</td>
-            <td>{{reservation.studentgroup.groupName}}</td>
-            <button {{action "deleteReservation" reservation}} type="submit" value="submit">Delete</button>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
-  </ul>
-</div>
+<main class="view view__profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="grid-block grid-block--reservations grid-block--margin-top">
+          <div class="grid-block__title">Overzicht reserveringen</div>
+          <input
+              type="text"
+              placeholder="Zoek reservering"
+              class="default-input search-bar"
+          >
+          <div class="reservations-block">
+            {{reservation-list reservations=model delete=(action "sayHi")}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

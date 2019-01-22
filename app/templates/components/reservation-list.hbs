@@ -12,9 +12,11 @@
         -
         {{reservation.endHour}}
       </div>
+      <i class="icon-delete reservation__delete" {{action "deleteReservation" reservation}}></i>
+      <i class="icon-edit reservation__edit"></i>
     </div>
   {{else}}
     <div>Je hebt geen reserveringen</div>
   {{/each}}
-  {{#link-to "reservations.index" class="btn btn--green"}}Bekijk alles{{/link-to}}
 </div>
+{{yield}}
