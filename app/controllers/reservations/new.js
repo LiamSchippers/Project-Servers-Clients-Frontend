@@ -25,8 +25,48 @@ export default Controller.extend({
   errorMessage: computed('errorMessageText', function() {
       return this.get('errorMessageText');
   }),
-  classrooms: computed(function () {
-    return this.get('store').findAll('classroom');
+  classrooms: computed('availableSpots', function () {
+    //when the promise resolves return all the classrooms
+    //after the promise resolves the classrooms should have the value availableSpots for the selectedStartHour
+    this.availableSpots.finally(() => {
+      return this.get('store').findAll('classroom');
+    });
+  }),
+  availableSpots: computed('startHour', 'day', function () {
+    const selectedStartHour = +this.get('model').get('startHour');
+    const selectedDay = +this.get('model').get('day');
+    let classrooms = this.get('store').findAll('classroom');
+
+    return new Promise(function (resolve, reject) {
+      classrooms.then((classrooms) => {
+        //loop through all the classrooms
+        //for each classroom we want to see if it has reservations for the selectedStartHour
+        classrooms.forEach((classroom) => {
+          let availableSpots = classroom.capacity;
+          let reservations = classroom.get('reservations');
+          reservations.then((reservations) => {
+            //loop through all the reservations
+            //for each reservation check if the selectedStartHour is between reserved times
+            //if so the amount of groupmembers within the studentgroup of the reservation should be subtracted from the availableSpots
+            reservations.forEach((reservation) => {
+              // if the selectedDay matches the reservation day, we want to start comparing hours
+              if (reservation.get('day') === selectedDay) {
+                let startHour = reservation.get('startHour');
+                let endHour = reservation.get('endHour');
+                //if the selected startHour is within the reserved hours,
+                //then we want to update the availableSpots
+                if (selectedStartHour => startHour && selectedStartHour < endHour) {
+                  availableSpots -= reservation.studentgroup.get('amountOfGroupMembers');
+                }
+              }
+            });
+
+            //after looping through all the reservations we want to set the availableSpots attribute of the classroom model
+            classroom.set('availableSpots', availableSpots);
+          });
+        });
+      });
+    })
   }),
   actions: {
     selectStudentGroup: function (studentgroup) {
@@ -66,35 +106,4 @@ export default Controller.extend({
       }
     }
   }
-  }),
-  classrooms: computed(function () {
-    return this.get('store').findAll('classroom');
-  }),
-  // availableClassrooms: computed('classrooms', 'studentgroups', function () {
-  //   let _this = this;
-  //   return new Promise(function(resolve, reject) {
-  //     let amountOfGroupMembers;
-  //     let availableClassRooms = [];
-  //     _this.studentgroups.then((studentgroups) => {
-  //       studentgroups.forEach((studentgroup) => {
-  //         if (studentgroup.get('groupName') === 'groupName') {
-  //           amountOfGroupMembers = studentgroup.get('amountOfGroupMembers');
-  //         }
-  //       });
-  //       _this.classrooms.then((classrooms) => {
-  //         console.log(classrooms);
-  //         classrooms.forEach((classroom) => {
-  //           let availableSpots = classroom.get('availableSpots');
-  //           if (availableSpots >= amountOfGroupMembers) {
-  //             console.log("deze classroom kan: " + classroom);
-  //             availableClassRooms.push(classroom);
-  //           }
-  //         });
-  //       }).finally(() => {
-  //         resolve(availableClassRooms);
-  //       });
-  //     });
-  //     console.log(availableClassRooms);
-  //   });
-  // })
 });

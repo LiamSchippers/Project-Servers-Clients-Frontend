@@ -8,7 +8,19 @@ export default DS.Model.extend({
   reservations: DS.hasMany('reservation'),
   memberships: DS.hasMany('membership'),
 
-  amountOfGroupMembers: computed(function() {
-    return 10;
+  amountOfGroupMembers: computed('membership', function () {
+    //amountOfGroupMembers standard set to 0;
+    let amount = 0;
+    let _this = this;
+
+    return new Promise(function (resolve, reject) {
+      //for each membership the studentgroup has, we want to add that up to the amount variable
+      _this.memberships.then((memberships) => {
+        memberships.forEach((membership) => {
+          amount++;
+        })
+      });
+      return amount;
+    });
   })
 });
