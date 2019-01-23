@@ -11,7 +11,7 @@ export default Component.extend({
     if (classroomFile) {
       this.readFileContent(classroomFile).then((textFile) => {
         let content = textFile.split('\n');
-        let fieldNames = content.shift().split(';');
+        content.shift();
         let nmbClassrooms = 0;
 
         content.forEach((classRoomString) => {
@@ -41,23 +41,24 @@ export default Component.extend({
                   break;
               }
             });
-            nmbClassrooms++;
             classRoom.save().then(() => {
               nmbClassrooms++;
+              this.set('messageClassroom', "Importeren gelukt, " + nmbClassrooms + " lokalen toegevoegd");
             }).catch(() => {
               classRoom.deleteRecord();
             });
           }
         });
-        this.set('messageClassroom', "Importeren gelukt, " + nmbClassrooms + " lokalen toegevoegd");
       });
+    }else {
+      this.set('messageClassroom', "Importeren gelukt, 0 lokalen toegevoegd");
     }
 
     let studentFile = this.element.querySelector('[name="student_csv"]').files[0];
     if (studentFile) {
       this.readFileContent(studentFile).then((textFile) => {
         let content = textFile.split('\n');
-        let fieldNames = content.shift().split(';');
+        content.shift();
         let nmbStudents = 0;
         let store = this.get('store');
         this.groupList = content;
@@ -73,9 +74,9 @@ export default Component.extend({
                   break;
                 case 2:
                   student.set("username", fieldValue);
-                  nmbStudents++;
                   student.save().then(() => {
                     nmbStudents++;
+                    this.set('messageStudent', "Importeren gelukt, " + nmbStudents + " studenten toegevoegd");
                   }).catch(() => {
                     student.deleteRecord();
                     store.query('ExtendedUser', {
@@ -94,39 +95,46 @@ export default Component.extend({
           }
         });
         this.createOrFindGroup(store, 0);
-        this.set('messageStudent', "Importeren gelukt, " + nmbStudents + " studenten toegevoegd");
       });
+    }else{
+      this.set('messageStudent', "Importeren gelukt, 0 studenten toegevoegd");
     }
 
-    // let teacherFile = this.element.querySelector('[name="teacher_csv"]').files[0];
-    // this.readFileContent(teacherFile).then((textFile) => {
-    //   let content = textFile.split('\n');
-    //   let fieldNames = content.shift().split(';');
-    //   let nmbTeachers = 0;
-    //
-    //   content.forEach((teacherString) => {
-    //     if (teacherString.split(';').length > 1) {
-    //       let teacher = this.get('store').createRecord('ExtendedUser');
-    //       teacher.set("role", "teacher");
-    //       teacherString.split(';').forEach((fieldValue, index) => {
-    //         switch (index) {
-    //           case 1:
-    //             teacher.set("email", fieldValue + "@student.saxion.nl");
-    //             break;
-    //           case 2:
-    //             teacher.set("username", fieldValue);
-    //             break;
-    //           default:
-    //             break;
-    //         }
-    //       });
-    //       nmbTeachers++;
-    //       teacher.save().then(()=>{nmbTeachers++;}).catch(()=> {teacher.deleteRecord();});
-    //     }
-    //   });
-    //   this.set('message', "Importeren gelukt, " + nmbTeachers + " docenten toegevoegd");
-    // });
+    let teacherFile = this.element.querySelector('[name="teacher_csv"]').files[0];
+    if (teacherFile) {
+      this.readFileContent(teacherFile).then((textFile) => {
+        let content = textFile.split('\n');
+        content.shift();
+        let nmbTeachers = 0;
 
+        content.forEach((teacherString) => {
+          if (teacherString.split(';').length > 1) {
+            let teacher = this.get('store').createRecord('ExtendedUser');
+            teacher.set("role", "teacher");
+            teacherString.split(';').forEach((fieldValue, index) => {
+              switch (index) {
+                case 2:
+                  teacher.set("email", fieldValue + "@saxion.nl");
+                  teacher.set("username", fieldValue);
+                  teacher.set("password", fieldValue);
+                  break;
+                default:
+                  break;
+              }
+            });
+            teacher.save().then(() => {
+              nmbTeachers++;
+              this.set('messageTeacher', "Importeren gelukt, " + nmbTeachers + " docenten toegevoegd");
+            }).catch(() => {
+              teacher.deleteRecord();
+            });
+          }
+        });
+
+      });
+    }else{
+      this.set('messageTeacher', "Importeren gelukt, 0 docenten toegevoegd");
+    }
   },
   readFileContent(file) {
     const reader = new FileReader();
@@ -168,15 +176,11 @@ export default Component.extend({
               group = group.get("firstObject");
               if (group) {
                 upper.findUser(store, split, group, i);
-              } else {
-                console.log("something went wrong");
               }
             })
           });
         }
       });
-    }else {
-      this.set('messageMembership', "Importeren gelukt, " + i + " studenten toegevoegd aan project groepen.");
     }
   },
   findUser(store, split, group, i){
@@ -190,8 +194,6 @@ export default Component.extend({
       let student = users.get('firstObject');
       if (student) {
         this.createMembership(store, group, student, i);
-      }else {
-        console.log("Something went wrong!");
       }
     });
   },
@@ -202,6 +204,7 @@ export default Component.extend({
     membership.set("userId", student.id);
     membership.save().then(()=>{
       i++;
+      this.set('messageMembership', "Importeren gelukt, " + i + " studenten toegevoegd aan project groepen.");
       this.createOrFindGroup(store, i);
     }).catch(()=>{
       membership.deleteRecord();
