@@ -1,8 +1,7 @@
 import Route from '@ember/routing/route';
-import isAuthenticatedMixin from '../../mixins/authentication-route-mixin';
 import isAuthorizedTeacherMixin from '../../mixins/authorization-teacher-route-mixin';
 
-export default Route.extend(isAuthenticatedMixin, isAuthorizedTeacherMixin, {
+export default Route.extend(isAuthorizedTeacherMixin, {
 
 
   //return create record model of studentgroup.
@@ -11,11 +10,6 @@ export default Route.extend(isAuthenticatedMixin, isAuthorizedTeacherMixin, {
   },
 
   actions: {
-    saveModel() {
-      this.currentModel.save().then(() => {
-        this.transitionTo('studentgroups.show',this.currentModel.id);
-      })
-    },
     cancelModel() {
       this.currentModel.destroyRecord().then(() => {
         this.transitionTo('studentgroups.index')
