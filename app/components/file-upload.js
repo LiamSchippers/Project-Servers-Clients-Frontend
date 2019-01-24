@@ -1,8 +1,8 @@
 import Component from '@ember/component';
-import Ember from 'ember';
+import {inject} from '@ember/service';
 
 export default Component.extend({
-  store: Ember.inject.service(),
+  store: inject(),
   tagName: 'form',
 
   submit(event) {
@@ -10,7 +10,6 @@ export default Component.extend({
     let classroomFile = this.element.querySelector('[name="classroom_csv"]').files[0];
     this.readFileContent(classroomFile).then((textFile) => {
       let content = textFile.split('\n');
-      let fieldNames = content.shift().split(';');
       let nmbClassrooms = 0;
 
       content.forEach((classRoomString) => {
@@ -50,7 +49,6 @@ export default Component.extend({
     let studentFile = this.element.querySelector('[name="student_csv"]').files[0];
     this.readFileContent(studentFile).then((textFile) => {
       let content = textFile.split('\n');
-      let fieldNames = content.shift().split(';');
       let nmbStudents = 0;
 
       content.forEach((studentRoomString) => {
