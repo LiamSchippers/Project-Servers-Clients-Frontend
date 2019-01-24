@@ -12,6 +12,36 @@ export default Controller.extend({
         });
       });
     });
+
     return currentReservations;
+  }),
+  laterReservedClassrooms: Ember.computed('model', 'model.@each.reservations', 'model.@each', function () {
+    let laterReservations = [];
+    this.get('model').forEach(classroom => {
+      classroom.get('reservations').then(reservations => {
+        reservations.forEach(reservation => {
+          // console.log(reservation.day);
+        });
+      });
+    });
+    // console.log(laterReservations);
+    return laterReservations;
+  }),
+  freeClassrooms: Ember.computed('model', 'model.@each.reservations', 'model.@each', function () {
+    let freeReservations = [];
+    this.get('model').forEach(classroom => {
+      classroom.get('reservations').then(reservations => {
+        reservations.forEach(reservation => {
+          console.log(classroom.id);
+          console.log(reservation.classroom.id);
+            // if(classroom.id === reservation.classroom.id) {
+            //   console.log("Reservation id: " + reservation.id);
+            //   console.log(reservation);
+            // }
+        });
+      });
+    });
+
+    return freeReservations;
   }),
 });

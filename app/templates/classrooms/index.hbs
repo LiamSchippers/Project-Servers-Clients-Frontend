@@ -8,6 +8,7 @@
     {{/link-to}}
   {{/if}}
 
+  <h1>Reserved classrooms</h1>
   <ul>
     <table>
       <thead>
@@ -21,6 +22,42 @@
             <td>{{classroom.capacity}}</td>
           </tr>
         {{/each}}
+      </tbody>
+    </table>
+  </ul>
+
+  <h1>Later reserved classrooms</h1>
+  <ul>
+    <table>
+      <thead>
+      <th>Classroom</th>
+      <th>Capacity</th>
+      </thead>
+      <tbody>
+      {{#each laterReservedClassrooms as |classroom|}}
+        <tr>
+          <td>{{classroom.roomNumber}}</td>
+          <td>{{classroom.capacity}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </ul>
+
+  <h1>Free classrooms</h1>
+  <ul>
+    <table>
+      <thead>
+      <th>Classroom</th>
+      <th>Capacity</th>
+      </thead>
+      <tbody>
+      {{#each freeClassrooms as |classroom|}}
+        <tr>
+          <td>{{classroom.roomNumber}}</td>
+          <td>{{classroom.capacity}}</td>
+        </tr>
+      {{/each}}
       </tbody>
     </table>
   </ul>

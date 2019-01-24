@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 import studentgroup from "./studentgroup";
 import { computed } from '@ember/object';
+import {Periods} from 'webroombooking-ui-test/constants'
 
 export default DS.Model.extend({
   day: DS.attr("string"),
@@ -11,7 +12,15 @@ export default DS.Model.extend({
   studentgroup: DS.belongsTo("studentgroup"),
 
   now: computed('day', 'startHour', 'endHour', function() {
-    const day = this.get('day');
+    let date = new Date();
+    let timeNow = (date.getHours() * 60) + date.getMinutes();
+
+    Periods.forEach(function (period) {
+      if (timeNow >= period.startHour && timeNow < period.endHour) {
+        return true;
+      }
+    });
+
     return false;
   })
 });

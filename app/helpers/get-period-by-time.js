@@ -7,7 +7,6 @@ export default Helper.extend({
     let timeNow = (date.getHours() * 60) + date.getMinutes();
 
     Periods.forEach(function (period) {
-      console.log(period);
       if (timeNow >= period.startHour && timeNow < period.endHour) {
         return period.hourNumber;
       }
