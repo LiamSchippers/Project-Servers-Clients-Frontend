@@ -23,6 +23,7 @@ Router.map(function() {
   });
 
   this.route('login');
+  this.route('admin');
   this.route('registrate');
   this.route('studentgroup', function() {});
   this.route('user-profile', { path: '/profile'});
