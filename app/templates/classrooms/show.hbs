@@ -1,0 +1,36 @@
+<main class="view view__classrooms">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="top-bar">
+          <h1>Classroom {{model.roomNumber}}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="grid-block">
+          <div class="grid-block__title">Details</div>
+          <div class="grid-block__content">
+            <table class="details-table">
+              <tr>
+                <th>Capacity:</th><td>{{model.capacity}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="grid-block">
+          <div class="grid-block__title">Reservation overview</div>
+          <div class="timeline-block">
+            {{#each groupedReservations as |reservationGroup|}}
+              <div class="timeline-item">
+                <span class="date">{{moment-format reservationGroup.day "dddd D MMMM"}}</span>
+                {{reservation-timeline reservationGroup.contents}}
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -5,3 +5,14 @@
   text-align: left;
 }
 
+.view {
+  &.view__classrooms {
+    table.details-table {
+      th {
+        padding-right: 10px;
+        font-weight: normal;
+      }
+    }
+  }
+}
+

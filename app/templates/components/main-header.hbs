@@ -19,7 +19,13 @@
                 <div class="user__dropdown">
                   <ul>
                     <li>{{#link-to "index" invokeAction=(action "toggleUserDropdown")}}Dashboard{{/link-to}}</li>
-                    <li>{{#link-to "user-profile" invokeAction=(action "toggleUserDropdown")}}Mijn account{{/link-to}}</li>
+                    <li>{{#link-to "classrooms.index" invokeAction=(action "toggleUserDropdown")}}
+                      Lokalen{{/link-to}}</li>
+                    {{#if (has-role "teacher")}}
+                      <li>{{#link-to "studentgroups.index" invokeAction=(action "toggleUserDropdown")}}
+                        Groepen{{/link-to}}</li>{{/if}}
+                    <li>{{#link-to "user-profile" invokeAction=(action "toggleUserDropdown")}}
+                      Mijn account{{/link-to}}</li>
                     <li>{{#link-to "login" invokeAction=(action "logOut")}}Uitloggen{{/link-to}}</li>
                   </ul>
                 </div>
@@ -50,6 +56,11 @@
       <ul>
         {{#link-to "index"}}
           <li class="mobile-menu__item mobile-menu__item--active">Dashboard</li>{{/link-to}}
+        {{#link-to "classrooms.index"}}
+          <li class="mobile-menu__item mobile-menu__item--active">Lokalen</li>{{/link-to}}
+        {{#if (has-role "teacher")}}
+          {{#link-to "studentgroups.index"}}
+            <li class="mobile-menu__item mobile-menu__item--active">Groepen</li>{{/link-to}}{{/if}}
         {{#link-to "user-profile"}}
           <li class="mobile-menu__item">Mijn account</li>{{/link-to}}
         <li class="mobile-menu__item">Uitloggen</li>
