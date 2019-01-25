@@ -6,6 +6,7 @@ export default Component.extend({
   tagName: 'form',
   submit(event){
     event.preventDefault();
+    let upper = this;
     let collegeFile = this.element.querySelector('[name="college_csv"]').files[0];
     if (collegeFile){
       if (collegeFile) {
@@ -48,7 +49,7 @@ export default Component.extend({
 
                   college.save().then(() => {
                     nmbCollege++;
-                    this.set('message', "Importeren gelukt, " + nmbCollege + " colleges toegevoegd");
+                    upper.set('message', "Importeren gelukt, " + nmbCollege + " colleges toegevoegd");
                   }).catch(() => {
                     college.deleteRecord();
                   });
