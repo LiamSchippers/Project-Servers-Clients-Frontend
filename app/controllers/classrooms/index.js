@@ -6,7 +6,7 @@ export default Controller.extend({
     this.get('model').forEach(classroom => {
       classroom.get('reservations').then(reservations => {
         reservations.forEach(reservation => {
-          if (reservation.now) {
+          if(reservation.now) {
             currentReservations.pushObject(classroom);
           }
         });
@@ -20,7 +20,7 @@ export default Controller.extend({
     this.get('model').forEach(classroom => {
       classroom.get('reservations').then(reservations => {
         reservations.forEach(reservation => {
-          // console.log(reservation.day);
+
         });
       });
     });
@@ -32,12 +32,7 @@ export default Controller.extend({
     this.get('model').forEach(classroom => {
       classroom.get('reservations').then(reservations => {
         reservations.forEach(reservation => {
-          console.log(classroom.id);
-          console.log(reservation.classroom.id);
-            // if(classroom.id === reservation.classroom.id) {
-            //   console.log("Reservation id: " + reservation.id);
-            //   console.log(reservation);
-            // }
+          freeReservations.pushObject(classroom);
         });
       });
     });

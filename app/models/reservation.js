@@ -11,11 +11,13 @@ export default DS.Model.extend({
   classroom: DS.belongsTo("classroom"),
   studentgroup: DS.belongsTo("studentgroup"),
 
-  now: computed('day', 'startHour', 'endHour', function() {
+  now: computed('day', 'startHour', 'endHour', function(jow) {
+    console.log(this.day);
     let date = new Date();
     let timeNow = (date.getHours() * 60) + date.getMinutes();
 
     Periods.forEach(function (period) {
+      console.log("timeNow: " + timeNow + " startHour: " + period.startHour + " endHour: " + period.endHour);
       if (timeNow >= period.startHour && timeNow < period.endHour) {
         return true;
       }
