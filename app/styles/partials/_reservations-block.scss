@@ -69,10 +69,6 @@
       }
     }
 
-    .btn {
-      margin-top: 50px;
-    }
-
     @include media-breakpoint-down(lg) {
       .reservation {
         > div {
@@ -90,5 +86,8 @@
         width: 100%;
       }
     }
+  }
+  .btn {
+    margin-top: 50px;
   }
 }
