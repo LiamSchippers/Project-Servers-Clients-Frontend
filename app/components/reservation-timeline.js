@@ -6,10 +6,7 @@ import {isEmpty} from '@ember/utils';
 
 export default Component.extend({
   hours: computed('reservations', 'reservations.[]', 'reservations.@each.startHour', function () {
-    let hours = new Array(16);
-    for (let i = 0; i < hours.length; i++) {
-      hours[i] = [];
-    }
+    let hours =  [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
 
     this.reservations.forEach(reservation => {
       hours[reservation.get('startHour')].pushObject(reservation);

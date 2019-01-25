@@ -1,6 +1,6 @@
 import { helper } from '@ember/component/helper';
 
-export function sum(params/*, hash*/) {
+export function sum(params) {
   return params[0] + params[1];
 }
 

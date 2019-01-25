@@ -3,10 +3,10 @@ import {computed} from '@ember/object';
 
 export default Controller.extend({
   groupedReservations: computed('model.reservations', 'model.reservations.[]', 'model.reservations.@each.day', function () {
-    var groups = [];
+    let groups = [];
 
     this.get('model.reservations').forEach(function (reservation) {
-      var hasType = groups.findBy('day', reservation.get('day'));
+      const hasType = groups.findBy('day', reservation.get('day'));
 
       if (!hasType) {
         groups.pushObject(Ember.Object.create({
