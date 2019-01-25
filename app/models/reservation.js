@@ -6,6 +6,7 @@ export default DS.Model.extend({
   startHour: DS.attr("number"),
   endHour: DS.attr("number"),
   label: DS.attr("string"),
+  isCollege: DS.attr("boolean"),
 
   // Relations
   classroom: DS.belongsTo("classroom"),

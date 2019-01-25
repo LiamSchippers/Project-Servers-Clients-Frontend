@@ -27,6 +27,7 @@ Router.map(function() {
   this.route('studentgroup', function() {});
   this.route('user-profile', { path: '/profile'});
   this.route('import');
+  this.route('college_import');
 });
 
 export default Router;
