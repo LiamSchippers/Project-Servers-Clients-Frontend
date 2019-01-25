@@ -1,16 +1,47 @@
-.grid-block {
-  .classrooms-block {
-    width: 100%;
-    float: left;
+.view__classrooms {
+  .grid-block {
+    .classrooms-block {
+      width: 100%;
+      float: left;
 
-    a {
       .classroom {
         width: 100%;
+        position: relative;
+        padding: 22px 0;
 
-        .classroom__capacity, .classroom__room {
-          display: inline-block;
+        &::before {
+          @include transition(200ms);
+          content: '';
+          position: absolute;
+          left: -50px;
+          @include calc(width, '100% + 100px');
+          @include calc(height, '100% + 2px');
+          background: $background-light-grey;
+          z-index: 1;
+          top: -1px;
+          opacity: 0;
+          visibility: hidden;
+        }
+
+        > div {
+          position: relative;
+          z-index: 1;
+        }
+        &:first-child {
+          border: none;
+        }
+
+        &:hover {
+          &::before {
+            opacity: 1;
+            visibility: visible;
+          }
         }
       }
+    }
+
+    &.free-reservations {
+      margin-top: 32px;
     }
   }
 }
