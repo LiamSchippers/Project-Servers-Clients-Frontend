@@ -2,8 +2,6 @@ import Controller from '@ember/controller';
 import EmberObject, { computed } from '@ember/object';
 import { setDiff } from '@ember/object/computed';
 import { inject } from '@ember/service';
-import { A } from '@ember/array';
-
 
 import MutableArray from '@ember/array/mutable';
 
@@ -16,50 +14,23 @@ export default Controller.extend({
     return this.get('model.memberships');
   }),
   studentsInGroup: computed('model.memberships', function () {
-
     let students = [];
     this.get('model.memberships').forEach(function (membership) {
-      //console.log(membership.get('user').get('_belongsToState.canonicalState.id'))
       students.push(membership.get('user'));
-    });
+    })
     return students;
   }),
   allStudents: computed(function() {
-    //console.log(this.studentsInGroup.length);
     return this.get('store').query('extended-user', {
       filter: {
         where: {
           role: 'student'
         }
       }
-    }).then(function (students) {
-      console.log('students ' + students)
-      return students;
-      // console.log(students)
-      // let allStudents = [];
-      // students.forEach(function (student) {v
-      //
-      //   allStudents.push(student);
-      // });
-      // return allStudents;
     });
   }),
-  studentsNotInGroup: computed('allStudents', 'studentsInGroup'  , function() {
-    // console.log(this.allStudents);
-    // console.log(this.allStudents.length);
-    console.log('studentsInGroup ' + this.studentsInGroup.length);
-    console.log('allstudents ' + this.allStudents.length);
-    console.log(this.allStudents);
-    // for(let i = 0; i < this.allStudents.length; i++)
-    // {
-    //
-    // }
-    //console.log(this.studentsInGroup)
-    // console.log(setDiff('allStudents', 'studentsInGroup'));
-
-    // console.log(this.allStudents);
-    // console.log(this.studentsInGroup)
-    // console.log(setDiff('allStudents', 'studentsInGroup'));
+  studentsNotInGroup: computed('model.memberships', function() {
+    return setDiff('allStudents', 'studentsInGroup');
   }),
   filteredStudentsNotInGroup: [],
   actions: {
