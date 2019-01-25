@@ -16,11 +16,11 @@ export default DS.Model.extend({
     return new Promise(function (resolve, reject) {
       //for each membership the studentgroup has, we want to add that up to the amount variable
       _this.memberships.then((memberships) => {
-        memberships.forEach((membership) => {
-          amount++;
-        })
+        amount = memberships.length;
       });
-      return amount;
+      _this.memberships.finally(() =>{
+        resolve(amount);
+      })
     });
   })
 });

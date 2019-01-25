@@ -74,7 +74,7 @@
                 {{#power-select selected=selectedClassroom options=classrooms searchField="roomNumber"
                                 onchange=(action "selectClassroom")
                                 placeholder=model.classroom.roomNumber as |classroom|}}
-                  {{classroom.roomNumber}}
+                  {{classroom.roomNumber}} - ({{classroom.availableSpots}})
                 {{/power-select}}
               </div>
             </div>
