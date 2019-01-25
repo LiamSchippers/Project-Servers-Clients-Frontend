@@ -62,3 +62,35 @@
     </table>
   </ul>
 </div>
+<main class="view view__classrooms">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="top-bar">
+          <h1>Lokalen</h1>
+          {{#link-to "reservations.new" class="btn btn--green"}}Toevoegen{{/link-to}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="grid-block">
+          <div class="classrooms-block">
+            {{#each model as |classroom|}}
+              {{#link-to 'classrooms.show' classroom}}
+                <div class="classroom">
+                  <div class="classroom__room">{{classroom.roomNumber}}</div>
+                  <div class="classroom__capacity">
+                    Capaciteit: {{classroom.capacity}}
+                  </div>
+                </div>
+              {{/link-to}}
+            {{else}}
+              <div>Er zijn nog geen lokalen aangemaakt</div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
