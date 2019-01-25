@@ -1,0 +1,12 @@
+<div class="timeline">
+  {{#each hours as |reservations hour|}}
+    <div class="hour">
+      <div class="hour-label">{{start-hour-string (sum hour 1)}}</div>
+      {{#each reservations as |reservation|}}
+        <div class="reservation reservation-start reservation-end" data-start="{{reservation.startHour}}" data-span="{{reservation.duration}}">
+          {{reservation.studentgroup.groupName}}
+        </div>
+      {{/each}}
+    </div>
+  {{/each}}
+</div>

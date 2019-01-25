@@ -1,10 +1,18 @@
 import DS from 'ember-data';
+import { computed } from '@ember/object';
 
 export default DS.Model.extend({
-  day: DS.attr("date"),
+  day: DS.attr("string"),
   startHour: DS.attr("number"),
   endHour: DS.attr("number"),
   label: DS.attr("string"),
-  studentgroup: DS.belongsTo("studentgroup"),
+
+  // Relations
   classroom: DS.belongsTo("classroom"),
+  studentgroup: DS.belongsTo("studentgroup"),
+
+  // Computed
+  duration: computed('endHour', 'startHour', function() {
+    return this.endHour - this.startHour;
+  }),
 });
