@@ -9,13 +9,50 @@ export default Controller.extend({
   }),
 
   enableGrid: function () {
-    const gridblockStatus = this.get('model').get('endHour') !== undefined && this.get('model').get('startHour') !== undefined && this.get('model').get('day') !== undefined;
+    const model = this.get('model');
+    const gridblockStatus = model.get('endHour') !== undefined && model.get('startHour') !== undefined && model.get('day') !== undefined;
     this.set("toggleGridBlock", gridblockStatus);
     if (gridblockStatus) {
       this.availableSpots.finally(() => {
         return this.get('store').findAll('classroom');
       });
     }
+  },
+  //this class returns an array with all the classrooms that can fit all the members of the selected studentgroup
+  getAvailableClassrooms: function () {
+    const model = this.get('model');
+    let availableClassrooms = [];
+    let classrooms = this.get('store').findAll('classroom');
+    let studentGroup = model.get('studentgroup');
+    let studentsCount = 0;
+    classrooms.then((classrooms) => {
+      classrooms.forEach((classroom) => {
+        let availableSpots = classroom.get('availableSpots');
+        studentGroup.get('amountOfGroupMembers').then(amount => {
+          studentsCount = amount;
+        });
+        studentGroup.get('amountOfGroupMembers').finally(() => {
+          if (studentsCount <= availableSpots) {
+            availableClassrooms.push(classroom);
+          }
+        });
+      });
+      return availableClassrooms;
+    });
+  },
+  compareDates: function (reservationDate, selectedDate) {
+    //comapre the date's without the time from the date object
+    //split at '-' then remove the time by splitting at 'T'
+    //returns true if the date's match
+    let res = reservationDate.split("-");
+    let resWithoutTime = res[2].split("T");
+    let resDate = res[0] + res[1] + resWithoutTime[0];
+
+    let select = selectedDate.split("-");
+    let selectWithoutTime = select[2].split("T");
+    let selectDate = select[0] + select[1] + selectWithoutTime[0];
+
+    return resDate === selectDate;
   },
   minEndHour: computed('startHour', function () {
     const startHour = +this.get('model').get('startHour') + 1;
@@ -33,43 +70,36 @@ export default Controller.extend({
   classrooms: computed(function () {
       return this.get('store').findAll('classroom');
   }),
+  // method for returning available spots of all classrooms for the selected date, start- and endhour
   availableSpots: computed('startHour', 'day', function () {
     const model = this.get('model');
     const selectedStartHour = +model.get('startHour');
     const selectedDay = model.get('day');
     let classrooms = this.get('store').findAll('classroom');
-    let reformedDate = new Date(selectedDay.toString().split('GMT')[0]+' UTC').toISOString();
+    let reformedDate = new Date(selectedDay.toString().split('GMT')[0] + ' UTC').toISOString();
+    let _this = this;
 
     return new Promise(function (resolve, reject) {
       classrooms.then((classrooms) => {
-        //loop through all the classrooms
-        //for each classroom we want to see if it has reservations for the selectedStartHour
         classrooms.forEach((classroom) => {
           let availableSpots = classroom.capacity;
+          classroom.set('availableSpots', availableSpots);
           let reservations = classroom.get('reservations');
           reservations.then((reservations) => {
-            //loop through all the reservations
-            //for each reservation check if the selectedStartHour is between reserved times
-            //if so the amount of groupmembers within the studentgroup of the reservation should be subtracted from the availableSpots
             reservations.forEach((reservation) => {
-              // if the selectedDay matches the reservation day, we want to start comparing hours
-              if (reservation.get('day') === reformedDate) {
+              if (_this.compareDates(reservation.get('day'), reformedDate)) {
                 let startHour = reservation.get('startHour');
                 let endHour = reservation.get('endHour');
                 if (selectedStartHour => startHour && selectedStartHour < endHour) {
                   reservation.studentgroup.get('amountOfGroupMembers').then(amount => {
                     availableSpots -= amount;
                   });
-                  reservation.studentgroup.get('amountOfGroupMembers').finally(()=>{
+                  reservation.studentgroup.get('amountOfGroupMembers').finally(() => {
                     classroom.set('availableSpots', availableSpots);
                   })
                 }
-              } else {
-                console.log("res: " + reservation.get('day'));
-                console.log("select: " + reformedDate);
               }
             });
-            //after looping through all the reservations we want to set the availableSpots attribute of the classroom model
             resolve();
           });
         });
@@ -79,6 +109,7 @@ export default Controller.extend({
   actions: {
     selectStudentGroup: function (studentgroup) {
       this.get('model').set('studentgroup', studentgroup);
+      this.getAvailableClassrooms();
     },
     selectClassroom: function (classroom) {
       this.get('model').set('classroom', classroom);
