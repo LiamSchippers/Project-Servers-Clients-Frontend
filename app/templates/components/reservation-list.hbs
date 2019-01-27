@@ -8,7 +8,9 @@
       </div>
       <div class="reservation__time">
         <i class="icon-clock"></i>
+        {{start-hour-string reservation.startHour}}
         -
+        {{start-hour-string reservation.endHour}}
       </div>
       <i class="icon-delete reservation__delete" {{action "deleteReservation" reservation}}></i>
       <i class="icon-edit reservation__edit"></i>
