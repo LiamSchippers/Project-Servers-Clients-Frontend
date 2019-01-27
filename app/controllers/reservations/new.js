@@ -18,7 +18,9 @@ export default Controller.extend({
       });
     }
   },
-  //this class returns an array with all the classrooms that can fit all the members of the selected studentgroup
+  /**
+   * This function returns a list of all classrooms that can fit the selected studentgroup.
+   */
   getAvailableClassrooms: function () {
     const model = this.get('model');
     let availableClassrooms = [];
@@ -41,9 +43,6 @@ export default Controller.extend({
     });
   },
   compareDates: function (reservationDate, selectedDate) {
-    //comapre the date's without the time from the date object
-    //split at '-' then remove the time by splitting at 'T'
-    //returns true if the date's match
     let res = reservationDate.split("-");
     let resWithoutTime = res[2].split("T");
     let resDate = res[0] + res[1] + resWithoutTime[0];
@@ -70,7 +69,10 @@ export default Controller.extend({
   classrooms: computed(function () {
       return this.get('store').findAll('classroom');
   }),
-  // method for returning available spots of all classrooms for the selected date, start- and endhour
+
+  /**
+   * This computed function sets the availavleSpots of a classroom for the selected start hour and day.
+   */
   availableSpots: computed('startHour', 'day', function () {
     const model = this.get('model');
     const selectedStartHour = +model.get('startHour');
