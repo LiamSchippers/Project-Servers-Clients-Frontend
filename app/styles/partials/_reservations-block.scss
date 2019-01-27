@@ -5,7 +5,7 @@
     width: 100%;
     float: left;
 
-    
+
     .reservation {
       width: inherit;
       float: left;
@@ -56,10 +56,8 @@
           font-size: 18px;
           color: $dark-blue;
         }
-
         &:last-child {
           margin-right: 0;
-          float: right;
         }
       }
 
@@ -88,10 +86,6 @@
       }
     }
 
-    .btn {
-      margin-top: 50px;
-    }
-
     @include media-breakpoint-down(lg) {
       .reservation {
         > div {
@@ -109,5 +103,8 @@
         width: 100%;
       }
     }
+  }
+  .btn {
+    margin-top: 50px;
   }
 }
