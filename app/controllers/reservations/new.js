@@ -59,7 +59,7 @@ export default Controller.extend({
         const reservationLabel = studentGroup.get('groupName') + this.get('model').get('day');
         this.get('model').set('label', reservationLabel);
         this.get('model').save().then((e) => {
-          this.transitionToRoute('index');
+          this.transitionToRoute('classrooms.show', this.get('model').get('classroom').get('id'));
         });
       } else {
         this.set('errorMessageText', "Het maximale aantal les uren dat je met deze groep per keer mag boeken is " + maxReservableHours);

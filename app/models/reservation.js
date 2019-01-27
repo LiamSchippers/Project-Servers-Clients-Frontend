@@ -8,8 +8,16 @@ export default DS.Model.extend({
   startHour: DS.attr("number"),
   endHour: DS.attr("number"),
   label: DS.attr("string"),
+  isCollege: DS.attr("boolean"),
+
+  // Relations
   classroom: DS.belongsTo("classroom"),
   studentgroup: DS.belongsTo("studentgroup"),
+
+  // Computed
+  duration: computed('endHour', 'startHour', function() {
+    return this.endHour - this.startHour;
+  }),
 
   now: computed('day', 'startHour', 'endHour', function(jow) {
     console.log(this.day);
