@@ -13,9 +13,9 @@
     <div class="row">
       <div class="col-12 col-md-6">
         <div class="grid-block">
-          <div class="grid-block__title">Nu gereserveerd</div>
+          <div class="grid-block__title">Kamers</div>
           <div class="classrooms-block">
-            {{#each reservedClassrooms as |classroom|}}
+            {{#each model as |classroom|}}
               <div class="classroom">
                 <div class="classroom__room">{{classroom.roomNumber}}</div>
                 <div class="classroom__capacity">
@@ -24,40 +24,6 @@
               </div>
             {{else}}
               <div>Geen reserveringen gevonden</div>
-            {{/each}}
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6">
-        <div class="grid-block">
-          <div class="grid-block__title">Later gereserveerd</div>
-          <div class="classrooms-block">
-            {{#each laterReservedClassrooms as |classroom|}}
-              <div class="classroom">
-                <div class="classroom__room">{{classroom.roomNumber}}</div>
-                <div class="classroom__capacity">
-                  Capaciteit: {{classroom.capacity}} personen
-                </div>
-              </div>
-            {{else}}
-              <div>Geen reserveringen gevonden</div>
-            {{/each}}
-          </div>
-        </div>
-      </div>
-      <div class="col-12">
-        <div class="grid-block free-reservations">
-          <div class="grid-block__title">Beschikbaar</div>
-          <div class="classrooms-block">
-            {{#each freeClassrooms as |classroom|}}
-              <div class="classroom">
-                <div class="classroom__room">{{classroom.roomNumber}}</div>
-                <div class="classroom__capacity">
-                  Capaciteit: {{classroom.capacity}} personen
-                </div>
-              </div>
-            {{else}}
-              <div>Er zijn nog geen lokalen aangemaakt</div>
             {{/each}}
           </div>
         </div>
