@@ -3,7 +3,7 @@
     <div class="hour">
       <div class="hour-label">{{start-hour-string (sum hour 1)}}</div>
       {{#each reservations as |reservation|}}
-        <div class="reservation reservation-start reservation-end" data-start="{{reservation.startHour}}" data-span="{{reservation.duration}}">
+        <div class="reservation reservation-start reservation-end {{if reservation.isCollege "reservation-college" "reservation-student"}}" data-start="{{reservation.startHour}}" data-span="{{reservation.duration}}">
           {{reservation.studentgroup.groupName}}
         </div>
       {{/each}}
