@@ -102,22 +102,16 @@
           <div class="grid-block margin-top {{ unless toggleGridBlock "grid-block--disabled"}}">
             <div class="grid-block__title">Beschikbare lokalen voor deze tijd</div>
             <div class="reservations-block">
-              <div class="reservation">
-                <div class="reservation__classroom">G5.31</div>
-                <div class="reservation__date">
-                  <i class="icon-location"></i>
-                  Epy Drost
+              {{#each classrooms as |classroom|}}
+                <div class="reservation">
+                  <div class="reservation__classroom">{{classroom.roomNumber}}</div>
+                  <div class="reservation__date">
+                    <i class="icon-location"></i>
+                    {{classroom.building}}
+                  </div>
+                  <button type="button" class="btn btn__select btn--green" {{action "selectClassroom" classroom}}>Selecteer</button>
                 </div>
-                <button type="button" class="btn btn__select btn--green">Selecteer</button>
-              </div>
-              <div class="reservation">
-                <div class="reservation__classroom">G5.31</div>
-                <div class="reservation__date">
-                  <i class="icon-location"></i>
-                  Epy Drost
-                </div>
-                <button type="button" class="btn btn__select btn--green">Selecteer</button>
-              </div>
+              {{/each}}
             </div>
           </div>
         </div>
