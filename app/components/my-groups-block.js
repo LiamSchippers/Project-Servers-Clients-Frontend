@@ -1,11 +1,9 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { inject as service } from '@ember/service';
 
 export default Component.extend({
-  session:  service(),
-  memberships: computed('session', function() {
-    return this.get('session.data.currentUser').memberships;
+  memberships: computed('memberships', function() {
+    return this.get('memberships');
   }),
   actions: {
     expandGroup() {
