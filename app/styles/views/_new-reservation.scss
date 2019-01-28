@@ -1,0 +1,31 @@
+.view {
+  &.view__new-reservation {
+    form {
+      .form-group {
+        label {
+          display: block;
+          width: 100%;
+          font-weight: 500;
+        }
+        input {
+          width: 100%;
+          position: relative;
+
+          &.date-picker {
+            &::before { // @TODO: This is not working properly
+              display: none;
+              position: absolute;
+              content: '\e803';
+              right: 0;
+              top: 0;
+              font-size: 18px;
+            }
+          }
+        }
+      }
+      button {
+        margin-top: 15px;
+      }
+    }
+  }
+}

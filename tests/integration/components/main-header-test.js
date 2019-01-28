@@ -12,7 +12,7 @@ module('Integration | Component | main-header', function(hooks) {
 
     await render(hbs`{{main-header}}`);
 
-    assert.equal(this.element.textContent.trim(), '');
+    assert.equal(this.element.textContent.trim(),);
 
     // Template block usage:
     await render(hbs`
@@ -21,6 +21,6 @@ module('Integration | Component | main-header', function(hooks) {
       {{/main-header}}
     `);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(),'Web Room Booking"');
   });
 });

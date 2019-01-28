@@ -1,0 +1,26 @@
+.view {
+  &.view__studentgroups {
+    form {
+      .form-group {
+        label {
+          display: block;
+        }
+        input {
+          width: 100%;
+        }
+      }
+    }
+    .btn {
+      width: auto;
+      margin-top: 10px;
+
+      &:first-child {
+        margin-right: 30px;
+      }
+    }
+    .filter {
+      width: 100%;
+      margin-top: 30px;
+    }
+  }
+}

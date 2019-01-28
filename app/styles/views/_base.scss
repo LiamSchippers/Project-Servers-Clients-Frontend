@@ -13,6 +13,7 @@ body {
       float: left;
       margin-bottom: 50px;
       position: relative;
+
       h1 {
         display: inline-block;
         @include centerer(false, true);
@@ -36,6 +37,12 @@ body {
       @include border-radius(5px);
       padding: 50px;
       float: left;
+      margin-bottom: 20px;
+
+      &.grid-block--disabled {
+        opacity: 0.4;
+        pointer-events: none;
+      }
 
       &.grid-block--margin-top {
         margin-top: 32px;
@@ -47,17 +54,24 @@ body {
         color: $dark-blue;
         margin-bottom: 30px;
       }
+
+      .grid-block__content {
+
+      }
     }
 
     @include media-breakpoint-down(sm) {
+      .grid-block {
+        padding: 25px;
+      }
       .col-12 {
         .grid-block {
           margin-bottom: 30px;
         }
-        &:last-child {
-          .grid-block {
-            margin: 0;
-          }
+
+        &:last-child.grid-block {
+          margin: 0;
+
         }
       }
     }

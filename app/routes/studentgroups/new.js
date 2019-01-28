@@ -1,11 +1,8 @@
 import Route from '@ember/routing/route';
+import isAuthorizedTeacherMixin from '../../mixins/authorization-teacher-route-mixin';
 
-// TODO : TEACHER AUTH
+export default Route.extend(isAuthorizedTeacherMixin, {
 
-export default Route.extend({
-
-
-  //return create record model of studentgroup.
   model() {
     return this.store.createRecord('studentgroup');
   },

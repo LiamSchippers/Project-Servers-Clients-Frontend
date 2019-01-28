@@ -4,11 +4,11 @@
       <div class="col">
         <nav class="main-navigation">
           <div class="logo">
-            {{#link-to 'index'}}<span class="logo__text">Web Room Booking</span>{{/link-to}}
+            {{#link-to "index"}}<span class="logo__text">Web Room Booking</span>{{/link-to}}
           </div>
           <div class="user">
             <div class="user__name" {{ action "toggleUserDropdown" }} role="button">
-              <span class="user__name__text">John Doe</span>
+              <span class="user__name__text">{{session.data.currentUser.username}}</span>
               <span
                 class="user__name_icon icon-arrow {{if dropdownOpen "user__name_icon--open"}}"
               >
@@ -18,8 +18,14 @@
               {{#transition-group transitionName="user-dropdown"}}
                 <div class="user__dropdown">
                   <ul>
-                    <li>Dashboard</li>
-                    <li>{{#link-to "user-profile"}}Mijn account{{/link-to}}</li>
+                    <li>{{#link-to "index" invokeAction=(action "toggleUserDropdown")}}Dashboard{{/link-to}}</li>
+                    <li>{{#link-to "classrooms.index" invokeAction=(action "toggleUserDropdown")}}
+                      Lokalen{{/link-to}}</li>
+                    {{#if (has-role "teacher")}}
+                      <li>{{#link-to "studentgroups.index" invokeAction=(action "toggleUserDropdown")}}
+                        Groepen{{/link-to}}</li>{{/if}}
+                    <li>{{#link-to "user-profile" invokeAction=(action "toggleUserDropdown")}}
+                      Mijn account{{/link-to}}</li>
                     <li>{{#link-to "login" invokeAction=(action "logOut")}}Uitloggen{{/link-to}}</li>
                   </ul>
                 </div>
@@ -48,8 +54,15 @@
   {{# if mobileMenuOpen }}
     <nav class="mobile-menu">
       <ul>
-        {{#link-to "index"}}<li class="mobile-menu__item mobile-menu__item--active">Dashboard</li>{{/link-to}}
-        {{#link-to "user-profile"}}<li class="mobile-menu__item">Mijn account</li>{{/link-to}}
+        {{#link-to "index"}}
+          <li class="mobile-menu__item mobile-menu__item--active">Dashboard</li>{{/link-to}}
+        {{#link-to "classrooms.index"}}
+          <li class="mobile-menu__item mobile-menu__item--active">Lokalen</li>{{/link-to}}
+        {{#if (has-role "teacher")}}
+          {{#link-to "studentgroups.index"}}
+            <li class="mobile-menu__item mobile-menu__item--active">Groepen</li>{{/link-to}}{{/if}}
+        {{#link-to "user-profile"}}
+          <li class="mobile-menu__item">Mijn account</li>{{/link-to}}
         <li class="mobile-menu__item">Uitloggen</li>
       </ul>
     </nav>

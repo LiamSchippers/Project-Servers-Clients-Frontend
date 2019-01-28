@@ -1,9 +1,8 @@
 import Controller from '@ember/controller';
+import isAuthenticatedMixin from "../../mixins/authentication-route-mixin";
+import isAuthorizedTeacherMixin from "../../mixins/authorization-teacher-route-mixin";
 
-
-// TODO : TEACHER AUTH
-
-export default Controller.extend({
+export default Controller.extend(isAuthenticatedMixin, isAuthorizedTeacherMixin, {
   actions: {
     /**
      * @param input as text by the user.
@@ -50,7 +49,7 @@ export default Controller.extend({
     },
     /**
      * @param student The student object
-     * This methods add a student to a studentgroup by creating a new membership with userid and studentgroupid.
+     * This methods adds a student to a studentgroup by creating a new membership with userid and studentgroupid.
      */
     addStudent(student) {
       let model = this.get('model');
@@ -66,7 +65,7 @@ export default Controller.extend({
       });
     },
     /**
-     * @param membership the membership object.
+     * @param membership The membership object.
      * This methods removes a student from a studentgroup by deleting membership.
      */
     removeStudent(membership) {

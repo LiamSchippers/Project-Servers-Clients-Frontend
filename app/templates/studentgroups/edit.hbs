@@ -1,27 +1,44 @@
-<div class="route-studentgroups">
-  <h1>Edit student group</h1>
-
-  <h2>Huidige groep:</h2>
-  <ul>
-    {{#each model.memberships as |membership|}}
-      <!-- show students in group-->
-    <li {{action "removeStudent" membership}}>{{membership.user.username}}</li>
-
-    {{else}}
-      geen studenten gevonden.
-    {{/each}}
-  </ul>
-
-  <h2>Nieuwe studenten</h2>
-  {{#list-filter
-    filter=(action "filterByStudent") as |filteredResults|
-  }}
-    <ul class="results">
-      {{#each filteredResults as |extended-user|}}
-        <li {{action "addStudent" extended-user}}>{{extended-user.username}}</li>
-      {{/each}}
-    </ul>
-  {{/list-filter}}
-  <button name="back" {{action "goBack"}}>Back</button>
-  {{outlet}}
-</div>
+<main class="view view__studentgroups">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="top-bar">
+          <h1>{{model.groupName}} bewerken</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="grid-block">
+          <div class="grid-block__title">Studenten in groep</div>
+          <div class="reservations-block">
+            {{#each model.memberships as |membership|}}
+              <div class="reservation">
+                <div class="reservation__date">
+                  <i class="icon-user"></i>
+                  {{membership.user.username}}
+                </div>
+              </div>
+            {{else}}
+              Geen studenten gevonden
+            {{/each}}
+            {{#list-filter
+              filter=(action "filterByStudent")
+            as |filteredResults|
+            }}
+              <ul class="results">
+                {{#each
+                  filteredResults
+                as |extended-user|
+                }}
+                  <li {{action "addStudent" extended-user}}>{{extended-user.username}}</li>
+                {{/each}}
+              </ul>
+            {{/list-filter}}
+            <button name="terug"  class="btn btn--gray"{{action "goBack"}}>Terug</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

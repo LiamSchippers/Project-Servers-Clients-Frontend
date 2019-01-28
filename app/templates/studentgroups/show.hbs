@@ -1,23 +1,32 @@
-<div class="route-studentgroups">
-
-
-
-  <h1>{{model.groupName}} </h1>
-
-
-  <h2>Studenten:</h2>
-  <ul>
-    {{#each model.memberships as |membership|}}
-      <!-- show students in group-->
-    <li>{{membership.user.username}}</li>
-
-    {{else}}
-      geen studenten gevonden.
-    {{/each}}
-  </ul>
-
-  {{#link-to "studentgroups.index"}}<button>Terug</button>{{/link-to}}
-  {{#link-to "studentgroups.edit" model}}<button>Edit</button>{{/link-to}}
-
-
-</div>
+<main class="view view__studentgroups">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="top-bar">
+          <h1>{{model.groupName}}</h1>
+          {{#link-to "studentgroups.edit" model class="btn btn__reservation btn--green"}}Bewerken{{/link-to}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="grid-block">
+          <div class="grid-block__title">Studenten</div>
+          <div class="reservations-block">
+            {{#each model.memberships as |membership|}}
+              <div class="reservation">
+                <div class="reservation__date">
+                  <i class="icon-user"></i>
+                  {{membership.user.username}}
+                </div>
+              </div>
+            {{else}}
+              Geen studenten gevonden
+            {{/each}}
+            {{#link-to "studentgroups.index" class="btn btn--green"}}Terug naar overzicht{{/link-to}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
