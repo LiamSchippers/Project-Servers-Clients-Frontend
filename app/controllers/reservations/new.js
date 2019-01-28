@@ -9,8 +9,49 @@ export default Controller.extend({
   }),
 
   enableGrid: function () {
-    const gridblockStatus = this.get('model').get('endHour') !== undefined && this.get('model').get('startHour') !== undefined && this.get('model').get('day') !== undefined;
+    const model = this.get('model');
+    const gridblockStatus = model.get('endHour') !== undefined && model.get('startHour') !== undefined && model.get('day') !== undefined;
     this.set("toggleGridBlock", gridblockStatus);
+    if (gridblockStatus) {
+      this.availableSpots.finally(() => {
+        return this.get('store').findAll('classroom');
+      });
+    }
+  },
+  /**
+   * This function returns a list of all classrooms that can fit the selected studentgroup.
+   */
+  getAvailableClassrooms: function () {
+    const model = this.get('model');
+    let availableClassrooms = [];
+    let classrooms = this.get('store').findAll('classroom');
+    let studentGroup = model.get('studentgroup');
+    let studentsCount = 0;
+    classrooms.then((classrooms) => {
+      classrooms.forEach((classroom) => {
+        let availableSpots = classroom.get('availableSpots');
+        studentGroup.get('amountOfGroupMembers').then(amount => {
+          studentsCount = amount;
+        });
+        studentGroup.get('amountOfGroupMembers').finally(() => {
+          if (studentsCount <= availableSpots) {
+            availableClassrooms.push(classroom);
+          }
+        });
+      });
+      return availableClassrooms;
+    });
+  },
+  compareDates: function (reservationDate, selectedDate) {
+    let res = reservationDate.split("-");
+    let resWithoutTime = res[2].split("T");
+    let resDate = res[0] + res[1] + resWithoutTime[0];
+
+    let select = selectedDate.split("-");
+    let selectWithoutTime = select[2].split("T");
+    let selectDate = select[0] + select[1] + selectWithoutTime[0];
+
+    return resDate === selectDate;
   },
   minEndHour: computed('startHour', function () {
     const startHour = +this.get('model').get('startHour') + 1;
@@ -26,11 +67,51 @@ export default Controller.extend({
       return this.get('errorMessageText');
   }),
   classrooms: computed(function () {
-    return this.get('store').findAll('classroom');
+      return this.get('store').findAll('classroom');
+  }),
+
+  /**
+   * This computed function sets the availavleSpots of a classroom for the selected start hour and day.
+   */
+  availableSpots: computed('startHour', 'day', function () {
+    const model = this.get('model');
+    const selectedStartHour = +model.get('startHour');
+    const selectedDay = model.get('day');
+    let classrooms = this.get('store').findAll('classroom');
+    let reformedDate = new Date(selectedDay.toString().split('GMT')[0] + ' UTC').toISOString();
+    let _this = this;
+
+    return new Promise(function (resolve, reject) {
+      classrooms.then((classrooms) => {
+        classrooms.forEach((classroom) => {
+          let availableSpots = classroom.capacity;
+          classroom.set('availableSpots', availableSpots);
+          let reservations = classroom.get('reservations');
+          reservations.then((reservations) => {
+            reservations.forEach((reservation) => {
+              if (_this.compareDates(reservation.get('day'), reformedDate)) {
+                let startHour = reservation.get('startHour');
+                let endHour = reservation.get('endHour');
+                if (selectedStartHour => startHour && selectedStartHour < endHour) {
+                  reservation.studentgroup.get('amountOfGroupMembers').then(amount => {
+                    availableSpots -= amount;
+                  });
+                  reservation.studentgroup.get('amountOfGroupMembers').finally(() => {
+                    classroom.set('availableSpots', availableSpots);
+                  })
+                }
+              }
+            });
+            resolve();
+          });
+        });
+      });
+    })
   }),
   actions: {
     selectStudentGroup: function (studentgroup) {
       this.get('model').set('studentgroup', studentgroup);
+      this.getAvailableClassrooms();
     },
     selectClassroom: function (classroom) {
       this.get('model').set('classroom', classroom);

@@ -8,4 +8,5 @@ export default DS.Model.extend({
   type: DS.attr('string'),
   capacity: DS.attr('number'),
   reservations: DS.hasMany('reservation'),
+  availableSpots: DS.attr('number'),
 });

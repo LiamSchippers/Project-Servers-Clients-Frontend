@@ -1,4 +1,5 @@
 <form id="formReservation"{{action "saveModel" on="submit"}}>
+  <h3>{{availableClassrooms}}</h3>
   <h3>Group</h3>
   <select onchange={{action "selectStudentGroup" value="target.value"}}>
     <option selected disabled>Choose your studentgroup</option>
