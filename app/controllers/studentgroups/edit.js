@@ -1,14 +1,16 @@
 import Controller from '@ember/controller';
 
-import MutableArray from '@ember/array/mutable';
 
 // TODO : TEACHER AUTH
 
 export default Controller.extend({
   actions: {
-
+    /**
+     * @param input as text by the user.
+     * returns students based on input match and whether they are in a group or not.
+     */
     filterByStudent(param) {
-      var model = this.get('model');
+      let model = this.get('model');
       if (param !== '') {
         return this.store.query('extended-user', {
           filter: {
@@ -18,8 +20,7 @@ export default Controller.extend({
             }
           }
         }).then(function (students) {
-          // filter students based on already present ones.
-          var freeStudents = students.toArray();
+          let freeStudents = students.toArray();
 
           students.forEach(function (student) {
             if (model.memberships.findBy('user._belongsToState.canonicalState.id', student.get('id'))) {
@@ -36,8 +37,7 @@ export default Controller.extend({
             }
           }
         }).then(function (students) {
-          // filter students based on already present ones.
-          var freeStudents = students.toArray();
+          let freeStudents = students.toArray();
 
           students.forEach(function (student) {
             if (model.memberships.findBy('user._belongsToState.canonicalState.id', student.get('id'))) {
@@ -48,26 +48,37 @@ export default Controller.extend({
         });
       }
     },
+    /**
+     * @param student The student object
+     * This methods add a student to a studentgroup by creating a new membership with userid and studentgroupid.
+     */
     addStudent(student) {
-      var model = this.get('model');
+      let model = this.get('model');
 
-      var membership = this.store.createRecord('membership', {
+      let membership = this.store.createRecord('membership', {
         studentgroupId: model.groupID,
         userId: student.userId,
         user: student,
         studentgroup: model
       });
-      membership.save().catch((reason) => {
+      membership.save().catch(() => {
         membership.deleteRecord();
       });
     },
+    /**
+     * @param membership the membership object.
+     * This methods removes a student from a studentgroup by deleting membership.
+     */
     removeStudent(membership) {
       membership.deleteRecord();
       membership.get('isDeleted');
       membership.save();
     },
+    /**
+     * This method gets the model and goes back to /studentgroup/id:/show page.
+     */
     goBack() {
-      var model = this.get('model');
+      let model = this.get('model');
       this.transitionToRoute('studentgroups.show', model.id);
     },
     willTransition(transition) {
@@ -76,6 +87,5 @@ export default Controller.extend({
         this.currentModel.destroyRecord().then(() => transition.retry());
       }
     }
-
   }
 });
