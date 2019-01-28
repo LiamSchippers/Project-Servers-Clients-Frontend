@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-import RSVP from 'rsvp';
 
 // TODO: Het is netter om dit op te lossen met moment.js
 function getDate() {
