@@ -3,13 +3,16 @@ import isAuthorizedTeacherMixin from '../../mixins/authorization-teacher-route-m
 
 export default Route.extend(isAuthorizedTeacherMixin, {
 
-
-  //return create record model of studentgroup.
   model() {
     return this.store.createRecord('studentgroup');
   },
 
   actions: {
+    saveModel() {
+      this.currentModel.save().then(() => {
+        this.transitionTo('studentgroups.show',this.currentModel.id);
+      })
+    },
     cancelModel() {
       this.currentModel.destroyRecord().then(() => {
         this.transitionTo('studentgroups.index')

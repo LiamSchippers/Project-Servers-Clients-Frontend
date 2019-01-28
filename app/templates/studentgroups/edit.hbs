@@ -22,15 +22,9 @@
             {{else}}
               Geen studenten gevonden
             {{/each}}
-            {{#list-filter
-              filter=(action "filterByStudent")
-            as |filteredResults|
-            }}
+            {{#list-filter filter=(action "filterByStudent") as |filteredResults|}}
               <ul class="results">
-                {{#each
-                  filteredResults
-                as |extended-user|
-                }}
+                {{#each filteredResults as |extended-user|}}
                   <li {{action "addStudent" extended-user}}>{{extended-user.username}}</li>
                 {{/each}}
               </ul>
