@@ -11,15 +11,17 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12 col-md-6">
+      <div class="col-12">
         <div class="grid-block">
           <div class="grid-block__title">Kamers</div>
           <div class="classrooms-block">
             {{#each model as |classroom|}}
               <div class="classroom">
-                <div class="classroom__room">{{#link-to 'classrooms.show' classroom}}{{classroom.roomNumber}}{{/link-to}}</div>
-                <div class="classroom__capacity">
-                  Capaciteit: {{classroom.capacity}} personen
+                <div class="classroom__room">
+                  {{#link-to 'classrooms.show' classroom}}{{classroom.roomNumber}}{{/link-to}}
+                  <div class="classroom__capacity">
+                    Capaciteit: {{classroom.capacity}} personen
+                  </div>
                 </div>
               </div>
             {{else}}
