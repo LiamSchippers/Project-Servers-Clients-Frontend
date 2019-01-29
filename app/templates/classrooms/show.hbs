@@ -14,16 +14,16 @@
           <div class="grid-block__content">
             <table class="details-table">
               <tr>
-                <th>Building:</th><td>{{model.building}}</td>
+                <th>Gebouw:</th><td>{{model.building}}</td>
               </tr>
               <tr>
                 <th>Type:</th><td>{{model.mainClassroomType}} {{model.kind}}</td>
               </tr>
               <tr>
-                <th>Properties:</th><td>{{model.type}}</td>
+                <th>Faciliteiten:</th><td>{{model.type}}</td>
               </tr>
               <tr>
-                <th>Capacity:</th><td>{{model.capacity}}</td>
+                <th>Capaciteit:</th><td>{{model.capacity}}</td>
               </tr>
             </table>
           </div>
@@ -36,6 +36,8 @@
                 <span class="date">{{moment-format reservationGroup.day "dddd D MMMM"}}</span>
                 {{reservation-timeline reservationGroup.contents}}
               </div>
+            {{else}}
+              <div>Geen reserveringen gevonden</div>
             {{/each}}
           </div>
         </div>
