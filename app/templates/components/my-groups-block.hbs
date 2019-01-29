@@ -1,22 +1,28 @@
 <div class="grid-block">
   <div class="grid-block__title">Mijn groepen</div>
   <div class="groups-block">
-    <div class="group {{if showGroupMembers "group--expanded"}}">
-      <div class="group__name">E4</div>
-      <i
-        class="group__expand icon-arrow"
-        role="button"
-        {{ action "expandGroup" }}
-      >
-      </i>
-      {{# if showGroupMembers }}
-        <div class="group__members">
-          <div class="group__members__member">
-            <i class="icon-user"></i>
-            <span class="member__name">Henk</span>
+    {{#each currentUser.memberships as |membership|}}
+      <div class="group {{if showGroupMembers "group--expanded"}}">
+        <div class="group__name">{{membership.studentgroup.groupName}}</div>
+        <i
+          class="group__expand icon-arrow"
+          role="button"
+          {{ action "expandGroup" }}
+        >
+        </i>
+        {{# if showGroupMembers }}
+          <div class="group__members">
+            {{#each membership.studentgroup.memberships as |groupMembership|}}
+              <div class="group__members__member">
+                <i class="icon-user"></i>
+                <span class="member__name">{{groupMembership.user.username}}</span>
+              </div>
+            {{/each}}
           </div>
-        </div>
-      {{/if}}
-    </div>
+        {{/if}}
+      </div>
+    {{else}}
+      Er zijn geen groepen waar je lid van bent
+    {{/each}}
   </div>
 </div>
