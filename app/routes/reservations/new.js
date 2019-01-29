@@ -40,6 +40,12 @@ export default Route.extend({
     return this.store.createRecord('reservation');
   },
 
-  // TODO: Voor de transitie naar een andere route moet je de aangemaakte reservation verwijderen als die niet opgeslagen is, anders blijft hij in de store staan.
-  // Jasper heeft dit probleem eerder opgelost volgens mij (en anders wil ik wel helpen hoor) dus vraag hem eens.
+  actions: {
+    willTransition(transition) {
+      if (this.currentModel.isNew && !this.currentModel.isSaving) {
+        transition.abort();
+        this.currentModel.destroyRecord().then(() => transition.retry());
+      }
+    }
+  }
 });
