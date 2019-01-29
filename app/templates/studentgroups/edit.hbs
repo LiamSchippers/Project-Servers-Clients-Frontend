@@ -17,20 +17,31 @@
                 <div class="reservation__date">
                   <i class="icon-user"></i>
                   {{membership.user.username}}
+                  <i class="icon-delete groupmember--delete" {{action "removeStudent" membership}}></i>
                 </div>
               </div>
             {{else}}
-              Geen studenten gevonden
+              Geen studenten in de groep
             {{/each}}
-            {{#list-filter filter=(action "filterByStudent") as |filteredResults|}}
-              <ul class="results">
-                {{#each filteredResults as |extended-user|}}
-                  <li {{action "addStudent" extended-user}}>{{extended-user.username}}</li>
-                {{/each}}
-              </ul>
-            {{/list-filter}}
-            <button name="terug"  class="btn btn--gray"{{action "goBack"}}>Terug</button>
           </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="grid-block">
+          {{#list-filter filter=(action "filterByStudent") as |filteredResults|}}
+            <div class="reservations-block">
+              {{#each filteredResults as |student|}}
+                <div class="reservation">
+                  <div class="reservation__date">
+                    <i class="icon-user"></i>
+                    {{student.username}}
+                    <span class="groupmember--add" {{action "addStudent" student}}>+</span>
+                  </div>
+                </div>
+              {{/each}}
+              <button name="terug" class="btn btn--gray"{{action "goBack"}}>Terug</button>
+            </div>
+          {{/list-filter}}
         </div>
       </div>
     </div>

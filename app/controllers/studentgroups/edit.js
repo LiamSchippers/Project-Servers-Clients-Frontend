@@ -3,6 +3,7 @@ import isAuthenticatedMixin from "../../mixins/authentication-route-mixin";
 import isAuthorizedTeacherMixin from "../../mixins/authorization-teacher-route-mixin";
 
 export default Controller.extend(isAuthenticatedMixin, isAuthorizedTeacherMixin, {
+  value: "",
   actions: {
     /**
      * @param input as text by the user.
@@ -69,9 +70,7 @@ export default Controller.extend(isAuthenticatedMixin, isAuthorizedTeacherMixin,
      * This methods removes a student from a studentgroup by deleting membership.
      */
     removeStudent(membership) {
-      membership.deleteRecord();
-      membership.get('isDeleted');
-      membership.save();
+      membership.destroyRecord();
     },
     /**
      * This method gets the model and goes back to /studentgroup/id:/show page.
