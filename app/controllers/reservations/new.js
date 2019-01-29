@@ -4,8 +4,9 @@ import {computed} from '@ember/object';
 
 export default Controller.extend({
   store: service(),
-  studentgroups: computed(function () {
-    return this.get('store').findAll('studentgroup');
+  session: service(),
+  currentUser: computed('session.data.authenticated.userId', function () {
+    return this.get('store').find('extended-user', this.get('session.data.authenticated.userId'));
   }),
 
   enableGrid: function () {

@@ -7,6 +7,7 @@ export default DS.Model.extend({
   reservableHours: DS.attr('number'),
   reservations: DS.hasMany('reservation'),
   memberships: DS.hasMany('membership'),
+  students: DS.hasMany('extended-user'),
 
   amountOfGroupMembers: computed('membership', function () {
     //amountOfGroupMembers standard set to 0;

@@ -81,7 +81,7 @@
             <div class="form-group">
               <label>Groep</label>
               <div class="default-select-box">
-                {{#power-select selected=selectedStudentGroup options=studentgroups searchField="groupName"
+                {{#power-select selected=selectedStudentGroup options=currentUser.studentgroups searchField="groupName"
                                 onchange=(action "selectStudentGroup")
                                 placeholder=model.studentgroup.groupName as |studentgroup|}}
                   {{studentgroup.groupName}}

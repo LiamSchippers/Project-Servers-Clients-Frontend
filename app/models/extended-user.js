@@ -7,4 +7,5 @@ export default DS.Model.extend({
   username: DS.attr('string'),
   password: DS.attr('string'),
   memberships: DS.hasMany('membership'),
+  studentgroups: DS.hasMany('studentgroup'),
 });
