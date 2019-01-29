@@ -11,14 +11,7 @@
         >
         </i>
         {{# if membership.showGroupMembers }}
-          <div class="group__members">
-            {{#each membership.studentgroup.memberships as |groupMembership|}}
-              <div class="group__members__member">
-                <i class="icon-user"></i>
-                <span class="member__name">{{groupMembership.user.username}}</span>
-              </div>
-            {{/each}}
-          </div>
+          {{#groupmember-list id=membership.studentgroup.id}}{{/groupmember-list}}
         {{/if}}
       </div>
     {{else}}

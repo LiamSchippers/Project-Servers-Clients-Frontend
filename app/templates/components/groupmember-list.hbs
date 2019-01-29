@@ -1,0 +1,8 @@
+<div class="group__members">
+  {{#each memberships as |membership|}}
+    <div class="group__members__member">
+      <i class="icon-user"></i>
+      <span class="member__name">{{membership.user.username}}</span>
+    </div>
+  {{/each}}
+</div>
