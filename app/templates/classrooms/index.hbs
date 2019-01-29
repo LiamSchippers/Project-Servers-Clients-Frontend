@@ -13,21 +13,36 @@
     <div class="row">
       <div class="col-12">
         <div class="grid-block">
-          <div class="grid-block__title">Kamers</div>
-          <div class="classrooms-block">
+          <table class="classrooms-block classrooms-table">
+            <tr>
+              <th>Lokaal</th>
+              <th>Gebouw</th>
+              <th>Type</th>
+              <th>Faciliteiten</th>
+              <th>Capaciteit</th>
+            </tr>
             {{#each model as |classroom|}}
-              <div class="classroom">
-                <div class="classroom__room">
+              <tr class="classroom">
+                <td class="classroom__room">
                   {{#link-to 'classrooms.show' classroom}}{{classroom.roomNumber}}{{/link-to}}
-                  <div class="classroom__capacity">
-                    Capaciteit: {{classroom.capacity}} personen
-                  </div>
-                </div>
-              </div>
+                </td>
+                <td class="classroom__building">
+                  <i class="icon-location"></i>{{classroom.building}}
+                </td>
+                <td class="classroom__type">
+                  {{classroom.mainClassroomType}} {{classroom.kind}}
+                </td>
+                <td class="classroom__facilities">
+                  {{classroom.type}}
+                </td>
+                <td class="classroom__capacity">
+                  {{classroom.capacity}} personen
+                </td>
+              </tr>
             {{else}}
-              <div>Geen reserveringen gevonden</div>
+              <div>Lokalen gevonden</div>
             {{/each}}
-          </div>
+          </table>
         </div>
       </div>
     </div>

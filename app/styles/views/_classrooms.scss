@@ -22,5 +22,38 @@
       display: inline;
       float: right;
     }
+
+    table.classrooms-table {
+      margin: 0 -50px;
+      width: calc(100% + 100px);
+
+      tr {
+        th:first-child, td:first-child {
+          padding-left: 50px;
+        }
+
+        th:last-child, td:last-child {
+          padding-right: 50px;
+        }
+
+        &:hover:not(:first-child) {
+          @include transition(200ms);
+          background-color: $background-light-grey;
+        }
+      }
+
+      td {
+        padding: 22px 0;
+      }
+
+      .classroom::before {
+        display: none;
+      }
+
+      .classroom__capacity {
+        float: none;
+        display: block;
+      }
+    }
   }
 }
