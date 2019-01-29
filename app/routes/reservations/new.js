@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import isAuthenticatedMixin from "../../mixins/authentication-route-mixin";
 
 // TODO: Het is netter om dit op te lossen met moment.js
 function getDate() {
@@ -28,7 +29,7 @@ function getMaxDate() {
 }
 
 
-export default Route.extend({
+export default Route.extend(isAuthenticatedMixin, {
   setupController: function (controller, model, studentgroup) {
     this._super(controller, model);
     controller.set("studentgroup", studentgroup);

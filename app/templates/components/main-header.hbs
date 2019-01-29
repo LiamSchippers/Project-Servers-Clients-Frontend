@@ -20,10 +20,13 @@
                   <ul>
                     <li>{{#link-to "index" invokeAction=(action "toggleUserDropdown")}}Dashboard{{/link-to}}</li>
                     {{#if (has-role "admin")}}
-                      <li>{{#link-to "admin" invokeAction=(action "toggleUserDropdown")}}Admin Dashboard{{/link-to}}</li>
+                      <li>{{#link-to "admin" invokeAction=(action "toggleUserDropdown")}}
+                        Admin Dashboard{{/link-to}}</li>
                     {{/if}}
-                    <li>{{#link-to "classrooms.index" invokeAction=(action "toggleUserDropdown")}}
-                      Lokalen{{/link-to}}</li>
+                    {{#if (has-group)}}
+                      <li>{{#link-to "classrooms.index" invokeAction=(action "toggleUserDropdown")}}
+                        Lokalen{{/link-to}}</li>
+                    {{/if}}
                     {{#if (has-role "teacher")}}
                       <li>{{#link-to "studentgroups.index" invokeAction=(action "toggleUserDropdown")}}
                         Groepen{{/link-to}}</li>{{/if}}

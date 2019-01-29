@@ -4,16 +4,23 @@
       <div class="col">
         <div class="top-bar">
           <h1>Dashboard</h1>
-          {{#link-to "reservations.new" class="btn btn__reservation btn--green"}}Reserveren{{/link-to}}
+          {{#if (has-group)}}
+            {{#link-to "reservations.new" class="btn btn__reservation btn--green"}}Reserveren{{/link-to}}
+          {{/if}}
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-12 col-md-6">
         <div class="grid-block">
-          <div class="grid-block__title">Mijn reserveringen</div>
-          {{reservation-list reservations=model size=3}}
-          {{#link-to "reservations.index" class="btn btn--green"}}Bekijk alles{{/link-to}}
+          {{#if (has-group)}}
+            <div class="grid-block__title">Mijn reserveringen</div>
+            {{reservation-list reservations=model size=3}}
+            {{#link-to "reservations.index" class="btn btn--green"}}Bekijk alles{{/link-to}}
+          {{else}}
+            <div class="grid-block__title">Reserveren niet mogelijk</div>
+            Je kunt alleen een ruimte reserveren als je lid bent van een groep. Vraag een docent om je aan een projectgroep toe te voegen.
+          {{/if}}
         </div>
       </div>
       <div class="col-12 col-md-6">
