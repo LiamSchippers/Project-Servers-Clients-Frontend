@@ -2,15 +2,15 @@
   <div class="grid-block__title">Mijn groepen</div>
   <div class="groups-block">
     {{#each currentUser.memberships as |membership|}}
-      <div class="group {{if showGroupMembers "group--expanded"}}">
+      <div class="group {{if membership.showGroupMembers "group--expanded"}}">
         <div class="group__name">{{membership.studentgroup.groupName}}</div>
         <i
           class="group__expand icon-arrow"
           role="button"
-          {{ action "expandGroup" }}
+          {{ action "expandGroup" membership}}
         >
         </i>
-        {{# if showGroupMembers }}
+        {{# if membership.showGroupMembers }}
           <div class="group__members">
             {{#each membership.studentgroup.memberships as |groupMembership|}}
               <div class="group__members__member">

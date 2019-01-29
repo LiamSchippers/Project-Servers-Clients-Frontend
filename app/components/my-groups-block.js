@@ -9,8 +9,8 @@ export default Component.extend({
     return this.get('store').find('extended-user', this.get('session.data.authenticated.userId'));
   }),
   actions: {
-    expandGroup() {
-      this.toggleProperty('showGroupMembers');
+    expandGroup(membership) {
+      membership.toggleProperty('showGroupMembers');
     }
   }
 });
