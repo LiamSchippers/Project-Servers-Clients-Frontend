@@ -101,18 +101,40 @@
         <div class="col-12">
           <div class="grid-block margin-top {{ unless toggleGridBlock "grid-block--disabled"}}">
             <div class="grid-block__title">Beschikbare lokalen voor deze tijd</div>
-            <div class="reservations-block">
+            <table class="classrooms-block classrooms-table">
+              <tr>
+                <th>Lokaal</th>
+                <th>Gebouw</th>
+                <th>Type</th>
+                <th>Faciliteiten</th>
+                <th>Capaciteit</th>
+                <th></th>
+              </tr>
               {{#each classrooms as |classroom|}}
-                <div class="reservation">
-                  <div class="reservation__classroom">{{classroom.roomNumber}}</div>
-                  <div class="reservation__date">
-                    <i class="icon-location"></i>
-                    {{classroom.building}}
-                  </div>
-                  <button type="button" class="btn btn__select btn--green" {{action "selectClassroom" classroom}}>Selecteer</button>
-                </div>
+                <tr class="classroom">
+                  <td class="classroom__room">
+                    {{#link-to 'classrooms.show' classroom}}{{classroom.roomNumber}}{{/link-to}}
+                  </td>
+                  <td class="classroom__building">
+                    <i class="icon-location"></i>{{classroom.building}}
+                  </td>
+                  <td class="classroom__type">
+                    {{classroom.mainClassroomType}} {{classroom.kind}}
+                  </td>
+                  <td class="classroom__facilities">
+                    {{classroom.type}}
+                  </td>
+                  <td class="classroom__capacity">
+                    {{classroom.capacity}} personen
+                  </td>
+                  <td class="classroom__select">
+                    <button type="button" class="btn btn__select btn--green" {{action "selectClassroom" classroom}}>Selecteer</button>
+                  </td>
+                </tr>
+              {{else}}
+                <div>Geen lokalen gevonden</div>
               {{/each}}
-            </div>
+            </table>
           </div>
         </div>
       </div>
