@@ -23,6 +23,42 @@
             min="1"
           }}
         </div>
+        <div class="form-group">
+          <label for="date">Gebouw</label>
+          {{input
+            type="text"
+            value=model.building
+            required=false
+            class="default-input default-input--border"
+          }}
+        </div>
+        <div class="form-group">
+          <label for="date">Hoofdtype</label>
+          {{input
+            type="text"
+            value=model.mainClassroomType
+            required=false
+            class="default-input default-input--border"
+          }}
+        </div>
+        <div class="form-group">
+          <label for="date">Subtype</label>
+          {{input
+            type="text"
+            value=model.kind
+            required=false
+            class="default-input default-input--border"
+          }}
+        </div>
+        <div class="form-group">
+          <label for="date">Faciliteiten</label>
+          {{input
+            type="text"
+            value=model.type
+            required=false
+            class="default-input default-input--border"
+          }}
+        </div>
         <button type="submit" class="btn btn--green" value="submit">Opslaan</button>
       </div>
     </div>
